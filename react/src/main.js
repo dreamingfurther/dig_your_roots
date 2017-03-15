@@ -32,6 +32,7 @@ $(function() {
         <Route path="/" component={Layout}>
           <IndexRoute component={App} />
           <Route path="/admin" component={Admin} />
+          <Route path="/admin/events/:id" component={Admin} />
         </Route>
       </Router>
     </Provider>,
