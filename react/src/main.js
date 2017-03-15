@@ -10,6 +10,8 @@ import { reducer as formReducer } from 'redux-form'
 import thunkMiddleware from 'redux-thunk';
 
 import emailConfirmation from './reducers/emailConfirmation'
+import showDetails from './reducers/showDetails'
+
 import App from './components/App'
 import Layout from './components/Layout'
 import Admin from './components/Admin'
@@ -17,6 +19,7 @@ import NewRsvpContainer from './containers/NewRsvpContainer'
 
 const store = createStore(
   combineReducers({
+    showDetails,
     emailConfirmation,
     form: formReducer,
     routing: routerReducer
