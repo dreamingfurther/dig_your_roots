@@ -9,12 +9,15 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-rou
 import { reducer as formReducer } from 'redux-form'
 import thunkMiddleware from 'redux-thunk';
 
+import emailConfirmation from './reducers/emailConfirmation'
 import App from './components/App'
 import Layout from './components/Layout'
 import Admin from './components/Admin'
+import NewRsvpContainer from './containers/NewRsvpContainer'
 
 const store = createStore(
   combineReducers({
+    emailConfirmation,
     form: formReducer,
     routing: routerReducer
   }),
@@ -33,6 +36,7 @@ $(function() {
           <IndexRoute component={App} />
           <Route path="/admin" component={Admin} />
           <Route path="/admin/events/:id" component={Admin} />
+          <Route path="/email_confirmation/:token" component={NewRsvpContainer} />
         </Route>
       </Router>
     </Provider>,

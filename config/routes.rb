@@ -6,4 +6,12 @@ Rails.application.routes.draw do
     root to: "events#index"
     resources :events, only: [:index, :show]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :email_confirmation, only: [:show]
+    end
+  end
+
+  resources :email_confirmation, only: [:show]
 end
