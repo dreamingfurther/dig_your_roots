@@ -18,9 +18,9 @@ class Api::V1::EmailConfirmationController < ApplicationController
         time: "6:00pm",
         city: "Marathon",
         state: "FL",
-        address: "Sunset Beach Park",
         rsvp_description: "Blah blah heres a description doop doop doop whatever",
         details: {
+          address: "Sunset Beach Park",
           logistics: "heres some logistics",
           dress_code: "heres a dress code"
         }

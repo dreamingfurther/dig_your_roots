@@ -1,6 +1,8 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { getEmailConfirmation } from '../actions/getEmailConfirmation'
+import RsvpWelcome from '../components/RsvpWelcome'
+import RsvpEventDetails from '../components/RsvpEventDetails'
 
 class NewRsvpContainer extends Component {
   constructor(props) {
@@ -13,9 +15,17 @@ class NewRsvpContainer extends Component {
   }
 
   render() {
+    let event = this.props.eventDetails;
+
     return(
       <div>
-        { this.props.eventDetails.name }
+        <RsvpWelcome
+          firstName={ this.props.guest.firstName }
+          rsvpDescription={ event.rsvpDescription }
+        />
+        <RsvpEventDetails
+          event={ event }
+        />
       </div>
     )
   }
