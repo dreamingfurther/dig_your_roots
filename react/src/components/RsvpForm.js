@@ -3,15 +3,15 @@ import { Row, Column } from 'react-foundation';
 import { Field, reduxForm } from 'redux-form';
 
 import RsvpAdditionalQuestions from './RsvpAdditionalQuestions';
+import { postEmailConfirmation } from '../actions/postEmailConfirmation';
 
 let validate = () => {
   const errors = {};
   return errors;
 }
 
-let onSubmit = (fields) => {
-  console.log("Im submitting whoo:");
-  console.log(fields);
+let onSubmit = (fields, dispatch) => {
+  dispatch(postEmailConfirmation());
 }
 
 const RsvpForm = (props) => {

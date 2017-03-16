@@ -5,17 +5,17 @@ const RsvpPlusOneQuestions = () => {
   return(
     <div>
       <label>Would you like to bring a plus one?*</label>
-      <div className="note">* Note: All +1's must be 21+</div>
+      <div className="note">{ `* Note: All +1's must be 21+` }</div>
       <label>
-        <Field name="plus_one_attending" component="input" type="radio" value="Yes" />
+        <Field name="plusOneAttending" component="input" type="radio" value="Yes" />
         Yes
       </label>
       <label>
-        <Field name="plus_one_attending" component="input" type="radio" value="No" />
+        <Field name="plusOneAttending" component="input" type="radio" value="No" />
         No
       </label>
       <label>
-        <Field name="plus_one_attending" component="input" type="radio" value="Maybe" />
+        <Field name="plusOneAttending" component="input" type="radio" value="Maybe" />
         { "I'll get back to you" }
       </label>
 

@@ -1,5 +1,7 @@
 class Api::V1::EmailConfirmationController < ApplicationController
-  def create
+  protect_from_forgery unless: -> { request.format.json? }
+
+  def update
     if attendee.present? && attendee_updated
       render json: attendee, status: 201
     else
@@ -18,11 +20,19 @@ class Api::V1::EmailConfirmationController < ApplicationController
   private
 
   def attendee_updated
+    notes = attendee.user_notes
+
     attendee.update_attributes(
-      rsvp:               params["answer"]["rsvp"],
-      plus_one_attending: params["answer"]["plus_one_attending"],
-      plus_one_fullname:  params["answer"]["plus_one_fullname"]
+      rsvp:               convert_to_boolean(params["answer"]["rsvp"]),
+      plus_one_attending: convert_to_boolean(params["answer"]["plus_one_attending"]),
+      plus_one_fullname:  params["answer"]["plus_one_fullname"],
+      user_notes: "#{notes} \n--------\n #{params["answer"]['notes']}"
     )
+  end
+
+  def convert_to_boolean(str)
+    return true if str == "Yes"
+    return false if str == "No"
   end
 
   def data
@@ -30,7 +40,8 @@ class Api::V1::EmailConfirmationController < ApplicationController
       guest: {
         first_name: user.first_name,
         last_name: user.last_name,
-        plus_one_invited: attendee.plus_one_invited
+        plus_one_invited: attendee.plus_one_invited,
+        token: params["id"]
       },
       event: {
         name: event.name,

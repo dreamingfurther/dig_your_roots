@@ -9,7 +9,7 @@ describe Api::V1::EmailConfirmationController do
   let(:user) { create(:user, first_name: "David", last_name: "Tengdin") }
   let!(:attendee) { create(:attendee, event: event, user: user, plus_one_invited: false) }
 
-  describe '#create' do
+  describe '#update' do
     let(:response_data) do
       {
         rsvp: true,
@@ -21,7 +21,7 @@ describe Api::V1::EmailConfirmationController do
     end
 
     before do
-      post :create, params: { id: attendee_id, answer: response_data }
+      post :update, params: { id: attendee_id, answer: response_data }
       attendee.reload
     end
 
