@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316052034) do
+ActiveRecord::Schema.define(version: 20170316170421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170316052034) do
     t.boolean  "plus_one_invited",   default: false, null: false
     t.boolean  "plus_one_attending"
     t.string   "plus_one_fullname"
+    t.integer  "email_count",        default: 0,     null: false
     t.index ["event_id"], name: "index_attendees_on_event_id", using: :btree
     t.index ["user_id"], name: "index_attendees_on_user_id", using: :btree
   end

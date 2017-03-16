@@ -1,0 +1,5 @@
+test invite for: <%= @user.fullname %>.
+
+you've been invited to: <%= @event.name %>.
+
+RSVP here: <%= email_confirmation_url(@attendee.to_param) %>

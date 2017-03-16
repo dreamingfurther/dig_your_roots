@@ -19,6 +19,9 @@
   </div>
 
   <div class="row">
+    <div class="column medium-2 hide-for-small">
+      Email
+    </div>
     <div class="column small-4 medium-3">
       Guest Name
     </div>
@@ -31,12 +34,18 @@
     <div class="column small-4 medium-2">
       +1 RSVP
     </div>
-    <div class="column small-4 hide-for-small end">
+    <div class="column medium-3 hide-for-small end">
       +1 Name
     </div>
   </div>
-  <% @event.attendees.each do |attendee| %>
+  <% @event.attendees.sort_by { |a| [(a.rsvp ? 1 : 0), a.user.first_name] }.each do |attendee| %>
     <div class="row">
+      <div class="column medium-2 hide-for-small">
+        <span>
+          <%= "#{attendee.email_count} - " %>
+          <%= link_to 'send', admin_send_invite_email_path(attendee.id), method: :patch %>
+        </span>
+      </div>
       <div class="column small-4 medium-3">
         <%= attendee.user.fullname %>
       </div>
@@ -49,7 +58,7 @@
       <div class="column small-4 medium-2 end">
         <%= attendee.plus_one_attending %>
       </div>
-      <div class="column small-4 hide-for-small end">
+      <div class="column medium-3 hide-for-small end">
         <%= attendee.plus_one_fullname %>
       </div>
     </div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "events#index"
     resources :events, only: [:index, :show]
+    resources :send_invite_email, only: [:update]
   end
 
   namespace :api do
