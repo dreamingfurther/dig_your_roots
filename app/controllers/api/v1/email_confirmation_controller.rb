@@ -1,4 +1,12 @@
 class Api::V1::EmailConfirmationController < ApplicationController
+  def create
+    if attendee.present? && attendee_updated
+      render json: attendee, status: 201
+    else
+      render json: { error: "No attendee found for that id" }, status: 422
+    end
+  end
+
   def show
     if attendee.present?
       render json: data, status: 200
@@ -8,6 +16,14 @@ class Api::V1::EmailConfirmationController < ApplicationController
   end
 
   private
+
+  def attendee_updated
+    attendee.update_attributes(
+      rsvp:               params["answer"]["rsvp"],
+      plus_one_attending: params["answer"]["plus_one_attending"],
+      plus_one_fullname:  params["answer"]["plus_one_fullname"]
+    )
+  end
 
   def data
     {

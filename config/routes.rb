@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :email_confirmation, only: [:show]
+      resources :email_confirmation, only: [:show, :create]
     end
   end
 
