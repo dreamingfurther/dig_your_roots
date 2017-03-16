@@ -16,10 +16,12 @@ const RsvpShowMore = (props) => {
     })
   }
 
-  if(props.showDetails) {
-    showText = <a>Show Less</a>
+  if((props.details != undefined) && (Object.keys(props.details).length > 0) && props.showDetails) {
+    showText = <a>Show Less</a>;
+  } else if((props.details != undefined) && (Object.keys(props.details).length > 0)) {
+    showText = <a>Show More</a>;
   } else {
-    showText = <a>Show More</a>
+    showText = "";
   }
 
   if(props.details != undefined) {

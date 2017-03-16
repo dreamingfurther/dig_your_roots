@@ -1,13 +1,10 @@
 class Event < ApplicationRecord
+  has_many :event_details
   has_many :attendees
   has_many :users, through: :attendees
 
   def details_data
-    {
-      address: "Sunset Beach Park",
-      logistics: "heres some logistics",
-      dress_code: "heres a dress code"
-    }
+    event_details.inject({}) { |hash, detail| hash[detail.name] = detail.body; hash }
   end
 
   def date_string
