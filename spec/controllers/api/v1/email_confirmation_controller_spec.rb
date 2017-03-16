@@ -12,8 +12,8 @@ describe Api::V1::EmailConfirmationController do
   describe '#update' do
     let(:response_data) do
       {
-        rsvp: true,
-        plus_one_attending: false,
+        rsvp: "Yes",
+        plus_one_attending: "Yes",
         plus_one_fullname: 'Bob Jones',
         notes: "I like to sing a lot.",
         questions: "What happens with this question?"
@@ -37,7 +37,7 @@ describe Api::V1::EmailConfirmationController do
       end
 
       it 'updates the other optional fields' do
-        expect(attendee.plus_one_attending).to eq false
+        expect(attendee.plus_one_attending).to eq true
         expect(attendee.plus_one_fullname).to eq 'Bob Jones'
       end
     end
@@ -70,7 +70,8 @@ describe Api::V1::EmailConfirmationController do
           "guest" => {
             "first_name"=>"David",
             "last_name"=>"Tengdin",
-            "plus_one_invited"=>false
+            "plus_one_invited"=>false,
+            "token"=> attendee_id
           },
           "event" => {
             "name"=>"Special Event",
