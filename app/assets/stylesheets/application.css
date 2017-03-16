@@ -18,3 +18,24 @@
 
 /* Script - font-family: 'Parisienne', cursive; */
 /* Regular - font-family: 'Raleway', sans-serif; */
+
+body {
+  background-image: url(background-image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #35394E;
+
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  font-family: 'Parisienne', cursive;
+}
+
+.react-layout .columns {
+  background-color: #D3E9EE;
+  opacity: .925;
+  border-color: #56A58D;
+  border-width: 0 3px;
+  height: 100vh;
+}

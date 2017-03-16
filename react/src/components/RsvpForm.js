@@ -17,24 +17,20 @@ let onSubmit = (fields) => {
 const RsvpForm = (props) => {
   return(
     <div className="rsvp-form">
-      <Row>
-        <Column small={12} medium={8} offsetOnMedium={2}>
-          <h1>Will you join us?</h1>
+      <h1>Will you join us?</h1>
 
-          <form onSubmit={props.handleSubmit}>
-            <label>
-              <Field name="rsvp" component="input" type="radio" value="Yes" />
-              Yes
-            </label>
-            <label>
-              <Field name="rsvp" component="input" type="radio" value="No" />
-              No
-            </label>
+      <form onSubmit={props.handleSubmit}>
+        <label>
+          <Field name="rsvp" component="input" type="radio" value="Yes" />
+          Yes
+        </label>
+        <label>
+          <Field name="rsvp" component="input" type="radio" value="No" />
+          No
+        </label>
 
-            <RsvpAdditionalQuestions />
-          </form>
-        </Column>
-      </Row>
+        <RsvpAdditionalQuestions />
+      </form>
     </div>
   )
 }
