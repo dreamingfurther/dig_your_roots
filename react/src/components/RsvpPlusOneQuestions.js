@@ -10,7 +10,7 @@ const RsvpPlusOneQuestions = (props) => {
     plusOneNameQuestion = (
       <div>
         <label>{ "What's their name?" }</label>
-        <Field name="plusOneName" component="input" type="text" placeholder="Optional" />
+        <Field name="plusOneName" component="input" type="text" placeholder="Optional" id="rsvp-plus-one-name" />
       </div>
     )
   } else if( props.plusOneAttending === "No"){
@@ -26,15 +26,15 @@ const RsvpPlusOneQuestions = (props) => {
       <label>Would you like to bring a plus one?*</label>
       <div className="note">{ `* Note: All +1's must be 21+` }</div>
       <label>
-        <Field name="plusOneAttending" component="input" type="radio" value="Yes" />
+        <Field name="plusOneAttending" component="input" type="radio" value="Yes" id="rsvp-guest-yes"/>
         Yes
       </label>
       <label>
-        <Field name="plusOneAttending" component="input" type="radio" value="No" />
+        <Field name="plusOneAttending" component="input" type="radio" value="No" id="rsvp-guest-no"/>
         No
       </label>
       <label>
-        <Field name="plusOneAttending" component="input" type="radio" value="Maybe" />
+        <Field name="plusOneAttending" component="input" type="radio" value="Maybe" id="rsvp-guest-maybe"/>
         { "I'll get back to you" }
       </label>
       { plusOneNameQuestion }
@@ -48,7 +48,6 @@ let mapStateToProps = (store) => {
   if(store.form.emailConfirmation.values != undefined){
     formValues.plusOneAttending = store.form.emailConfirmation.values.plusOneAttending
   }
-  console.log(formValues.plusOneAttending);
   return {
     plusOneAttending: formValues.plusOneAttending
   }

@@ -25,11 +25,11 @@ const RsvpForm = (props) => {
 
       <form onSubmit={props.handleSubmit}>
         <label>
-          <Field name="rsvp" component="input" type="radio" value="Yes" />
+          <Field name="rsvp" component="input" type="radio" value="Yes" id="rsvp-yes"/>
           Yes
         </label>
         <label>
-          <Field name="rsvp" component="input" type="radio" value="No" />
+          <Field name="rsvp" component="input" type="radio" value="No" id="rsvp-no"/>
           No
         </label>
 

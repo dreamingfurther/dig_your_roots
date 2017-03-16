@@ -8,7 +8,7 @@ const RsvpNotAttendingQuestions = () => {
       <label>
         Sorry to miss you! Feel free to leave us a note.
       </label>
-      <Field name="notes" component="textarea" />
+      <Field name="notes" component="textarea" id="rsvp-excuse" />
 
       <RsvpSubmit />
     </div>

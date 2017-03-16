@@ -3,17 +3,41 @@ import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 import $ from 'jquery';
 import 'jasmine-ajax';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore, push } from 'react-router-redux';
+
+import createResponseFromFixture from './support/createResponseFromFixture';
+import simulateIfPresent from './support/simulateIfPresent';
+import stubGlobalFetch from './support/stubGlobalFetch';
+import mountReactAppAt from './support/mountReactAppAt';
+
+let store, page;
+$.fn.foundation = () => {};
 
 Object.assign(global, {
   jasmineEnzyme,
   mount,
   React,
   shallow,
-  $
+  $,
+  browserHistory,
+  syncHistoryWithStore,
+  push,
+  createResponseFromFixture,
+  simulateIfPresent,
+  stubGlobalFetch,
+  mountReactAppAt,
+  store,
+  page
 });
 
 beforeEach(() => {
   jasmineEnzyme();
+});
+
+afterEach(() => {
+  if(global.page) { global.page.unmount(); }
+  if(global.store) { global.store.dispatch(push('/')); }
 });
 
 // function to require all modules for a given context
