@@ -7,3 +7,16 @@
     opacity: .75;
   }
 }
+
+.rails-layout .columns {
+  background-color: #fffefe;
+  height: 100vh;
+
+  @media screen and (max-width: 39.9375em) {
+    opacity: .75;
+  }
+}
+
+.header-padding {
+  padding-top: 20px;
+}

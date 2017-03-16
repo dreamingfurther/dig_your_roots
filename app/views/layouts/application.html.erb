@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag    "application" %>
     <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
-    
+
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -20,7 +20,14 @@
   <body>
     <div id="react-app"></div>
     <div id="rails-app">
-      <%= yield %>
+      <div class="row rails-layout">
+        <div class="columns small-12 medium-10 medium-offset-1 small-opaque">
+          <div class="columns small-12 medium-10 medium-offset-1">
+            <div class="header-padding"></div>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

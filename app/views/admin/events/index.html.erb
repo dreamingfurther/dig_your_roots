@@ -1,16 +1,8 @@
-<div class="row">
-  <div class="small-12 medium-8 medium-offset-2">
-    <h1>
-      Admin Event List
-    </h1>
-  </div>
-</div>
+<h1>
+  Admin Event List
+</h1>
 <% @events.each do |event| %>
-  <div class="row">
-    <div class="small-12 medium-8 medium-offset-2">
-      <p>
-        <%= link_to event.name, admin_event_path(event) %>
-      </p>
-    </div>
-  </div>
+  <p>
+    <%= link_to event.name, admin_event_path(event) %>
+  </p>
 <% end %>

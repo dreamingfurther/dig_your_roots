@@ -14,7 +14,6 @@ import showDetails from './reducers/showDetails'
 
 import App from './components/App'
 import Layout from './components/Layout'
-import Admin from './components/Admin'
 import NewRsvpContainer from './containers/NewRsvpContainer'
 
 const store = createStore(
@@ -37,8 +36,6 @@ $(function() {
       <Router history={history}>
         <Route path="/" component={Layout}>
           <IndexRoute component={App} />
-          <Route path="/admin" component={Admin} />
-          <Route path="/admin/events/:id" component={Admin} />
           <Route path="/email_confirmation/:token" component={NewRsvpContainer} />
         </Route>
       </Router>
