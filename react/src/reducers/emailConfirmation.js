@@ -2,11 +2,13 @@ import {
   GET_EMAIL_CONFIRMATION_REQUEST,
   GET_EMAIL_CONFIRMATION_REQUEST_SUCCESS,
   GET_EMAIL_CONFIRMATION_REQUEST_FAILURE
-} from '../actions/getEmailConfirmation'
+} from '../actions/getEmailConfirmation';
 
 let initialState = {
   isFetching: false,
-  guest: {},
+  guest: {
+    plusOneInvited: false
+  },
   event: {}
 }
 

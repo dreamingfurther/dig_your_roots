@@ -1,8 +1,9 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
-import { getEmailConfirmation } from '../actions/getEmailConfirmation'
-import RsvpWelcome from '../components/RsvpWelcome'
-import RsvpEventDetails from '../components/RsvpEventDetails'
+import { getEmailConfirmation } from '../actions/getEmailConfirmation';
+import RsvpWelcome from '../components/RsvpWelcome';
+import RsvpEventDetails from '../components/RsvpEventDetails';
+import RsvpForm from '../components/RsvpForm';
 
 class NewRsvpContainer extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class NewRsvpContainer extends Component {
         <RsvpEventDetails
           event={ event }
         />
+        <RsvpForm />
       </div>
     )
   }
