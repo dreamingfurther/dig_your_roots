@@ -2,6 +2,18 @@ class Event < ApplicationRecord
   has_many :attendees
   has_many :users, through: :attendees
 
+  def details_data
+    {
+      address: "Sunset Beach Park",
+      logistics: "heres some logistics",
+      dress_code: "heres a dress code"
+    }
+  end
+
+  def date_string
+    date.strftime("%m.%d.%Y")
+  end
+
   def invited_count
     confirmed_count + unconfirmed_count
   end

@@ -19,6 +19,7 @@ gem 'foundation-rails'
 # Use ActiveModel has_secure_password
 #
 gem 'bcrypt', '~> 3.1.7'
+gem "acts_as_hashids"
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,30 +1,46 @@
 class Api::V1::EmailConfirmationController < ApplicationController
   def show
-    render json: fake_data, status: 200
+    if attendee.present?
+      render json: data, status: 200
+    else
+      render json: { error: "No attendee found for that id" }, status: 422
+    end
   end
 
   private
 
-  def fake_data
+  def data
     {
       guest: {
-        first_name: "Priscilla",
-        last_name: "Tengdin",
-        plus_one_invited: true
+        first_name: user.first_name,
+        last_name: user.last_name,
+        plus_one_invited: attendee.plus_one_invited
       },
       event: {
-        name: "Ceremony & Dinner",
-        date: "1.27.2018",
-        time: "6:00pm",
-        city: "Marathon",
-        state: "FL",
-        rsvp_description: "Blah blah heres a description doop doop doop whatever",
-        details: {
-          address: "Sunset Beach Park",
-          logistics: "heres some logistics",
-          dress_code: "heres a dress code"
-        }
+        name: event.name,
+        date: event.date_string,
+        time: event.time,
+        city: event.city,
+        state: event.state,
+        rsvp_description: event.rsvp_description,
+        details: event.details_data
       }
     }
+  end
+
+  def attendee
+    begin
+      @attendee ||= Attendee.find(params[:id])
+    rescue ActsAsHashids::Exception
+      @attendee = nil
+    end
+  end
+
+  def user
+    @user ||= attendee.user
+  end
+
+  def event
+    @event ||= attendee.event
   end
 end
