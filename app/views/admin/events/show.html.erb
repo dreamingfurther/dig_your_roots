@@ -1,55 +1,57 @@
-<h1>
-  <%= link_to "Admin", admin_root_path %> :: <%= @event.name %>
-</h1>
+<%= render '/layouts/rails_layout' do %>
+  <h1>
+    <%= link_to "Admin", admin_root_path %> :: <%= @event.name %>
+  </h1>
 
-<div class="text-center">
-  <h3>
-    Total Invited: <%= @event.invited_count %>
-  </h3>
-  <p>
-    Yes: <%= @event.confirmed_count %>
-  </p>
-  <p>
-    No: <%= @event.declined_count %>
-  </p>
-  <p>
-    Maybe: <%= @event.unconfirmed_count %>
-  </p>
-</div>
+  <div class="text-center">
+    <h3>
+      Total Invited: <%= @event.invited_count %>
+    </h3>
+    <p>
+      Yes: <%= @event.confirmed_count %>
+    </p>
+    <p>
+      No: <%= @event.declined_count %>
+    </p>
+    <p>
+      Maybe: <%= @event.unconfirmed_count %>
+    </p>
+  </div>
 
-<div class="row">
-  <div class="column small-4 medium-3">
-    Guest Name
-  </div>
-  <div class="column small-2 medium-1">
-    +1
-  </div>
-  <div class="column small-2 medium-1">
-    RSVP
-  </div>
-  <div class="column small-4 medium-2">
-    +1 RSVP
-  </div>
-  <div class="column small-4 hide-for-small end">
-    +1 Name
-  </div>
-</div>
-<% @event.attendees.each do |attendee| %>
   <div class="row">
     <div class="column small-4 medium-3">
-      <%= attendee.user.fullname %>
+      Guest Name
     </div>
     <div class="column small-2 medium-1">
-      <%= attendee.plus_one_invited %>
+      +1
     </div>
     <div class="column small-2 medium-1">
-      <%= attendee.rsvp %>
+      RSVP
     </div>
-    <div class="column small-4 medium-2 end">
-      <%= attendee.plus_one_attending %>
+    <div class="column small-4 medium-2">
+      +1 RSVP
     </div>
     <div class="column small-4 hide-for-small end">
-      <%= attendee.plus_one_fullname %>
+      +1 Name
     </div>
   </div>
+  <% @event.attendees.each do |attendee| %>
+    <div class="row">
+      <div class="column small-4 medium-3">
+        <%= attendee.user.fullname %>
+      </div>
+      <div class="column small-2 medium-1">
+        <%= attendee.plus_one_invited %>
+      </div>
+      <div class="column small-2 medium-1">
+        <%= attendee.rsvp %>
+      </div>
+      <div class="column small-4 medium-2 end">
+        <%= attendee.plus_one_attending %>
+      </div>
+      <div class="column small-4 hide-for-small end">
+        <%= attendee.plus_one_fullname %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
