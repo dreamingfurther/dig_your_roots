@@ -54,6 +54,23 @@ describe('user visits Rsvp page for event', () => {
 
         setTimeout(() => {
           expect(page.text()).toMatch('Thank you for your RSVP');
+          expect(fetch).toHaveBeenCalledWith(
+            '/api/v1/email_confirmation/1234',
+            {
+              credentials: 'same-origin',
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id: '1234',
+                answer: {
+                  rsvp: 'Yes',
+                  plus_one_attending: "Maybe",
+                  notes: 'notes',
+                  questions: 'questions'
+                }
+              })
+            }
+          )
           done();
         }, 0)
       }, 0)
