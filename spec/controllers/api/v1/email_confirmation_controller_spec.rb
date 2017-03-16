@@ -65,12 +65,14 @@ describe Api::V1::EmailConfirmationController do
 
     context 'valid ID' do
       let(:attendee_id) { attendee.to_param }
+      let(:user_id) { Attendee.find(attendee_id).user.id }
       let(:formatted_data) {
         {
           "guest" => {
             "first_name"=>"David",
             "last_name"=>"Tengdin",
             "plus_one_invited"=>false,
+            "id"=> user_id,
             "token"=> attendee_id
           },
           "event" => {

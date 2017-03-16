@@ -41,6 +41,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         first_name: user.first_name,
         last_name: user.last_name,
         plus_one_invited: attendee.plus_one_invited,
+        id: user.id,
         token: params["id"]
       },
       event: {
