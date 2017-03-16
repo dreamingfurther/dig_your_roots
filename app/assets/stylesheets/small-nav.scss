@@ -1,0 +1,20 @@
+@import "variables";
+
+.small-nav {
+  background-color: $dark-navy;
+  color: $lt-off-white;
+  height: 100%;
+
+  a {
+    color: #b6ada4;
+  }
+
+  h1 {
+    padding: 20px 0 0 0;
+  }
+
+  .date {
+    padding-bottom: 15px;
+    margin-top: -15px;
+  }
+}

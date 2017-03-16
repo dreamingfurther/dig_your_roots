@@ -18,24 +18,24 @@
 
 /* Script - font-family: 'Parisienne', cursive; */
 /* Regular - font-family: 'Raleway', sans-serif; */
+@import "variables";
 
 body {
   background-image: url(background-image.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
-  background-color: #35394E;
+  background-color: $beige;
+  background-attachment: fixed;
 
-  font-family: 'Raleway', sans-serif;
+  color: $dark-navy;
+  font-family: $regular-font;
 }
 
 h1 {
-  font-family: 'Parisienne', cursive;
+  color: $dark-navy;
+  font-family: $script-font;
 }
 
-.react-layout .columns {
-  background-color: #D3E9EE;
-  opacity: .925;
-  border-color: #56A58D;
-  border-width: 0 3px;
-  height: 100vh;
+.lt-off-white-text {
+  color: $lt-off-white !important;
 }

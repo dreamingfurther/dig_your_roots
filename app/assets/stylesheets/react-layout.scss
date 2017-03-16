@@ -1,0 +1,9 @@
+.react-layout .columns {
+  background-color: #fffefe;
+  height: 100vh;
+  padding: 20px 0;
+
+  @media screen and (max-width: 39.9375em) {
+    opacity: .75;
+  }
+}
