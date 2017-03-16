@@ -31,7 +31,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
   def attendee
     begin
       @attendee ||= Attendee.find(params[:id])
-    rescue ActsAsHashids::Exception
+    rescue
       @attendee = nil
     end
   end
