@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RsvpAttendingQuestions from './RsvpAttendingQuestions';
+import RsvpAttendingQuestionsWrapper from './RsvpAttendingQuestionsWrapper';
 import RsvpNotAttendingQuestions from './RsvpNotAttendingQuestions';
 
 const RsvpAdditionalQuestions = (props) => {
   let additionalQuestions;
   if( props.attending === "Yes") {
-    additionalQuestions = <RsvpAttendingQuestions plusOne={ props.plusOne }/>
+    additionalQuestions = <RsvpAttendingQuestionsWrapper plusOne={ props.plusOne }/>
   } else if( props.attending === "No"){
     additionalQuestions = <RsvpNotAttendingQuestions />
   }

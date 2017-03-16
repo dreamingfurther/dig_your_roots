@@ -1,19 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import RsvpSubmit from './RsvpSubmit';
-import RsvpPlusOneQuestions from './RsvpPlusOneQuestions';
 
-const RsvpAttendingQuestions = ({ plusOne }) => {
-  let plusOneQuestions;
-
-  if(plusOne === true){
-    plusOneQuestions = <RsvpPlusOneQuestions />
-  }
-
+const RsvpAttendingTextareaQuestions = () => {
   return(
     <div>
-      { plusOneQuestions }
-      
       <label>
         Is there anything we should know for your RSVP (such as dietary restrictions)?
       </label>
@@ -29,4 +20,4 @@ const RsvpAttendingQuestions = ({ plusOne }) => {
   )
 }
 
-export default RsvpAttendingQuestions;
+export default RsvpAttendingTextareaQuestions;
