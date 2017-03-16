@@ -21,7 +21,7 @@
 @import "variables";
 
 body {
-  background-image: url(background-image.jpg);
+  background-image: image-url('background-image.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: $beige;
