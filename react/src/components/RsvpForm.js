@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Column } from 'react-foundation';
 import { Field, reduxForm } from 'redux-form';
+import { push } from 'react-router-redux';
 
 import RsvpAdditionalQuestions from './RsvpAdditionalQuestions';
 import { postEmailConfirmation } from '../actions/postEmailConfirmation';
@@ -11,7 +12,10 @@ let validate = () => {
 }
 
 let onSubmit = (fields, dispatch) => {
-  dispatch(postEmailConfirmation());
+  dispatch(postEmailConfirmation())
+  .then((token) => {
+    dispatch(push(`/thank_you/${token}`));
+  });
 }
 
 const RsvpForm = (props) => {

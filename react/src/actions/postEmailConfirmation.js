@@ -1,5 +1,4 @@
 import { SubmissionError } from 'redux-form';
-import { push } from 'react-router-redux';
 
 const POST_EMAIL_CONFIRMATION = "POST_EMAIL_CONFIRMATION";
 const POST_EMAIL_CONFIRMATION_SUCCESS = "POST_EMAIL_CONFIRMATION_SUCCESS";
@@ -42,7 +41,7 @@ let postEmailConfirmation = () => {
       }
     )
 
-    fetch(`/api/v1/email_confirmation/${token}`, {
+    return fetch(`/api/v1/email_confirmation/${token}`, {
       credentials: 'same-origin',
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -50,7 +49,7 @@ let postEmailConfirmation = () => {
     })
     .then(question => {
       dispatch(postEmailConfirmationRequestSuccess());
-      dispatch(push(`/email_confirmation/${token}`));
+      return token;
     })
     .catch(error => {
       dispatch(postEmailConfirmationRequestFailure())
