@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :thank_you, only: [:show]
   resources :email_confirmation, only: [:show]
 end
