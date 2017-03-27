@@ -1,8 +1,10 @@
 import React  from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import { postAuthorize } from '../actions/postAuthorize';
+
 let onSubmit = (fields, dispatch) => {
-  console.log("SIGNEDINPROBABALY");
+  dispatch(postAuthorize());
 }
 
 const SignInForm = (props) => {
