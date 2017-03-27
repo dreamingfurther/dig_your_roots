@@ -3,7 +3,7 @@ import { Row, Column } from 'react-foundation';
 import { Field, reduxForm } from 'redux-form';
 import { push } from 'react-router-redux';
 
-import RsvpAdditionalQuestions from './RsvpAdditionalQuestions';
+import RsvpAdditionalQuestionsContainer from '../containers/RsvpAdditionalQuestionsContainer';
 import { postEmailConfirmation } from '../actions/postEmailConfirmation';
 
 let validate = () => {
@@ -33,7 +33,7 @@ const RsvpForm = (props) => {
           No
         </label>
 
-        <RsvpAdditionalQuestions />
+        <RsvpAdditionalQuestionsContainer />
       </form>
     </div>
   )

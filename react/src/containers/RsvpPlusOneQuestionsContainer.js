@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
-import RsvpAttendingTextareaQuestions from './RsvpAttendingTextareaQuestions';
+import RsvpAttendingTextareaQuestions from '../components/RsvpAttendingTextareaQuestions';
 
-const RsvpPlusOneQuestions = (props) => {
+const RsvpPlusOneQuestionsContainer = (props) => {
   let plusOneNameQuestion, finalQuestions;
 
   if(props.plusOneAttending === "Yes") {
@@ -56,4 +56,4 @@ let mapStateToProps = (store) => {
 export default connect(
   mapStateToProps,
   {}
-)(RsvpPlusOneQuestions)
+)(RsvpPlusOneQuestionsContainer)

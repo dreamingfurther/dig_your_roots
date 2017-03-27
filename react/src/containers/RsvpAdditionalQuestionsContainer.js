@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RsvpAttendingQuestionsWrapper from './RsvpAttendingQuestionsWrapper';
-import RsvpNotAttendingQuestions from './RsvpNotAttendingQuestions';
+import RsvpAttendingQuestionsWrapper from '../components/RsvpAttendingQuestionsWrapper';
+import RsvpNotAttendingQuestions from '../components/RsvpNotAttendingQuestions';
 
-const RsvpAdditionalQuestions = (props) => {
+const RsvpAdditionalQuestionsContainer = (props) => {
   let additionalQuestions;
   if( props.attending === "Yes") {
     additionalQuestions = <RsvpAttendingQuestionsWrapper plusOne={ props.plusOne }/>
@@ -32,4 +32,4 @@ let mapStateToProps = (store) => {
 export default connect(
   mapStateToProps,
   {}
-)(RsvpAdditionalQuestions)
+)(RsvpAdditionalQuestionsContainer)

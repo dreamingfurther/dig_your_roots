@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Column } from 'react-foundation';
 import { toggleShowHideDetails } from '../actions/showHideEventDetails';
 
-const RsvpShowMore = (props) => {
+const RsvpShowMoreContainer = (props) => {
   let eventDetails, showMore, showText;
 
   if((props.details != undefined) && props.showDetails) {
@@ -51,4 +51,4 @@ let mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RsvpShowMore)
+)(RsvpShowMoreContainer)

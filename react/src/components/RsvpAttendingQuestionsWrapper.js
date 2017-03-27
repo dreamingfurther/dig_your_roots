@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import RsvpPlusOneQuestions from './RsvpPlusOneQuestions';
+import RsvpPlusOneQuestionsContainer from '../containers/RsvpPlusOneQuestionsContainer';
 import RsvpAttendingTextareaQuestions from './RsvpAttendingTextareaQuestions';
 
 const RsvpAttendingQuestionsWrapper = ({ plusOne }) => {
   let secondStepQuestions;
 
   if(plusOne === true){
-    secondStepQuestions = <RsvpPlusOneQuestions />
+    secondStepQuestions = <RsvpPlusOneQuestionsContainer />
   } else {
     secondStepQuestions = <RsvpAttendingTextareaQuestions />
   }
