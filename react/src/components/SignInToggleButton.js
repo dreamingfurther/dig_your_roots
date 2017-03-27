@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignInButton = (props) => {
+const SignInToggleButton = (props) => {
   return(
     <div id="sign-in-form" onClick={ props.toggleSignInForm }>
       Sign In
@@ -8,4 +8,4 @@ const SignInButton = (props) => {
   )
 }
 
-export default SignInButton;
+export default SignInToggleButton;

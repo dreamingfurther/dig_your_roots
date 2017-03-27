@@ -9,6 +9,7 @@ import { syncHistoryWithStore, push } from 'react-router-redux';
 import createResponseFromFixture from './support/createResponseFromFixture';
 import simulateIfPresent from './support/simulateIfPresent';
 import clickOn from './support/clickOn';
+import fillIn from './support/fillIn';
 import stubGlobalFetch from './support/stubGlobalFetch';
 import mountReactAppAt from './support/mountReactAppAt';
 
@@ -27,6 +28,7 @@ Object.assign(global, {
   createResponseFromFixture,
   simulateIfPresent,
   clickOn,
+  fillIn,
   stubGlobalFetch,
   mountReactAppAt,
   store,
