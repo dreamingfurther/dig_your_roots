@@ -9,7 +9,7 @@ const SignInFormContainer = (props) => {
   let signInForm;
 
   if(props.showSignInForm) {
-    signInForm = <SignInForm errors={ '' }/>;
+    signInForm = <SignInForm />;
   }
 
   return(
