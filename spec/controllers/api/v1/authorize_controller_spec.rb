@@ -41,7 +41,7 @@ describe Api::V1::AuthorizeController do
       end
 
       it 'returns an Unathorized error message' do
-        expect(JSON.parse(response.body)["error"]).to eq "Unathorized"
+        expect(JSON.parse(response.body)["error"]).to eq "Wrong Password"
       end
     end
   end

@@ -6,7 +6,7 @@ class Api::V1::AuthorizeController < ApplicationController
     if user.try(:password) == user_params["password"]
       render json: user, status: 200
     else
-      render json: { error: "Unathorized" }, status: 401
+      render json: { error: "Wrong Password" }, status: 401
     end
   end
 
