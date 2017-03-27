@@ -3,14 +3,22 @@ describe('user visits welcome page', () => {
     page = mountReactAppAt('/')
   });
 
-  it('can expand the sign in form', () => {
+  it('can toggle the sign in form', () => {
     expect(page.text()).toMatch('Jesse & David');
-    expect(page.text()).not.toMatch('email');
+    expect(page.text()).not.toMatch('Email');
 
     clickOn('#sign-in-form', page);
-    expect(page.text()).toMatch('email');
+    expect(page.text()).toMatch('Email');
 
     clickOn('#sign-in-form', page);
-    expect(page.text()).not.toMatch('email');
+    expect(page.text()).not.toMatch('Email');
+  });
+
+  it('shows sign in form', () => {
+    clickOn('#sign-in-form', page);
+    expect(page.text()).toMatch('Email');
+    expect(page.text()).toMatch('Password');
+    let signInButton = page.find('#sign-in-button');
+    expect(signInButton.text()).toMatch('Sign In');
   });
 });

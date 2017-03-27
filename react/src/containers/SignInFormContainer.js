@@ -2,19 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SignInForm from '../components/SignInForm';
-import SignInButton from '../components/SignInButton';
+import SignInToggleButton from '../components/SignInToggleButton';
 import { toggleSignInForm } from '../actions/toggleSignInForm';
 
 const SignInFormContainer = (props) => {
   let signInForm;
 
   if(props.showSignInForm) {
-    signInForm = <SignInForm />;
+    signInForm = <SignInForm errors={ '' }/>;
   }
-  
+
   return(
     <div>
-      <SignInButton toggleSignInForm={props.toggleSignInForm} />
+      <SignInToggleButton toggleSignInForm={props.toggleSignInForm} />
       { signInForm }
     </div>
   )
