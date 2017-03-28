@@ -6,9 +6,6 @@ import { postAuthorize } from '../actions/postAuthorize';
 
 let onSubmit = (fields, dispatch) => {
   return dispatch(postAuthorize())
-    .then(authData => {
-      console.log('successfull auth!');
-    })
     .catch(error => {
       throw new SubmissionError({'_error': error});
     });

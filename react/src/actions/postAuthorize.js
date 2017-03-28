@@ -2,6 +2,12 @@ const POST_AUTHORIZE = "POST_AUTHORIZE"
 const POST_AUTHORIZE_SUCCESS = "POST_AUTHORIZE_SUCCESS"
 const POST_AUTHORIZE_FAILURE = "POST_AUTHORIZE_FAILURE"
 
+let postAuthorizeRequestSuccess = (userData) => {
+  return {
+    type: POST_AUTHORIZE_SUCCESS, userData
+  };
+}
+
 let postAuthorizeRequestFailure = () => {
   return {
     type: POST_AUTHORIZE_FAILURE
@@ -29,8 +35,10 @@ let postAuthorize = () => {
     })
     .then(data => {
       if (data.error) {
+        dispatch(postAuthorizeRequestFailure());
         throw data.error;
       } else {
+        dispatch(postAuthorizeRequestSuccess(data));
         return data;
       }
     });

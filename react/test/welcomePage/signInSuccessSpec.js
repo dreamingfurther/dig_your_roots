@@ -17,7 +17,7 @@ describe('user visits welcome page', () => {
     expect(page.text()).not.toMatch('Email');
   });
 
-  it('shows sign in form', () => {
+  it('can sign in and see nav links', done => {
     clickOn('#sign-in-form', page);
     expect(page.text()).toMatch('Email');
     expect(page.text()).toMatch('Password');
@@ -27,19 +27,28 @@ describe('user visits welcome page', () => {
     fillIn('email', { with: 'test@test.com' }, page);
     fillIn('password', { with: 'test-password' }, page);
     simulateIfPresent(signInButton, 'submit');
-    expect(fetch).toHaveBeenCalledWith(
-      '/api/v1/authorize',
-      {
-        credentials: 'same-origin',
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user: {
-            email: 'test@test.com',
-            password: 'test-password'
-          }
-        })
-      }
-    )
+
+    setTimeout(() => {
+      expect(fetch).toHaveBeenCalledWith(
+        '/api/v1/authorize',
+        {
+          credentials: 'same-origin',
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user: {
+              email: 'test@test.com',
+              password: 'test-password'
+            }
+          })
+        }
+      )
+
+      expect(page.text()).not.toMatch('Email');
+      expect(page.text()).not.toMatch('Password');
+      expect(page.text()).toMatch('Events');
+      expect(page.text()).toMatch('Photos');
+      done();
+    }, 0)
   });
 });
