@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+var config = {
   entry: {
     script: path.resolve(__dirname, './src/main.js')
   },
@@ -19,5 +19,19 @@ module.exports = {
       }
     ]
   },
-  devtool: 'eval-source-map'
+  devtool: 'eval-source-map',
+  plugins: []
 };
+
+switch(process.env.NODE_ENV) {
+  case 'development':
+    config.plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }))
+  case 'staging':
+    delete config.devtool;
+    config.plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"staging"' }))
+  case 'production':
+    delete config.devtool;
+    config.plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }))
+}
+
+module.exports = config;
