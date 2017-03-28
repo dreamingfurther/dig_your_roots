@@ -1,11 +1,11 @@
 @import "variables";
 
 .small-nav {
-  background: $primary-nav-color; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, $tertiary-nav-color, $secondary-nav-color, $primary-nav-color, $secondary-nav-color, $tertiary-nav-color); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, $tertiary-nav-color, $secondary-nav-color, $primary-nav-color, $secondary-nav-color, $tertiary-nav-color); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, $tertiary-nav-color, $secondary-nav-color, $primary-nav-color, $secondary-nav-color, $tertiary-nav-color); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, $tertiary-nav-color , $secondary-nav-color, $primary-nav-color, $secondary-nav-color, $tertiary-nav-color); /* Standard syntax */
+  background: $navy; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $lt-navy , $navy, $navy, $navy, $lt-navy); /* Standard syntax */
 
   height: 100%;
   padding-top: 20px;

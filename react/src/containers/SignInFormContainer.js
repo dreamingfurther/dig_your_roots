@@ -13,7 +13,7 @@ const SignInFormContainer = (props) => {
   }
 
   return(
-    <div>
+    <div className="sign-in-form-container">
       <SignInToggleButton toggleSignInForm={props.toggleSignInForm} />
       { signInForm }
     </div>

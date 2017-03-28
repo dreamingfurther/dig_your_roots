@@ -14,7 +14,7 @@ const Layout = (props) => {
       </div>
       <div id="body-container">
         <Row className="react-layout text-center">
-          <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque">
+          <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque main-text-area">
             { props.children }
           </Column>
         </Row>

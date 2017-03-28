@@ -11,14 +11,14 @@ describe('user visits welcome page', () => {
     expect(page.text()).toMatch('Jesse & David');
     expect(page.text()).not.toMatch('Email');
 
-    clickOn('#sign-in-form', page);
+    clickOn('#toggle-sign-in-form', page);
     expect(page.text()).toMatch('Email');
-    clickOn('#sign-in-form', page);
+    clickOn('#toggle-sign-in-form', page);
     expect(page.text()).not.toMatch('Email');
   });
 
   it('shows sign in form', () => {
-    clickOn('#sign-in-form', page);
+    clickOn('#toggle-sign-in-form', page);
     expect(page.text()).toMatch('Email');
     expect(page.text()).toMatch('Password');
     let signInButton = page.find('#sign-in-button');

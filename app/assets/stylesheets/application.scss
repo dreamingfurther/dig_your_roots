@@ -20,6 +20,10 @@
 /* Regular - font-family: 'Raleway', sans-serif; */
 @import "variables";
 
+body {
+  font-family: $regular-font;
+}
+
 h1 {
   font-family: $script-font;
 }
