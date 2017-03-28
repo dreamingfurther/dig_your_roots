@@ -9,14 +9,14 @@ const SignInFormContainer = (props) => {
   let signInToggle, signInForm;
 
   if(!props.userLoggedIn) {
-    signInToggle = <SignInToggleButton toggleSignInForm={props.toggleSignInForm} />;
+    signInToggle = <SignInToggleButton toggleSignInForm={props.toggleSignInForm} showSignInForm={props.showSignInForm}/>;
   }
   if(props.showSignInForm && !props.userLoggedIn) {
     signInForm = <SignInForm />;
   }
 
   return(
-    <div>
+    <div className="sign-in-form-container">
       { signInToggle }
       { signInForm }
     </div>

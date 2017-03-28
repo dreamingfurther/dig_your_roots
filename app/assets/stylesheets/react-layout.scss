@@ -1,26 +1,22 @@
-.react-layout .columns {
-  background-color: #fffefe;
-  height: 100vh;
-  padding: 20px 0;
+@import "variables";
 
-  @media screen and (max-width: 39.9375em) {
-    opacity: .75;
+#body-container {
+  background-image: image-url('background-image.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: white;
+
+  color: $navy;
+  font-family: $regular-font;
+
+  .main-text-area {
+    background-color: #fffefe;
+    height: 100vh;
+    padding: 20px 0;
+    opacity: .83;
+
+    h1 {
+      font-size: 2rem;
+    }
   }
-
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-.rails-layout .columns {
-  background-color: #fffefe;
-  height: 100vh;
-
-  @media screen and (max-width: 39.9375em) {
-    opacity: .75;
-  }
-}
-
-.header-padding {
-  padding-top: 20px;
 }

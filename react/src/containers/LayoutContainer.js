@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Column } from 'react-foundation';
+import { railsAssetImagePath } from './../constants/railsAssetImagePath';
 
 const LayoutContainer = (props) => {
   let eventsLink, photosLink;
@@ -14,19 +15,21 @@ const LayoutContainer = (props) => {
     <div>
       <div className="top-bar small-nav">
         <div className="top-bar-title text-center">
-          <h1 className="lt-off-white-text">Jesse & David</h1>
-          <div className="date">
+          <img src={railsAssetImagePath("anchor-white.png")}></img>
+          <h1>Jesse & David</h1>
+          <div>
             { eventsLink }
-            1.27.2018
             { photosLink }
           </div>
         </div>
       </div>
-      <Row className="react-layout text-center">
-        <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque">
-          { props.children }
-        </Column>
-      </Row>
+      <div id="body-container">
+        <Row className="react-layout text-center">
+          <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque main-text-area">
+            { props.children }
+          </Column>
+        </Row>
+      </div>
     </div>
   )
 }

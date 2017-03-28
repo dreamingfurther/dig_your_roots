@@ -9,18 +9,19 @@ describe('user visits welcome page', () => {
 
   it('can toggle the sign in form', () => {
     expect(page.text()).toMatch('Jesse & David');
-    expect(page.text()).not.toMatch('Email');
+    expect(page.text()).not.toMatch('Fill in your information');
 
-    clickOn('#sign-in-form', page);
-    expect(page.text()).toMatch('Email');
-    clickOn('#sign-in-form', page);
-    expect(page.text()).not.toMatch('Email');
+    clickOn('#toggle-sign-in-form', page);
+    expect(page.text()).toMatch('Fill in your information');
+
+    clickOn('#toggle-sign-in-form', page);
+    expect(page.text()).not.toMatch('Fill in your information');
   });
 
   it('can sign in and see nav links', done => {
-    clickOn('#sign-in-form', page);
-    expect(page.text()).toMatch('Email');
-    expect(page.text()).toMatch('Password');
+    clickOn('#toggle-sign-in-form', page);
+    expect(page.text()).toMatch('Fill in your information');
+
     let signInButton = page.find('#sign-in-button');
     expect(signInButton.text()).toMatch('Sign In');
 
@@ -44,8 +45,7 @@ describe('user visits welcome page', () => {
         }
       )
 
-      expect(page.text()).not.toMatch('Email');
-      expect(page.text()).not.toMatch('Password');
+      expect(page.text()).not.toMatch('Fill in your information');
       expect(page.text()).toMatch('Events');
       expect(page.text()).toMatch('Photos');
       done();

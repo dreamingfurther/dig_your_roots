@@ -1,5 +1,6 @@
 import React  from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Row, Column } from 'react-foundation';
 import { SubmissionError } from 'redux-form';
 
 import { postAuthorize } from '../actions/postAuthorize';
@@ -13,28 +14,38 @@ let onSubmit = (fields, dispatch) => {
 
 const SignInForm = (props) => {
   return(
-    <div>
-      <form onSubmit={ props.handleSubmit(onSubmit) }>
-        <label>
-          Email
-          <Field name='email' component='input' type='text' value='Email' id='sign-in-email' />
-        </label>
-        <label>
-          Password
-          <Field name='password' component='input' type='password' value='Password' id='sign-in-password' />
-        </label>
-        <button
-          type='submit'
-          disabled={props.pristine || props.submitting}
-          className='sign-in-button'
-          id='sign-in-button'>
-          Sign In
-        </button>
-        <div>
-          { props.error && <span style={{ color: 'red' }}>{ props.error }</span> }
-        </div>
-      </form>
-    </div>
+    <Row>
+      <Column small={10} offsetOnSmall={1} medium={6} offsetOnMedium={3}>
+        <form onSubmit={ props.handleSubmit(onSubmit) }>
+            <Field
+              name='email'
+              component='input'
+              type='text'
+              value='Email'
+              id='sign-in-email'
+              placeholder='Email'
+            />
+          <Field
+            name='password'
+            component='input'
+            type='text'
+            value='Password'
+            id='sign-in-password'
+            placeholder='password'
+          />
+          <button
+            type='submit'
+            disabled={props.pristine || props.submitting}
+            className='sign-in-button'
+            id='sign-in-button'>
+            Sign In
+          </button>
+          <div>
+            { props.error && <span style={{ color: 'red' }}>{ props.error }</span> }
+          </div>
+        </form>
+      </Column>
+    </Row>
   )
 }
 
