@@ -1,3 +1,5 @@
+import cookie from 'react-cookie';
+
 const POST_AUTHORIZE = "POST_AUTHORIZE"
 const POST_AUTHORIZE_SUCCESS = "POST_AUTHORIZE_SUCCESS"
 const POST_AUTHORIZE_FAILURE = "POST_AUTHORIZE_FAILURE"
@@ -39,6 +41,7 @@ let postAuthorize = () => {
         throw data.error;
       } else {
         dispatch(postAuthorizeRequestSuccess(data));
+        cookie.save('userData', data);
         return data;
       }
     });
@@ -50,5 +53,5 @@ export {
 };
 
 export {
-  postAuthorize
+  postAuthorize, postAuthorizeRequestSuccess, postAuthorizeRequestFailure
 };

@@ -48,6 +48,8 @@ describe('user visits welcome page', () => {
       expect(page.text()).not.toMatch('Password');
       expect(page.text()).toMatch('Events');
       expect(page.text()).toMatch('Photos');
+
+      clickOn('#sign-out-link', page);
       done();
     }, 0)
   });
