@@ -24,7 +24,7 @@ const SignInForm = (props) => {
         </label>
         <label>
           Password
-          <Field name='password' component='input' type='text' value='Password' id='sign-in-password' />
+          <Field name='password' component='input' type='password' value='Password' id='sign-in-password' />
         </label>
         <button
           type='submit'
