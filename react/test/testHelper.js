@@ -5,6 +5,7 @@ import $ from 'jquery';
 import 'jasmine-ajax';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, push } from 'react-router-redux';
+import cookie from 'react-cookie';
 
 import createResponseFromFixture from './support/createResponseFromFixture';
 import simulateIfPresent from './support/simulateIfPresent';
@@ -42,6 +43,7 @@ beforeEach(() => {
 afterEach(() => {
   if(global.page) { global.page.unmount(); }
   if(global.store) { global.store.dispatch(push('/')); }
+  cookie.remove('userData');
 });
 
 // function to require all modules for a given context
