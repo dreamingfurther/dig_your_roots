@@ -24,9 +24,7 @@ class NewRsvpContainer extends Component {
           firstName={ this.props.guest.firstName }
           rsvpDescription={ event.rsvpDescription }
         />
-        <RsvpEventDetails
-          event={ event }
-        />
+        <RsvpEventDetails event={ event } />
         <RsvpForm />
       </div>
     )

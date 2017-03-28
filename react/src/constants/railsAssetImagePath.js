@@ -1,5 +1,4 @@
 let railsAssetImagePath;
-console.log(process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === 'development') {
   railsAssetImagePath = filePath => `/assets/${filePath}`;

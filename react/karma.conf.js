@@ -20,6 +20,10 @@ module.exports = function(config) {
       'test/testHelper.js'
     ],
 
+    proxies: {
+      '/test/support/images': '/base/test/support/images'
+    },
+
     // before serving test/testHelper.js to the browser
     preprocessors: {
       // process json files with karma-json-fixtures-preprocessor

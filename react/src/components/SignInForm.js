@@ -1,18 +1,22 @@
 import React  from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Row, Column } from 'react-foundation';
+import { SubmissionError } from 'redux-form';
 
 import { postAuthorize } from '../actions/postAuthorize';
 
 let onSubmit = (fields, dispatch) => {
-  dispatch(postAuthorize());
+  return dispatch(postAuthorize())
+    .catch(error => {
+      throw new SubmissionError({'_error': error});
+    });
 }
 
 const SignInForm = (props) => {
   return(
     <Row>
       <Column small={10} offsetOnSmall={1} medium={6} offsetOnMedium={3}>
-        <form onSubmit={ props.handleSubmit }>
+        <form onSubmit={ props.handleSubmit(onSubmit) }>
             <Field
               name='email'
               component='input'
@@ -29,11 +33,15 @@ const SignInForm = (props) => {
             id='sign-in-password'
             placeholder='password'
           />
-          <button type='submit' className='sign-in-button' id='sign-in-button'>
+          <button
+            type='submit'
+            disabled={props.pristine || props.submitting}
+            className='sign-in-button'
+            id='sign-in-button'>
             Sign In
           </button>
           <div>
-            { props.errors }
+            { props.error && <span style={{ color: 'red' }}>{ props.error }</span> }
           </div>
         </form>
       </Column>
@@ -42,6 +50,5 @@ const SignInForm = (props) => {
 }
 
 export default reduxForm({
-  form: 'signInForm',
-  onSubmit
+  form: 'signInForm'
 })(SignInForm);

@@ -7,13 +7,17 @@ import { reducer as formReducer } from 'redux-form';
 import emailConfirmation from './reducers/emailConfirmation';
 import showDetails from './reducers/showDetails';
 import showSignInForm from './reducers/showSignInForm';
+import user from './reducers/user';
+import userLoggedIn from './reducers/userLoggedIn';
 
 let configureStore = () => {
   let store = createStore(
     combineReducers({
-      showDetails,
       emailConfirmation,
+      showDetails,
       showSignInForm,
+      user,
+      userLoggedIn,
       form: formReducer,
       routing: routerReducer
     }),

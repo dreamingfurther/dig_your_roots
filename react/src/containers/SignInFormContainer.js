@@ -6,15 +6,18 @@ import SignInToggleButton from '../components/SignInToggleButton';
 import { toggleSignInForm } from '../actions/toggleSignInForm';
 
 const SignInFormContainer = (props) => {
-  let signInForm;
+  let signInToggle, signInForm;
 
-  if(props.showSignInForm) {
-    signInForm = <SignInForm errors={ '' }/>;
+  if(!props.userLoggedIn) {
+    signInToggle = <SignInToggleButton toggleSignInForm={props.toggleSignInForm} showSignInForm={props.showSignInForm}/>;
+  }
+  if(props.showSignInForm && !props.userLoggedIn) {
+    signInForm = <SignInForm />;
   }
 
   return(
     <div className="sign-in-form-container">
-      <SignInToggleButton toggleSignInForm={props.toggleSignInForm} />
+      { signInToggle }
       { signInForm }
     </div>
   )
@@ -22,7 +25,8 @@ const SignInFormContainer = (props) => {
 
 let mapStateToProps = (store) => {
   return {
-    showSignInForm: store.showSignInForm.visible
+    showSignInForm: store.showSignInForm.visible,
+    userLoggedIn: store.userLoggedIn
   }
 }
 

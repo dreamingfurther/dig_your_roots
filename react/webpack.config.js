@@ -32,6 +32,8 @@ switch(process.env.NODE_ENV) {
   case 'production':
     delete config.devtool;
     config.plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }))
+  case undefined:
+    config.plugins.push(new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"test"' }))
 }
 
 module.exports = config;

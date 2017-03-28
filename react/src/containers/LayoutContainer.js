@@ -1,15 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Column } from 'react-foundation';
 import { railsAssetImagePath } from './../constants/railsAssetImagePath';
 
-const Layout = (props) => {
+const LayoutContainer = (props) => {
+  let eventsLink, photosLink;
+  if(props.userLoggedIn) {
+    eventsLink = <Link to='/events' >Events </Link>;
+    photosLink = <Link to='/events' > Photos</Link>;
+  }
+
   return(
     <div>
       <div className="top-bar small-nav">
         <div className="top-bar-title text-center">
           <img src={railsAssetImagePath("anchor-white.png")}></img>
           <h1>Jesse & David</h1>
+          <div>
+            { eventsLink }
+            { photosLink }
+          </div>
         </div>
       </div>
       <div id="body-container">
@@ -23,4 +34,12 @@ const Layout = (props) => {
   )
 }
 
-export default Layout;
+let mapStateToProps = (store) => {
+  return {
+    userLoggedIn: store.userLoggedIn
+  }
+}
+
+export default connect(
+  mapStateToProps, {}
+)(LayoutContainer);
