@@ -3,6 +3,8 @@ import cookie from 'react-cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Column } from 'react-foundation';
+
+import { railsAssetImagePath } from './../constants/railsAssetImagePath';
 import {
   postAuthorizeRequestSuccess, postAuthorizeRequestFailure
 } from '../actions/postAuthorize';
@@ -38,20 +40,22 @@ class LayoutContainer extends Component {
       <div>
         <div className="top-bar small-nav">
           <div className="top-bar-title text-center">
-            <h1 className="lt-off-white-text">Jesse & David</h1>
-            <div className="date">
+            <img src={railsAssetImagePath("anchor-white.png")}></img>
+            <h1>Jesse & David</h1>
+            <div>
               { eventsLink }
-              1.27.2018
               { photosLink }
               { signOutLink }
             </div>
           </div>
+          <div id="body-container">
+            <Row className="react-layout text-center">
+              <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque main-text-area">
+                { this.props.children }
+              </Column>
+            </Row>
+          </div>
         </div>
-        <Row className="react-layout text-center">
-          <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque">
-            { this.props.children }
-          </Column>
-        </Row>
       </div>
     )
   }

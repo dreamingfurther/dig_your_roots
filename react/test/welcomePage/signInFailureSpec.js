@@ -8,7 +8,7 @@ describe('user visits welcome page', () => {
   });
 
   it('sees an error when they sign in incorrectly', done => {
-    clickOn('#sign-in-form', page);
+    clickOn('#toggle-sign-in-form', page);
 
     let signInButton = page.find('#sign-in-button');
     fillIn('email', { with: 'test@test.com' }, page);

@@ -21,23 +21,11 @@
 @import "variables";
 
 body {
-  background-image: image-url('background-image.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-color: $beige;
-  background-attachment: fixed;
-
-  color: $dark-navy;
   font-family: $regular-font;
 }
 
 h1 {
-  color: $dark-navy;
   font-family: $script-font;
-}
-
-.lt-off-white-text {
-  color: $lt-off-white !important;
 }
 
 .regular-font {

@@ -1,0 +1,19 @@
+@import "variables";
+
+.sign-in-form-container {
+  margin: 20px;
+  font-weight: bold;
+
+  input {
+    text-align: center;
+  }
+
+  #toggle-sign-in-form {
+    padding-bottom: 25px;
+  }
+
+  .sign-in-button {
+    background-color: $navy;
+    margin-top: 15px;
+  }
+}

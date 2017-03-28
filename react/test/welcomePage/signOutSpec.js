@@ -8,7 +8,7 @@ describe('user signs in through welcome page', () => {
   });
 
   it('can sign out', () => {
-    clickOn('#sign-in-form', page);
+    clickOn('#toggle-sign-in-form', page);
 
     let signInButton = page.find('#sign-in-button');
     fillIn('email', { with: 'test@test.com' }, page);
@@ -16,10 +16,10 @@ describe('user signs in through welcome page', () => {
     simulateIfPresent(signInButton, 'submit');
 
     setTimeout(() => {
+      expect(page.text()).not.toMatch('Sign In');
       clickOn('#sign-out-link', page)
 
-      expect(page.text()).toMatch('Email');
-      expect(page.text()).toMatch('Password');
+      expect(page.text()).toMatch('Sign In');
       expect(page.text()).not.toMatch('Events');
       expect(page.text()).not.toMatch('Photos');
       done();
