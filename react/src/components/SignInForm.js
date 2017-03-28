@@ -28,7 +28,7 @@ const SignInForm = (props) => {
           <Field
             name='password'
             component='input'
-            type='text'
+            type='password'
             value='Password'
             id='sign-in-password'
             placeholder='password'
