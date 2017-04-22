@@ -16,7 +16,10 @@ describe Api::V1::EmailConfirmationController do
         plus_one_attending: "Yes",
         plus_one_fullname: 'Bob Jones',
         notes: "I like to sing a lot.",
-        questions: "What happens with this question?"
+        questions: "What happens with this question?",
+        phone: "1231231234",
+        password: "foobar",
+        password_confirmation: "foobar"
       }
     end
 
@@ -45,6 +48,11 @@ describe Api::V1::EmailConfirmationController do
       it 'updates the other optional fields' do
         expect(attendee.plus_one_attending).to eq true
         expect(attendee.plus_one_fullname).to eq 'Bob Jones'
+      end
+
+      it 'saves the user phone, email, and password' do
+        expect(attendee.user.phone).to eq "1231231234"
+        expect(attendee.user.password_hash).to_not be_nil
       end
     end
 

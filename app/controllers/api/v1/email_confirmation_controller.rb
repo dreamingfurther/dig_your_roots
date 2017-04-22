@@ -2,7 +2,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def update
-    if attendee.present? && attendee_updated
+    if attendee.present? && attendee_updated && user_updated
       render json: user, status: 201
     else
       render json: { error: "No attendee found for that id" }, status: 422
@@ -28,6 +28,11 @@ class Api::V1::EmailConfirmationController < ApplicationController
       plus_one_fullname:  params["answer"]["plus_one_fullname"],
       user_notes: "#{notes} \n--------\n #{params["answer"]['notes']}"
     )
+  end
+
+  def user_updated
+    user.password = params["answer"]["password"]
+    user.update_attributes(phone: params["answer"]["phone"]) && user.save
   end
 
   def convert_to_boolean(str)
