@@ -19,7 +19,7 @@ class NewRsvpContainer extends Component {
     let event = this.props.eventDetails;
 
     return(
-      <div>
+      <div id="rsvp-page">
         <RsvpWelcome
           firstName={ this.props.guest.firstName }
           rsvpDescription={ event.rsvpDescription }
