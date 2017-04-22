@@ -1,4 +1,4 @@
-import cookie from 'react-cookie';
+import Cookies from 'js-cookie';
 
 const POST_AUTHORIZE = "POST_AUTHORIZE"
 const POST_AUTHORIZE_SUCCESS = "POST_AUTHORIZE_SUCCESS"
@@ -41,7 +41,7 @@ let postAuthorize = () => {
         throw data.error;
       } else {
         dispatch(postAuthorizeRequestSuccess(data));
-        cookie.save('userData', data);
+        Cookies.set('userData', data);
         return data;
       }
     });

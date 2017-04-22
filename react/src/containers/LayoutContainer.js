@@ -1,5 +1,5 @@
+import Cookies from 'js-cookie';
 import React, { Component }  from 'react';
-import cookie from 'react-cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Column } from 'react-foundation';
@@ -17,15 +17,17 @@ class LayoutContainer extends Component {
   }
 
   componentWillMount() {
-    let storedUserData = cookie.load('userData')
+    let storedUserData = Cookies.get('userData');
     if(storedUserData != undefined) {
       this.props.loadUserData(storedUserData);
     }
   }
 
   signOut() {
-    cookie.remove('userData');
+    Cookies.remove('userData')
     this.props.clearUserData();
+    let storedUserData = Cookies.get('userData');
+    console.log(storedUserData);
   }
 
   render() {
@@ -48,13 +50,13 @@ class LayoutContainer extends Component {
               { signOutLink }
             </div>
           </div>
-          <div id="body-container">
-            <Row className="react-layout text-center">
-              <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque main-text-area">
-                { this.props.children }
-              </Column>
-            </Row>
-          </div>
+        </div>
+        <div id="body-container">
+          <Row className="react-layout text-center">
+            <Column small={12} medium={10} offsetOnMedium={1} className="small-opaque main-text-area">
+              { this.props.children }
+            </Column>
+          </Row>
         </div>
       </div>
     )
