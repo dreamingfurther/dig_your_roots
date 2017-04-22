@@ -6,7 +6,7 @@ describe Api::V1::EmailConfirmationController do
       date: Date.parse("2018/01/27"), time: "4:35pm", rsvp_description: "Here is the RSVP description"
     )
   end
-  let(:user) { create(:user, first_name: "David", last_name: "Tengdin") }
+  let(:user) { create(:user, email: 'dreamingfurther@gmail.com', first_name: "David", last_name: "Tengdin") }
   let!(:attendee) { create(:attendee, event: event, user: user, plus_one_invited: false) }
 
   describe '#update' do
@@ -27,6 +27,12 @@ describe Api::V1::EmailConfirmationController do
 
     context 'valid attendee ID' do
       let(:attendee_id) { attendee.to_param }
+
+      it 'returns the user data' do
+        expect(JSON.parse(response.body)["email"]).to eq(
+          "dreamingfurther@gmail.com"
+        )
+      end
 
       it 'returns a 201 status code' do
         expect(response.status).to eq 201
@@ -69,6 +75,7 @@ describe Api::V1::EmailConfirmationController do
       let(:formatted_data) {
         {
           "guest" => {
+            "email"=>"dreamingfurther@gmail.com",
             "first_name"=>"David",
             "last_name"=>"Tengdin",
             "plus_one_invited"=>false,

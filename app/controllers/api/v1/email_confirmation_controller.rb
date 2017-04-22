@@ -3,7 +3,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
 
   def update
     if attendee.present? && attendee_updated
-      render json: attendee, status: 201
+      render json: user, status: 201
     else
       render json: { error: "No attendee found for that id" }, status: 422
     end
@@ -38,6 +38,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
   def data
     {
       guest: {
+        email: user.email,
         first_name: user.first_name,
         last_name: user.last_name,
         plus_one_invited: attendee.plus_one_invited,
