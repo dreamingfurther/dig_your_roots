@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie';
 import { SubmissionError } from 'redux-form';
+import { postAuthorizeRequestSuccess } from './postAuthorize';
 
 const POST_EMAIL_CONFIRMATION = "POST_EMAIL_CONFIRMATION";
 const POST_EMAIL_CONFIRMATION_SUCCESS = "POST_EMAIL_CONFIRMATION_SUCCESS";
@@ -36,7 +38,10 @@ let postEmailConfirmation = () => {
           plus_one_attending: fields.plusOneAttending,
           plus_one_fullname: fields.plusOneName,
           notes: fields.notes,
-          questions: fields.questions
+          questions: fields.questions,
+          phone: fields.phone,
+          password: fields.password,
+          password_confirmation: fields.passwordConfirmation,
         }
       }
     )
@@ -47,8 +52,18 @@ let postEmailConfirmation = () => {
       headers: { 'Content-Type': 'application/json' },
       body: payload
     })
-    .then(question => {
+    .then(response => {
+      let { ok, status, statusText } = response;
+      if (ok || status === 401) {
+        return response.json();
+      } else {
+        return { error: `postAuth: ${status} (${statusText})`};
+      }
+    })
+    .then(data => {
       dispatch(postEmailConfirmationRequestSuccess());
+      dispatch(postAuthorizeRequestSuccess(data));
+      Cookies.set('userData', data);
       return token;
     })
     .catch(error => {

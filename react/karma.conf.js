@@ -21,7 +21,7 @@ module.exports = function(config) {
     ],
 
     proxies: {
-      '/test/support/images': '/base/test/support/images'
+      '/test/support/images': '/test/support/images'
     },
 
     // before serving test/testHelper.js to the browser

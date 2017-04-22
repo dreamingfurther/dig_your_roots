@@ -32,7 +32,7 @@ describe('user visits Rsvp page for event', () => {
       }, 0)
     });
 
-    it('should redirect them to the thank you page', done => {
+    it('should redirect them to the thank you page and log them in', done => {
       setTimeout(() => {
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
 
@@ -55,6 +55,10 @@ describe('user visits Rsvp page for event', () => {
         simulateIfPresent(plusOneNameField, 'change', { target: { value: 'Josh Something' } });
         simulateIfPresent(notesField, 'change', { target: { value: 'notes' } });
         simulateIfPresent(questionsField, 'change', { target: { value: 'questions' } });
+        fillIn('phone', { with: '1231231234' }, page);
+        fillIn('password', { with: 'password' }, page);
+        fillIn('passwordConfirmation', { with: 'password' }, page);
+
         simulateIfPresent(submitButton, 'submit');
 
         setTimeout(() => {
@@ -72,11 +76,18 @@ describe('user visits Rsvp page for event', () => {
                   plus_one_attending: "Yes",
                   plus_one_fullname: "Josh Something",
                   notes: 'notes',
-                  questions: 'questions'
+                  questions: 'questions',
+                  phone: '1231231234',
+                  password: 'password',
+                  password_confirmation: 'password'
                 }
               })
             }
           )
+
+          expect(page.text()).not.toMatch('Fill in your information');
+          expect(page.text()).toMatch('Events');
+          expect(page.text()).toMatch('Photos');
           done();
         }, 0)
       }, 0)
