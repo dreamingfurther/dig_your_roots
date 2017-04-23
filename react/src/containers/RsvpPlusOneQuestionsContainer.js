@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
 import RsvpAttendingTextareaQuestions from '../components/RsvpAttendingTextareaQuestions';
+import RsvpFoodQuestions from '../components/RsvpFoodQuestions';
 
 const RsvpPlusOneQuestionsContainer = (props) => {
-  let plusOneNameQuestion, finalQuestions;
+  let plusOneNameQuestion, foodQuestions, finalQuestions;
 
   if(props.plusOneAttending === "Yes") {
     plusOneNameQuestion = (
@@ -18,6 +19,13 @@ const RsvpPlusOneQuestionsContainer = (props) => {
   }
 
   if(props.plusOneAttending != undefined) {
+    if(props.eventHasFood) {
+      foodQuestions = <RsvpFoodQuestions plusOneAttending={ props.plusOneAttending } />
+    } else {
+      finalQuestions = <RsvpAttendingTextareaQuestions />
+    }
+  }
+  if(props.foodChoice != undefined) {
     finalQuestions = <RsvpAttendingTextareaQuestions />
   }
 
@@ -38,6 +46,7 @@ const RsvpPlusOneQuestionsContainer = (props) => {
         { "I'll get back to you" }
       </label>
       { plusOneNameQuestion }
+      { foodQuestions }
       { finalQuestions }
     </div>
   )
@@ -47,9 +56,12 @@ let mapStateToProps = (store) => {
   let formValues = { rsvp: false };
   if(store.form.emailConfirmation.values != undefined){
     formValues.plusOneAttending = store.form.emailConfirmation.values.plusOneAttending
+    formValues.foodChoice = store.form.emailConfirmation.values.foodChoice
   }
   return {
-    plusOneAttending: formValues.plusOneAttending
+    eventHasFood: store.emailConfirmation.event.foodOptions,
+    plusOneAttending: formValues.plusOneAttending,
+    foodChoice: formValues.foodChoice
   }
 }
 

@@ -1,8 +1,8 @@
-describe('user visits Rsvp page for event', () => {
+describe('user visits Rsvp page for event without a Plus One invited', () => {
   beforeEach(() => {
     stubGlobalFetch({
       '/api/v1/email_confirmation/1234':  {
-        GET: ['getEmailConfirmationWithPlusOneWithoutFood', 200],
+        GET: ['getEmailConfirmationWithoutPlusOneWithFood', 200],
         PATCH: ['patchSuccessResponse', 201]
       }
     });
@@ -11,33 +11,25 @@ describe('user visits Rsvp page for event', () => {
     page.find('input #rsvp-yes').simulate('change', {target: { value: 'Yes'}});
   });
 
-  describe('indicates they are coming with a plus one', () => {
-    it('should show all fields except plus one name', done => {
+  describe('indicates they are coming alone', () => {
+    it('should only show the notes & questions field', done => {
       setTimeout(() => {
+        page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
         let pageText = page.text();
         expect(pageText).toMatch('Hi Priscilla!')
         expect(pageText).toMatch('Will you join us?')
-        expect(pageText).toMatch('plus one')
-        expect(pageText).not.toMatch('Is there anything we should know')
-        expect(pageText).not.toMatch('Sorry to miss you!')
-
-        page.find('input #rsvp-guest-maybe').simulate('change', {target: { value: 'Maybe'}});
-        pageText = page.text();
-
-        expect(pageText).not.toMatch("What's their name?")
         expect(pageText).toMatch('Is there anything we should know')
-
+        expect(pageText).not.toMatch('plus one')
+        expect(pageText).not.toMatch('Sorry to miss you!')
         done();
       }, 0)
     });
 
     it('should redirect them to the thank you page', done => {
       setTimeout(() => {
-        page.find('input #rsvp-guest-maybe').simulate('change', {target: { value: 'Maybe'}});
-
+        page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
-        expect(pageText).not.toMatch("What's their name?")
 
         let submitButton = page.findWhere(n => {
           return n.type() === 'button' && n.text() === 'Send RSVP';
@@ -64,7 +56,6 @@ describe('user visits Rsvp page for event', () => {
                 id: '1234',
                 answer: {
                   rsvp: 'Yes',
-                  plus_one_attending: "Maybe",
                   notes: 'notes',
                   questions: 'questions'
                 }
