@@ -24,6 +24,7 @@ describe('user visits Rsvp page for event', () => {
 
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
         page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
+        page.find('input #rsvp-plus-chicken').simulate('change', { target: { value: 'chicken'}});
         pageText = page.text();
 
         expect(pageText).toMatch("What's their name?")
@@ -38,6 +39,7 @@ describe('user visits Rsvp page for event', () => {
       setTimeout(() => {
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
         page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
+        page.find('input #rsvp-plus-chicken').simulate('change', { target: { value: 'chicken'}});
 
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
@@ -78,8 +80,10 @@ describe('user visits Rsvp page for event', () => {
                   rsvp: 'Yes',
                   plus_one_attending: "Yes",
                   plus_one_fullname: "Josh Something",
+                  plus_one_food_option: 'chicken',
                   notes: 'notes',
                   questions: 'questions',
+                  food_option: 'beef',
                   phone: '1231231234',
                   password: 'password',
                   password_confirmation: 'password'

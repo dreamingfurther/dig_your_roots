@@ -69,7 +69,8 @@ describe('user visits Rsvp page for event', () => {
                   rsvp: 'Yes',
                   plus_one_attending: "No",
                   notes: 'notes',
-                  questions: 'questions'
+                  questions: 'questions',
+                  food_option: 'beef'
                 }
               })
             }

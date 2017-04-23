@@ -57,7 +57,8 @@ describe('user visits Rsvp page for event without a Plus One invited', () => {
                 answer: {
                   rsvp: 'Yes',
                   notes: 'notes',
-                  questions: 'questions'
+                  questions: 'questions',
+                  food_option: 'beef'
                 }
               })
             }

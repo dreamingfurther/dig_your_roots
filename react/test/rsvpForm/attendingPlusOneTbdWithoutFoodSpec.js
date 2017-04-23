@@ -1,4 +1,4 @@
-fdescribe('user visits Rsvp page for event', () => {
+describe('user visits Rsvp page for event', () => {
   beforeEach(() => {
     stubGlobalFetch({
       '/api/v1/email_confirmation/1234':  {
