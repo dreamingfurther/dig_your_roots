@@ -27,7 +27,6 @@ class LayoutContainer extends Component {
     Cookies.remove('userData')
     this.props.clearUserData();
     let storedUserData = Cookies.get('userData');
-    console.log(storedUserData);
   }
 
   render() {

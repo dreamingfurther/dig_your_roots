@@ -3,7 +3,8 @@ require 'rails_helper'
 describe Api::V1::EmailConfirmationController do
   let(:event) do
     create(:event, name: 'Special Event', city: "Hanover", state: "NH",
-      date: Date.parse("2018/01/27"), time: "4:35pm", rsvp_description: "Here is the RSVP description"
+      date: Date.parse("2018/01/27"), time: "4:35pm", rsvp_description: "Here is the RSVP description",
+      food_options: true
     )
   end
   let(:user) { create(:user, email: 'dreamingfurther@gmail.com', first_name: "David", last_name: "Tengdin") }
@@ -97,6 +98,7 @@ describe Api::V1::EmailConfirmationController do
             "city"=>"Hanover",
             "state"=>"NH",
             "rsvp_description"=>"Here is the RSVP description",
+            "food_options"=>true,
             "details" => {
               "DressCode"=>"Here is a dress code for this event."
             }

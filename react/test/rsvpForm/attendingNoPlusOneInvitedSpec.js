@@ -2,7 +2,7 @@ describe('user visits Rsvp page for event without a Plus One invited', () => {
   beforeEach(() => {
     stubGlobalFetch({
       '/api/v1/email_confirmation/1234':  {
-        GET: ['getEmailConfirmationWithoutPlusOne', 200],
+        GET: ['getEmailConfirmationWithoutPlusOneWithoutFood', 200],
         PATCH: ['patchSuccessResponse', 201]
       }
     });

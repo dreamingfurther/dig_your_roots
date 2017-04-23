@@ -13,6 +13,7 @@
     "city": "Marathon",
     "state": "FL",
     "rsvp_description": "Join our celebration of vows in the scenic Florida Keys!",
+    "food_options": false,
     "details": {
       "Address": "Sunset Beach Park",
       "Logistics": "Here's some logistical details you should know.",

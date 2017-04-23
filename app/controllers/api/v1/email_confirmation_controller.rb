@@ -57,6 +57,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         city: event.city,
         state: event.state,
         rsvp_description: event.rsvp_description,
+        food_options: event.food_options,
         details: event.details_data
       }
     }
