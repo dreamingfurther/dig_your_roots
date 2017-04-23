@@ -4,7 +4,7 @@ import RsvpPlusOneQuestionsContainer from '../containers/RsvpPlusOneQuestionsCon
 import RsvpAttendingTextareaQuestions from './RsvpAttendingTextareaQuestions';
 import RsvpFoodQuestions from './RsvpFoodQuestions';
 
-const RsvpAttendingQuestionsWrapper = ({ plusOne, eventHasFood, foodChoice }) => {
+const RsvpAttendingQuestionsWrapper = ({ plusOne, eventHasFood, foodChoice, formError }) => {
   let secondStepQuestions, foodQuestions;
 
   if(plusOne === true){
@@ -15,10 +15,10 @@ const RsvpAttendingQuestionsWrapper = ({ plusOne, eventHasFood, foodChoice }) =>
       foodQuestions = <RsvpFoodQuestions plusOneAttending= { false } />
 
       if(foodChoice != undefined) {
-        secondStepQuestions = <RsvpAttendingTextareaQuestions />
+        secondStepQuestions = <RsvpAttendingTextareaQuestions formError={formError}/>
       }
     } else {
-      secondStepQuestions = <RsvpAttendingTextareaQuestions />
+      secondStepQuestions = <RsvpAttendingTextareaQuestions formError={formError}/>
     }
   }
 

@@ -2,7 +2,17 @@ import React from 'react';
 import { Field } from 'redux-form';
 import RsvpSubmit from './RsvpSubmit';
 
-const RsvpAttendingTextareaQuestions = () => {
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
+
+const RsvpAttendingTextareaQuestions = (props) => {
   return(
     <div>
       <label>
@@ -15,7 +25,7 @@ const RsvpAttendingTextareaQuestions = () => {
       </label>
       <Field
         name="password"
-        component="input"
+        component={renderField}
         type='password'
         value='Password'
         id="rsvp-password"
@@ -27,7 +37,7 @@ const RsvpAttendingTextareaQuestions = () => {
       </label>
       <Field
         name="passwordConfirmation"
-        component="input"
+        component={renderField}
         type='password'
         value='passwordConfirmation'
         id="rsvp-rsvp-password-confirmation"
@@ -44,7 +54,8 @@ const RsvpAttendingTextareaQuestions = () => {
       </label>
       <Field name="questions" component="textarea" id="rsvp-questions" />
 
-      <RsvpSubmit />
+      { props.formError && <strong>{props.formError}</strong> }
+      <RsvpSubmit/>
     </div>
   )
 }

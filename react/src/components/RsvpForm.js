@@ -6,8 +6,17 @@ import { push } from 'react-router-redux';
 import RsvpAdditionalQuestionsContainer from '../containers/RsvpAdditionalQuestionsContainer';
 import { postEmailConfirmation } from '../actions/postEmailConfirmation';
 
-let validate = () => {
+let validate = (fields) => {
   const errors = {};
+  if(!fields.password) {
+    errors.password = "Password Required"
+  }
+  if(!fields.passwordConfirmation) {
+    errors.passwordConfirmation = "Password Confirmation Required"
+  }
+  if(fields.password != fields.passwordConfirmation) {
+    errors.passwordConfirmation = "Password must match Password Confirmation"
+  }
   return errors;
 }
 

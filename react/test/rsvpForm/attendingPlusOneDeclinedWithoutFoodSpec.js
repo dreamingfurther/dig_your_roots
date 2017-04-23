@@ -50,6 +50,8 @@ describe('user visits Rsvp page for event without food', () => {
         });
         simulateIfPresent(notesField, 'change', { target: { value: 'notes' } });
         simulateIfPresent(questionsField, 'change', { target: { value: 'questions' } });
+        fillIn('password', { with: 'password' }, page);
+        fillIn('passwordConfirmation', { with: 'password' }, page);
         simulateIfPresent(submitButton, 'submit');
 
         setTimeout(() => {
@@ -66,7 +68,9 @@ describe('user visits Rsvp page for event without food', () => {
                   rsvp: 'Yes',
                   plus_one_attending: "No",
                   notes: 'notes',
-                  questions: 'questions'
+                  questions: 'questions',
+                  password: 'password',
+                  password_confirmation: 'password'
                 }
               })
             }

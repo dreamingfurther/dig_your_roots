@@ -7,10 +7,11 @@ const RsvpAdditionalQuestionsContainer = (props) => {
   let additionalQuestions;
   if( props.attending === "Yes") {
     additionalQuestions = (
-      <RsvpAttendingQuestionsWrapper 
-        plusOne={ props.plusOne } 
+      <RsvpAttendingQuestionsWrapper
+        plusOne={ props.plusOne }
         eventHasFood={ props.eventHasFood }
         foodChoice={ props.foodChoice }
+        formError={ props.formError }
       />
     )
   } else if( props.attending === "No"){
@@ -28,13 +29,15 @@ let mapStateToProps = (store) => {
   if(store.form.emailConfirmation.values != undefined){
     formValues.rsvp = store.form.emailConfirmation.values.rsvp
     formValues.foodChoice = store.form.emailConfirmation.values.foodChoice
+    formValues.error = store.form.emailConfirmation.error
   }
 
   return {
-    attending: formValues.rsvp,
     plusOne: store.emailConfirmation.guest.plusOneInvited,
     eventHasFood: store.emailConfirmation.event.foodOptions,
-    foodChoice: formValues.foodChoice
+    attending: formValues.rsvp,
+    foodChoice: formValues.foodChoice,
+    formError: formValues.error
   }
 }
 
