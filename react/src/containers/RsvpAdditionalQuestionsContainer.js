@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RsvpAttendingQuestionsWrapper from '../components/RsvpAttendingQuestionsWrapper';
+import RsvpAttendeeQuestionManager from '../components/RsvpAttendeeQuestionManager';
 import RsvpNotAttendingQuestions from '../components/RsvpNotAttendingQuestions';
 
 const RsvpAdditionalQuestionsContainer = (props) => {
   let additionalQuestions;
   if( props.attending === "Yes") {
     additionalQuestions = (
-      <RsvpAttendingQuestionsWrapper
+      <RsvpAttendeeQuestionManager
         plusOne={ props.plusOne }
         eventHasFood={ props.eventHasFood }
         foodChoice={ props.foodChoice }
         formError={ props.formError }
+        plusOneAttending={ props.plusOneAttending }
       />
     )
   } else if( props.attending === "No"){
@@ -30,6 +31,7 @@ let mapStateToProps = (store) => {
     formValues.rsvp = store.form.emailConfirmation.values.rsvp
     formValues.foodChoice = store.form.emailConfirmation.values.foodChoice
     formValues.error = store.form.emailConfirmation.error
+    formValues.plusOneAttending = store.form.emailConfirmation.values.plusOneAttending
   }
 
   return {
@@ -37,7 +39,8 @@ let mapStateToProps = (store) => {
     eventHasFood: store.emailConfirmation.event.foodOptions,
     attending: formValues.rsvp,
     foodChoice: formValues.foodChoice,
-    formError: formValues.error
+    formError: formValues.error,
+    plusOneAttending: formValues.plusOneAttending
   }
 }
 

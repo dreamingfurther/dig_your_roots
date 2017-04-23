@@ -1,10 +1,12 @@
 import React from 'react';
 import { Row, Column } from 'react-foundation';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { push } from 'react-router-redux';
-
-import RsvpAdditionalQuestionsContainer from '../containers/RsvpAdditionalQuestionsContainer';
 import { postEmailConfirmation } from '../actions/postEmailConfirmation';
+import RsvpYesNoQuestions from '../components/RsvpYesNoQuestions';
+import RsvpAdditionalQuestionsContainer from '../containers/RsvpAdditionalQuestionsContainer';
+import RsvpWelcomeContainer from '../containers/RsvpWelcomeContainer';
+import RsvpEventDetailsContainer from '../containers/RsvpEventDetailsContainer';
 
 let validate = (fields) => {
   const errors = {};
@@ -29,21 +31,21 @@ let onSubmit = (fields, dispatch) => {
 
 const RsvpForm = (props) => {
   return(
-    <div className="rsvp-form">
-      <h1>Will you join us?</h1>
-
-      <form onSubmit={props.handleSubmit}>
-        <label>
-          <Field name="rsvp" component="input" type="radio" value="Yes" id="rsvp-yes"/>
-          Yes
-        </label>
-        <label>
-          <Field name="rsvp" component="input" type="radio" value="No" id="rsvp-no"/>
-          No
-        </label>
-
-        <RsvpAdditionalQuestionsContainer />
-      </form>
+    <div id="rsvp-page">
+      <div className="rsvp-form">
+        <form onSubmit={props.handleSubmit}>
+          <Row>
+            <Column small={12} medium={6}>
+              <RsvpWelcomeContainer token={props.params.token}/>
+              <RsvpYesNoQuestions />
+            </Column>
+            <Column small={12} medium={6}>
+              <RsvpEventDetailsContainer />
+            </Column>
+          </Row>
+          <RsvpAdditionalQuestionsContainer />
+        </form>
+      </div>
     </div>
   )
 }

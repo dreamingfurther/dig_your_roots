@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import SignInForm from '../components/SignInForm';
 import SignInToggleButton from '../components/SignInToggleButton';
 import { toggleSignInForm } from '../actions/toggleSignInForm';

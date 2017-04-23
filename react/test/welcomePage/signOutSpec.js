@@ -7,7 +7,7 @@ describe('user signs in through welcome page', () => {
     page = mountReactAppAt('/')
   });
 
-  it('can sign out', () => {
+  it('can sign out', done => {
     clickOn('#toggle-sign-in-form', page);
 
     let signInButton = page.find('#sign-in-button');

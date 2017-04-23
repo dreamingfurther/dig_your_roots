@@ -3,11 +3,8 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Column } from 'react-foundation';
-
 import { railsAssetImagePath } from './../constants/railsAssetImagePath';
-import {
-  postAuthorizeRequestSuccess, postAuthorizeRequestFailure
-} from '../actions/postAuthorize';
+import { postAuthorizeRequestSuccess, postAuthorizeRequestFailure } from '../actions/postAuthorize';
 
 class LayoutContainer extends Component {
   constructor(props) {
