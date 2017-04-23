@@ -23,10 +23,12 @@ class Api::V1::EmailConfirmationController < ApplicationController
     notes = attendee.user_notes
 
     attendee.update_attributes(
-      rsvp:               convert_to_boolean(params["answer"]["rsvp"]),
-      plus_one_attending: convert_to_boolean(params["answer"]["plus_one_attending"]),
-      plus_one_fullname:  params["answer"]["plus_one_fullname"],
-      user_notes: "#{notes} \n--------\n #{params["answer"]['notes']}"
+      rsvp:                 convert_to_boolean(params["answer"]["rsvp"]),
+      plus_one_attending:   convert_to_boolean(params["answer"]["plus_one_attending"]),
+      plus_one_fullname:    params["answer"]["plus_one_fullname"],
+      plus_one_food_choice: params["answer"]["plus_one_food_choice"],
+      user_notes: "#{notes} \n--------\n #{params["answer"]['notes']}",
+      food_choice: params["answer"]["food_choice"]
     )
   end
 

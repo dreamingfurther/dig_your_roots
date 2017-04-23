@@ -10,23 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423170648) do
+ActiveRecord::Schema.define(version: 20170423185245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendees", force: :cascade do |t|
-    t.integer  "user_id",                            null: false
-    t.integer  "event_id",                           null: false
+    t.integer  "user_id",                              null: false
+    t.integer  "event_id",                             null: false
     t.boolean  "rsvp"
     t.text     "user_notes"
     t.text     "admin_notes"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.boolean  "plus_one_invited",   default: false, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "plus_one_invited",     default: false, null: false
     t.boolean  "plus_one_attending"
     t.string   "plus_one_fullname"
-    t.integer  "email_count",        default: 0,     null: false
+    t.integer  "email_count",          default: 0,     null: false
+    t.text     "food_choice"
+    t.text     "plus_one_food_choice"
     t.index ["event_id"], name: "index_attendees_on_event_id", using: :btree
     t.index ["user_id"], name: "index_attendees_on_user_id", using: :btree
   end

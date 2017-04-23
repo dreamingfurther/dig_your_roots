@@ -20,7 +20,9 @@ describe Api::V1::EmailConfirmationController do
         questions: "What happens with this question?",
         phone: "1231231234",
         password: "foobar",
-        password_confirmation: "foobar"
+        password_confirmation: "foobar",
+        food_choice: "beef",
+        plus_one_food_choice: "chicken"
       }
     end
 
@@ -54,6 +56,11 @@ describe Api::V1::EmailConfirmationController do
       it 'saves the user phone, email, and password' do
         expect(attendee.user.phone).to eq "1231231234"
         expect(attendee.user.password_hash).to_not be_nil
+      end
+
+      it 'saves food choice data' do
+        expect(attendee.food_choice).to eq 'beef'
+        expect(attendee.plus_one_food_choice).to eq 'chicken'
       end
     end
 

@@ -1,4 +1,4 @@
-describe('user visits Rsvp page for event without a Plus One invited', () => {
+describe('user visits Rsvp page for event without a Plus One invited with food', () => {
   beforeEach(() => {
     stubGlobalFetch({
       '/api/v1/email_confirmation/1234':  {
@@ -58,7 +58,7 @@ describe('user visits Rsvp page for event without a Plus One invited', () => {
                   rsvp: 'Yes',
                   notes: 'notes',
                   questions: 'questions',
-                  food_option: 'beef'
+                  food_choice: 'beef'
                 }
               })
             }
