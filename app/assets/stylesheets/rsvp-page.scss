@@ -6,3 +6,134 @@
     color: $navy;
   }
 }
+
+$light-green: #84ce15;
+$light-grey: #eeeeee;
+$blue: #37becc;
+
+@mixin fancy-checkbox(
+  $checkbox-size: 60px,
+  $check-color: $light-green,
+  $box-bg-color: transparent,
+  $box-border-color: #ddd,
+  $background-color: $light-grey,
+  $hover-check-color: $light-green,
+  $checked-box-bg-color: transparent,
+  $checked-box-border-color: $box-border-color,
+  $checked-label-color: auto,
+  $checked-background-color: $blue
+) {
+  display: block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 100%;
+  padding-top: 13px;
+  position: relative;
+
+  .background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: calc(#{$checkbox-size} - 10px);
+    background-color: $background-color;
+  }
+
+  .box,
+  input,
+  label {
+    font-size: 22px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .box {
+    width: $checkbox-size;
+    height: $checkbox-size;
+    /* border: 1px solid $box-border-color; */
+    background-color: $box-bg-color;
+    vertical-align: top;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: $blue;
+    }
+  }
+
+  .box:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+
+    border: 8px solid $hover-check-color;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  &:hover .box:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+  }
+
+
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    & ~ .box:after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+      border-color: $check-color;
+      opacity: 1;
+    }
+
+    & ~ .background {
+      background-color: $checked-background-color;
+    }
+
+    & ~ .box {
+      background-color: transparent;
+      border-color: $checked-box-border-color;
+    }
+
+    & ~ label {
+      color: $checked-label-color;
+    }
+  }
+}
+
+.fancy-checkbox {
+  @include fancy-checkbox;
+}

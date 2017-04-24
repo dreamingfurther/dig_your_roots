@@ -31,7 +31,7 @@ let onSubmit = (fields, dispatch) => {
 
 const RsvpForm = (props) => {
   return(
-    <div id="rsvp-page">
+    <div id="rsvp-page" className="pam">
       <div className="rsvp-form">
         <form onSubmit={props.handleSubmit}>
           <Row>
