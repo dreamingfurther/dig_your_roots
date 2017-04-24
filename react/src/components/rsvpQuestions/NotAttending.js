@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import RsvpSubmit from './RsvpSubmit';
+import Submit from './Submit';
 
-const RsvpNotAttendingQuestions = () => {
+const NotAttending = () => {
   return(
     <div>
       <label>
@@ -10,9 +10,9 @@ const RsvpNotAttendingQuestions = () => {
       </label>
       <Field name="notes" component="textarea" id="rsvp-excuse" />
 
-      <RsvpSubmit />
+      <Submit />
     </div>
   )
 }
 
-export default RsvpNotAttendingQuestions;
+export default NotAttending;

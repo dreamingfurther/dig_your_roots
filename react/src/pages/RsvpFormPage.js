@@ -3,10 +3,10 @@ import { Row, Column } from 'react-foundation';
 import { reduxForm } from 'redux-form';
 import { push } from 'react-router-redux';
 import { postEmailConfirmation } from '../actions/postEmailConfirmation';
-import RsvpYesNoQuestions from '../components/RsvpYesNoQuestions';
-import RsvpAdditionalQuestionsContainer from '../containers/RsvpAdditionalQuestionsContainer';
+import RsvpQuestionsContainer from '../containers/RsvpQuestionsContainer';
 import RsvpWelcomeContainer from '../containers/RsvpWelcomeContainer';
 import RsvpEventDetailsContainer from '../containers/RsvpEventDetailsContainer';
+import YesNo from '../components/rsvpQuestions/YesNo';
 
 let validate = (fields) => {
   const errors = {};
@@ -37,13 +37,13 @@ const RsvpForm = (props) => {
           <Row>
             <Column small={12} medium={6}>
               <RsvpWelcomeContainer token={props.params.token}/>
-              <RsvpYesNoQuestions />
+              <YesNo />
             </Column>
             <Column small={12} medium={6}>
               <RsvpEventDetailsContainer />
             </Column>
           </Row>
-          <RsvpAdditionalQuestionsContainer />
+          <RsvpQuestionsContainer />
         </form>
       </div>
     </div>

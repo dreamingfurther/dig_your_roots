@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-const RsvpFoodQuestions = () => {
+const Food = () => {
   return(
     <div>
       <label>What main did would you like for dinner?</label>
@@ -25,4 +25,4 @@ const RsvpFoodQuestions = () => {
   )
 }
 
-export default RsvpFoodQuestions;
+export default Food;

@@ -1,63 +1,63 @@
 import React from 'react';
 import { Row, Column } from 'react-foundation';
-import RsvpPlusOneQuestion from '../components/RsvpPlusOneQuestion';
-import RsvpPlusOneQuestionName from '../components/RsvpPlusOneQuestionName';
-import RsvpFoodQuestions from './RsvpFoodQuestions';
-import RsvpFoodQuestionsPlusOne from './RsvpFoodQuestionsPlusOne';
-import RsvpPhonePasswordQuestions from './RsvpPhonePasswordQuestions';
-import RsvpAttendingTextareaQuestions from './RsvpAttendingTextareaQuestions';
-import RsvpExtraDetailsQuestion from './RsvpExtraDetailsQuestion';
-import RsvpExtraQuestionForUsQuestion from './RsvpExtraQuestionForUsQuestion';
-import RsvpSubmit from './RsvpSubmit';
+import ExtraDetails       from './rsvpQuestions/ExtraDetails';
+import ExtraQuestionForUs from './rsvpQuestions/ExtraQuestionForUs';
+import Food               from './rsvpQuestions/Food';
+import FoodPlusOne        from './rsvpQuestions/FoodPlusOne';
+import PhonePassword      from './rsvpQuestions/PhonePassword';
+import PlusOne            from './rsvpQuestions/PlusOne';
+import PlusOneName        from './rsvpQuestions/PlusOneName';
+import Textarea           from './rsvpQuestions/Textarea';
+import Submit             from './rsvpQuestions/Submit';
 
 const RsvpAttendeeQuestionManager = ({ plusOne, eventHasFood, foodChoice, formError, plusOneAttending }) => {
   let plusOneQuestion, plusOneName, cell1, cell2, cell3, cell4, rsvpButton;
 
   if(plusOne){
-    plusOneQuestion = <RsvpPlusOneQuestion />
+    plusOneQuestion = <PlusOne />
   }
   if(plusOne && plusOneAttending == "Yes"){
-    plusOneName = <RsvpPlusOneQuestionName />
+    plusOneName = <PlusOneName />
   }
 
 
   if(eventHasFood && plusOne && plusOneAttending != undefined){
-    cell1 = <RsvpFoodQuestions />
+    cell1 = <Food />
   }
   if(eventHasFood && plusOne && plusOneAttending == "Yes"){
-    cell2 = <RsvpFoodQuestionsPlusOne />
-  }
-  if(eventHasFood && plusOne && foodChoice != undefined && plusOneAttending != "Yes"){
-    cell2 = <RsvpPhonePasswordQuestions />
-    cell3 = <RsvpExtraDetailsQuestion />
-    cell4 = <RsvpExtraQuestionForUsQuestion />
-    rsvpButton = <RsvpSubmit />
+    cell2 = <FoodPlusOne />
   }
   if(eventHasFood && plusOne && foodChoice != undefined && plusOneAttending == "Yes"){
-    cell3 = <RsvpAttendingTextareaQuestions />
-    cell4 = <RsvpPhonePasswordQuestions />
-    rsvpButton = <RsvpSubmit />
+    cell3 = <Textarea />
+    cell4 = <PhonePassword />
+    rsvpButton = <Submit />
+  }
+  if(eventHasFood && plusOne && foodChoice != undefined && plusOneAttending != "Yes"){
+    cell2 = <PhonePassword />
+    cell3 = <ExtraDetails />
+    cell4 = <ExtraQuestionForUs />
+    rsvpButton = <Submit />
   }
   if(eventHasFood && !plusOne){
-    cell1 = <RsvpFoodQuestions />
+    cell1 = <Food />
   }
   if(eventHasFood && !plusOne && foodChoice != undefined){
-    cell2 = <RsvpPhonePasswordQuestions />
-    cell3 = <RsvpExtraDetailsQuestion />
-    cell4 = <RsvpExtraQuestionForUsQuestion />
-    rsvpButton = <RsvpSubmit />
+    cell2 = <PhonePassword />
+    cell3 = <ExtraDetails />
+    cell4 = <ExtraQuestionForUs />
+    rsvpButton = <Submit />
   }
 
 
   if(!eventHasFood && !plusOne){
-    cell1 = <RsvpAttendingTextareaQuestions />
-    cell2 = <RsvpPhonePasswordQuestions />
-    rsvpButton = <RsvpSubmit />
+    cell1 = <Textarea />
+    cell2 = <PhonePassword />
+    rsvpButton = <Submit />
   }
   if(!eventHasFood && plusOne && plusOneAttending != undefined){
-    cell1 = <RsvpAttendingTextareaQuestions />
-    cell2 = <RsvpPhonePasswordQuestions />
-    rsvpButton = <RsvpSubmit />
+    cell1 = <Textarea />
+    cell2 = <PhonePassword />
+    rsvpButton = <Submit />
   }
 
   return(

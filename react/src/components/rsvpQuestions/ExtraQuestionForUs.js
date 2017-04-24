@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-const RsvpExtraQuestionForUsQuestion = () => {
+const ExtraQuestionForUs = () => {
   return(
     <div>
       <label>
@@ -12,4 +12,4 @@ const RsvpExtraQuestionForUsQuestion = () => {
   )
 }
 
-export default RsvpExtraQuestionForUsQuestion;
+export default ExtraQuestionForUs;

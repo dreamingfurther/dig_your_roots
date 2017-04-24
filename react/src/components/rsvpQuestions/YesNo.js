@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-const RsvpYesNoQuestions = () => {
+const YesNo = () => {
   return(
     <div>
       <h1>Will you join us?</h1>
@@ -17,4 +17,4 @@ const RsvpYesNoQuestions = () => {
   )
 }
 
-export default RsvpYesNoQuestions;
+export default YesNo;

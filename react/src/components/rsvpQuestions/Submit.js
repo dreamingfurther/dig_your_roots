@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RsvpSubmit = () => {
+const Submit = () => {
   return(
     <button type="submit" className="button">
       Send RSVP
@@ -8,4 +8,4 @@ const RsvpSubmit = () => {
   )
 }
 
-export default RsvpSubmit;
+export default Submit;
