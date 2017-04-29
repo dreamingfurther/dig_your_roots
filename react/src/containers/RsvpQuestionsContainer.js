@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RsvpAttendeeQuestionManager from '../components/RsvpAttendeeQuestionManager';
 import NotAttending from '../components/rsvpQuestions/NotAttending';
 
-const RsvpQuestionsContainer = (props) => {
-  let additionalQuestions;
-  if( props.attending === "Yes" ){
-    additionalQuestions = (
-      <RsvpAttendeeQuestionManager
-        formError        ={ props.formError }
-        plusOne          ={ props.plusOne }
-        eventHasFood     ={ props.eventHasFood }
-        foodChoice       ={ props.foodChoice }
-        plusOneAttending ={ props.plusOneAttending }
-      />
-    )
-  } else if( props.attending === "No" ){
-    additionalQuestions = <NotAttending />
+class RsvpQuestionsContainer extends Component {
+  constructor(props) {
+    super(props);
   }
 
-  return(<div>{ additionalQuestions }</div>)
+  componentDidUpdate() {
+    window.scrollTo(0, 100000);
+  }
+
+  render() {
+    let props = this.props;
+    let additionalQuestions;
+    if( props.attending === "Yes" ){
+      additionalQuestions = (
+        <RsvpAttendeeQuestionManager
+          formError        ={ props.formError }
+          plusOne          ={ props.plusOne }
+          eventHasFood     ={ props.eventHasFood }
+          foodChoice       ={ props.foodChoice }
+          plusOneAttending ={ props.plusOneAttending }
+        />
+      )
+    } else if( props.attending === "No" ){
+      additionalQuestions = <NotAttending />
+    }
+
+    return(
+      <div>
+        { additionalQuestions }
+      </div>
+    )
+  }
 }
 
 let mapStateToProps = (store) => {

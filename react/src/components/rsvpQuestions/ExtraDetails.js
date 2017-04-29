@@ -3,10 +3,10 @@ import { Field } from 'redux-form';
 
 const ExtraDetails = () => {
   return(
-    <div>
-      <label>
+    <div className="text-questions">
+      <p>
         Is there anything we should know for your RSVP (such as dietary restrictions)?
-      </label>
+      </p>
       <Field name="notes" component="textarea" id="rsvp-notes" />
     </div>
   )

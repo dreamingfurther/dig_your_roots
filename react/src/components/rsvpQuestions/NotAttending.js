@@ -5,9 +5,9 @@ import Submit from './Submit';
 const NotAttending = () => {
   return(
     <div>
-      <label>
+      <p>
         Sorry to miss you! Feel free to leave us a note.
-      </label>
+      </p>
       <Field name="notes" component="textarea" id="rsvp-excuse" />
 
       <Submit />

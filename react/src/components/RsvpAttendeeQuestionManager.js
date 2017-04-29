@@ -66,11 +66,11 @@ const RsvpAttendeeQuestionManager = ({ plusOne, eventHasFood, foodChoice, formEr
         { plusOneQuestion }
         { plusOneName }
       </Row>
-      <Row>
+      <Row className="mbl">
         <Column small={12} medium={6}>{ cell1 }</Column>
         <Column small={12} medium={6}>{ cell2 }</Column>
       </Row>
-      <Row>
+      <Row className="mbm">
         <Column small={12} medium={6}>{ cell3 }</Column>
         <Column small={12} medium={6}>{ cell4 }</Column>
       </Row>

@@ -17,9 +17,15 @@ class RsvpEventDetailsContainer extends Component {
 
     return(
       <div className="rsvp-event-details">
-        <h1>{ event.name }</h1>
-        <h3>{ event.date }{ displayedTime }</h3>
-        <p>{ `${event.city}, ${event.state}` }</p>
+        <h1>
+          { event.name }
+        </h1>
+        <p>
+          { event.date }{ displayedTime }
+        </p>
+        <p>
+          { `${event.city}, ${event.state}` }
+        </p>
         <RsvpShowMoreContainer details={ event.details } />
       </div>
     )

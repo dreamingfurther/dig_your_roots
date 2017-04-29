@@ -8,9 +8,10 @@ const RsvpShowMoreContainer = (props) => {
 
   if((props.details != undefined) && props.showDetails) {
     eventDetails = Object.keys(props.details).map((key) => {
+      let formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
       return(
         <p key={ key }>
-          { key } - { props.details[key] }
+          { formattedKey }: { props.details[key] }
         </p>
       )
     })
@@ -19,7 +20,7 @@ const RsvpShowMoreContainer = (props) => {
   if((props.details != undefined) && (Object.keys(props.details).length > 0) && props.showDetails) {
     showText = <a>Show Less</a>;
   } else if((props.details != undefined) && (Object.keys(props.details).length > 0)) {
-    showText = <a>Show More</a>;
+    showText = <a>Show More...</a>;
   } else {
     showText = "";
   }
@@ -31,7 +32,9 @@ const RsvpShowMoreContainer = (props) => {
   return(
     <div className="show-more">
       { showMore }
-      { eventDetails }
+      <div className="event-details">
+        { eventDetails }
+      </div>
     </div>
   )
 }
