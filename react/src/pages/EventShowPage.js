@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getUserEvents } from '../actions/getUserEvents';
+import EventDetails from '../components/EventDetails';
 
 class EventShowPage extends Component {
   constructor(props) {
@@ -23,17 +24,19 @@ class EventShowPage extends Component {
   }
 
   render() {
-    let eventName;
+    let eventName, eventDetails;
     if(this.props.event != undefined) {
       eventName = this.props.event.name
+      eventDetails = <EventDetails event={this.props.event} />
     }
 
     return(
-      <div>
+      <div id="event-show-page">
         <h1>
           <Link to='/events'>You're Events: </Link>
           { eventName }
         </h1>
+        { eventDetails }
       </div>
     )
   }

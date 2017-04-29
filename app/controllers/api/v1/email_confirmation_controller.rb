@@ -58,6 +58,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         name: event.name,
         date: event.date_string,
         time: event.time,
+        description: event.description,
         city: event.city,
         state: event.state,
         rsvp_description: event.rsvp_description,

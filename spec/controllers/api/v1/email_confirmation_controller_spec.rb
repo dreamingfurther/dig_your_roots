@@ -104,6 +104,7 @@ describe Api::V1::EmailConfirmationController do
             "name"=>"Special Event",
             "date"=>"01.27.2018",
             "time"=>"4:35pm",
+            "description"=>event.description,
             "city"=>"Hanover",
             "state"=>"NH",
             "rsvp_description"=>"Here is the RSVP description",

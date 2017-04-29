@@ -10,9 +10,12 @@ const RsvpShowMoreContainer = (props) => {
     eventDetails = Object.keys(props.details).map((key) => {
       let formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
       return(
-        <p key={ key }>
-          { formattedKey }: { props.details[key] }
-        </p>
+        <div key={ key } className="mbm">
+          <p className="mbn">
+            { formattedKey }:
+          </p>
+          { props.details[key] }
+        </div>
       )
     })
   }
@@ -31,7 +34,9 @@ const RsvpShowMoreContainer = (props) => {
 
   return(
     <div className="show-more">
-      { showMore }
+      <div className="mbm">
+        { showMore }
+      </div>
       <div className="event-details">
         { eventDetails }
       </div>

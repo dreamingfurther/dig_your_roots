@@ -20,10 +20,10 @@ class RsvpEventDetailsContainer extends Component {
         <h1>
           { event.name }
         </h1>
-        <p>
+        <p className="mbn">
           { event.date }{ displayedTime }
         </p>
-        <p>
+        <p className="mbm">
           { `${event.city}, ${event.state}` }
         </p>
         <RsvpShowMoreContainer details={ event.details } />

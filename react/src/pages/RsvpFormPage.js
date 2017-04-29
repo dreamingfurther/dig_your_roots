@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Column } from 'react-foundation';
+import { Row, Column, Block, Breakpoints } from 'react-foundation';
 import { reduxForm } from 'redux-form';
 import { push } from 'react-router-redux';
 import { postEmailConfirmationAccept, postEmailConfirmationDecline } from '../actions/postEmailConfirmation';
@@ -44,10 +44,15 @@ const RsvpForm = (props) => {
           <Row>
             <Column small={12} medium={6}>
               <RsvpWelcomeContainer token={props.params.token}/>
-              <YesNo />
+              <Block hideOnlyFor={Breakpoints.SMALL}>
+                <YesNo />
+              </Block>
             </Column>
             <Column small={12} medium={6}>
               <RsvpEventDetailsContainer />
+              <Block showOnlyFor={Breakpoints.SMALL}>
+                <YesNo />
+              </Block>
             </Column>
           </Row>
           <RsvpQuestionsContainer />

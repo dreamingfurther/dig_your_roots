@@ -15,6 +15,7 @@ describe Api::V1::EventsController do
       json = JSON.parse(response.body)
       expect(json[1]["name"]).to eq("Stag party")
       expect(json[0]["name"]).to eq("Ceremony & Dinner")
+      expect(json[0]["description"]).to eq(event1.description)
       expect(json[0]["details"]).to eq(
         {
           "Address"=>"Detail Body text 1",
