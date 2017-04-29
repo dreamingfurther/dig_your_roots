@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :email_confirmation, only: [:show, :update]
       resources :authorize, only: [:create]
+      resources :users, only: [] do
+        resources :events, only: [:index]
+      end
     end
   end
 

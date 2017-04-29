@@ -1,0 +1,30 @@
+[
+  {
+    "id": 43,
+    "name": "Ceremony & Dinner",
+    "date": "01.27.2018",
+    "time": null,
+    "city": "Marathon",
+    "state": "FL",
+    "rsvp_description": "Join our celebration of vows in the scenic Florida Keys!",
+    "food_options": true,
+    "details": {
+      "Address": "Sunset Beach Park",
+      "Logistics": "Here's some logistical details you should know.",
+      "DressCode": "Here's the dress code."
+    }
+  },
+  {
+    "id": 44,
+    "name": "Stag Party",
+    "date": "11.27.2017",
+    "time": null,
+    "city": "Hanover",
+    "state": "NH",
+    "rsvp_description": "Join David's batchlor crew for board games at a cabin.",
+    "food_options": false,
+    "details": {
+      "Logistics": "Here's some logistical details you should know."
+    }
+  }
+]

@@ -17,7 +17,7 @@ class LayoutContainer extends Component {
   componentWillMount() {
     let storedUserData = Cookies.get('userData');
     if(storedUserData != undefined) {
-      this.props.loadUserData(storedUserData);
+      this.props.loadUserData( JSON.parse(storedUserData) );
     }
   }
 
@@ -38,7 +38,9 @@ class LayoutContainer extends Component {
       (
         <h1>
           Jesse
-          <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          <Link to="/">
+            <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          </Link>
           David
         </h1>
       )
@@ -46,7 +48,9 @@ class LayoutContainer extends Component {
       titleTextAndImage =
       (
         <div>
-          <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          <Link to="/">
+            <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          </Link>
           <h1> Jesse & David </h1>
         </div>
       )

@@ -6,8 +6,9 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'test') {
   railsAssetImagePath = filePath => {
-    let file = filePath.split('/').pop();
-    return `/test/support/images/${file}`;
+    return filePath;
+    // let file = filePath.split('/').pop();
+    // return `/test/support/images/${file}`;
   };
 }
 
