@@ -44,7 +44,7 @@ const RsvpForm = (props) => {
           <Row>
             <Column small={12} medium={6}>
               <RsvpWelcomeContainer token={props.params.token}/>
-              <Block hideOnlyFor={Breakpoints.SMALL}>
+              <Block hideOnlyFor={Breakpoints.SMALL} className='medium-up-yes-no'>
                 <YesNo />
               </Block>
             </Column>

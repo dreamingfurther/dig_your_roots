@@ -8,7 +8,8 @@ describe('user visits Rsvp page for event', () => {
     });
 
     page = mountReactAppAt('/email_confirmation/1234');
-    page.find('input #rsvp-no').simulate('change', {target: { value: 'No'}});
+    let mediumArea = page.find('.medium-up-yes-no');
+    mediumArea.find('input #rsvp-no').simulate('change', {target: { value: 'No'}});
   });
 
   describe('indicates they are not coming because they suck', () => {

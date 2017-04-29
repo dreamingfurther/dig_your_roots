@@ -8,7 +8,8 @@ describe('user visits Rsvp page for event without food', () => {
     });
 
     page = mountReactAppAt('/email_confirmation/1234');
-    page.find('input #rsvp-yes').simulate('change', {target: { value: 'Yes'}});
+    let mediumArea = page.find('.medium-up-yes-no');
+    mediumArea.find('input #rsvp-yes').simulate('change', {target: { value: 'Yes'}});
   });
 
   describe('types in no password', () => {
