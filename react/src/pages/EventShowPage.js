@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getUserEvents } from '../actions/getUserEvents';
 
-class EventsIndexPage extends Component {
+class EventShowPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -23,28 +23,30 @@ class EventsIndexPage extends Component {
   }
 
   render() {
-    let eventList;
-    eventList = this.props.events.map((event) => {
-      return(
-        <p key={event.id}>
-          <Link to={`/events/${event.id}`}>{ event.name }</Link>
-        </p>
-      )
-    });
+    let eventName;
+    if(this.props.event != undefined) {
+      eventName = this.props.event.name
+    }
 
     return(
       <div>
-        <h1>You're Events!</h1>
-        { eventList }
+        <h1>
+          <Link to='/events'>You're Events: </Link>
+          { eventName }
+        </h1>
       </div>
     )
   }
 }
 
-let mapStateToProps = (store) => {
+let mapStateToProps = (store, ownProps) => {
+  let event = store.user.events.filter((event) => {
+    return event.id === parseInt(ownProps.params.id)
+  })[0]
   return {
+    eventId: parseInt(ownProps.params.id),
+    event: event,
     userId: store.user.id,
-    events: store.user.events,
     storedUserData: Cookies.get('userData')
   }
 }
@@ -58,4 +60,4 @@ let mapDispatchToProps = (dispatch) => {
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)(EventsIndexPage);
+)(EventShowPage);

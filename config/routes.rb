@@ -20,5 +20,5 @@ Rails.application.routes.draw do
 
   resources :thank_you, only: [:show]
   resources :email_confirmation, only: [:show]
-  resources :events, only: [:index]
+  resources :events, only: [:index, :show]
 end
