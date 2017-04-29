@@ -44,7 +44,6 @@ describe('user visits Rsvp page for event without food', () => {
         expect(page.text()).toMatch('Password must match Password Confirmation');
         expect(page.text()).not.toMatch('Thank you for your RSVP');
         expect(page.text()).not.toMatch('Events');
-        expect(page.text()).not.toMatch('Photos');
         done();
       }, 0)
     });
@@ -80,7 +79,6 @@ describe('user visits Rsvp page for event without food', () => {
         expect(page.text()).toMatch('Password Confirmation Required');
         expect(page.text()).not.toMatch('Thank you for your RSVP');
         expect(page.text()).not.toMatch('Events');
-        expect(page.text()).not.toMatch('Photos');
         done();
       }, 0)
     });

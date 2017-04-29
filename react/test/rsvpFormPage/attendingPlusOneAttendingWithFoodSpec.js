@@ -1,8 +1,8 @@
-describe('user visits Rsvp page for event without food', () => {
+describe('user visits Rsvp page for event with food', () => {
   beforeEach(() => {
     stubGlobalFetch({
       '/api/v1/email_confirmation/1234':  {
-        GET: ['getEmailConfirmationWithPlusOneWithoutFood', 200],
+        GET: ['getEmailConfirmationWithPlusOneWithFood', 200],
         PATCH: ['patchSuccessResponse', 201]
       }
     });
@@ -23,9 +23,12 @@ describe('user visits Rsvp page for event without food', () => {
         expect(pageText).not.toMatch('Sorry to miss you!')
 
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
+        page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
+        page.find('input #rsvp-plus-chicken').simulate('change', { target: { value: 'chicken'}});
         pageText = page.text();
 
         expect(pageText).toMatch("What is their name?")
+        expect(pageText).toMatch("What main entre would you like?")
         expect(pageText).toMatch('Is there anything we should know')
 
         done();
@@ -35,6 +38,8 @@ describe('user visits Rsvp page for event without food', () => {
     it('should redirect them to the thank you page and log them in', done => {
       setTimeout(() => {
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
+        page.find('input #rsvp-beef').simulate('change', { target: { value: 'beef'}});
+        page.find('input #rsvp-plus-chicken').simulate('change', { target: { value: 'chicken'}});
 
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
@@ -75,8 +80,10 @@ describe('user visits Rsvp page for event without food', () => {
                   rsvp: 'Yes',
                   plus_one_attending: "Yes",
                   plus_one_fullname: "Josh Something",
+                  plus_one_food_choice: 'chicken',
                   notes: 'notes',
                   questions: 'questions',
+                  food_choice: 'beef',
                   phone: '1231231234',
                   password: 'password',
                   password_confirmation: 'password'
@@ -87,7 +94,6 @@ describe('user visits Rsvp page for event without food', () => {
 
           expect(page.text()).not.toMatch('Fill in your information');
           expect(page.text()).toMatch('Events');
-          expect(page.text()).toMatch('Photos');
           done();
         }, 0)
       }, 0)
