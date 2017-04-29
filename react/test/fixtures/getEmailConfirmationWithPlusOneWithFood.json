@@ -4,7 +4,8 @@
     "last_name": "Tengdin",
     "plus_one_invited": true,
     "id": 72,
-    "token": "1234"
+    "token": "1234",
+    "rsvp": null
   },
   "event": {
     "name": "Ceremony & Dinner",

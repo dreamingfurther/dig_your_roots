@@ -47,7 +47,6 @@ describe('user visits Rsvp page for event without a Plus One invited with food',
         simulateIfPresent(submitButton, 'submit');
 
         setTimeout(() => {
-          expect(page.text()).toMatch('Thank you for your RSVP');
           expect(fetch).toHaveBeenCalledWith(
             '/api/v1/email_confirmation/1234',
             {
@@ -67,6 +66,7 @@ describe('user visits Rsvp page for event without a Plus One invited with food',
               })
             }
           )
+          expect(page.text()).toMatch('Thank you for your RSVP');
           done();
         }, 0)
       }, 0)

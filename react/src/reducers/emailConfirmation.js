@@ -6,13 +6,15 @@ import {
 import {
   POST_EMAIL_CONFIRMATION,
   POST_EMAIL_CONFIRMATION_SUCCESS,
-  POST_EMAIL_CONFIRMATION_FAILURE
+  POST_EMAIL_CONFIRMATION_FAILURE,
+  UPDATE_RSVP_STATUS
 } from '../actions/postEmailConfirmation';
 
 let initialState = {
   isFetching: false,
   guest: {
-    plusOneInvited: false
+    plusOneInvited: false,
+    rsvp: null
   },
   event: {}
 }
@@ -33,6 +35,10 @@ let emailConfirmation = (state = initialState, action) => {
       return Object.assign({}, state, {
         isFetching: false
       })
+    case UPDATE_RSVP_STATUS:
+      return Object.assign({}, state, {
+        guest: { rsvp: action.rsvpStatus }
+      });
     default:
       return state;
   }

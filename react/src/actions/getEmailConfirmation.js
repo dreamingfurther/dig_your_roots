@@ -20,7 +20,7 @@ const getEmailConfirmationRequestFailure = () => ({
 let getEmailConfirmation = token => (dispatch) => {
   dispatch(getEmailConfirmationRequest());
 
-  fetch(`/api/v1/email_confirmation/${token}`, {
+  return fetch(`/api/v1/email_confirmation/${token}`, {
     credentials: 'same-origin',
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }

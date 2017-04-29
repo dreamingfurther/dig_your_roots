@@ -5,6 +5,14 @@ import { postAuthorizeRequestSuccess } from './postAuthorize';
 const POST_EMAIL_CONFIRMATION = "POST_EMAIL_CONFIRMATION";
 const POST_EMAIL_CONFIRMATION_SUCCESS = "POST_EMAIL_CONFIRMATION_SUCCESS";
 const POST_EMAIL_CONFIRMATION_FAILURE = "POST_EMAIL_CONFIRMATION_FAILURE";
+const UPDATE_RSVP_STATUS = "UPDATE_RSVP_STATUS";
+
+export {
+  POST_EMAIL_CONFIRMATION,
+  POST_EMAIL_CONFIRMATION_SUCCESS,
+  POST_EMAIL_CONFIRMATION_FAILURE,
+  UPDATE_RSVP_STATUS
+};
 
 let postEmailConfirmationRequest = () => {
   return {
@@ -24,10 +32,18 @@ let postEmailConfirmationRequestFailure = () => {
   };
 }
 
+let updateRsvpStatus = (rsvpStatus) => {
+  return {
+    type: UPDATE_RSVP_STATUS,
+    rsvpStatus
+  }
+}
+
 let postEmailConfirmation = () => {
   return (dispatch, getState) => {
     let fields = getState().form.emailConfirmation.values
     let token = getState().emailConfirmation.guest.token
+    dispatch(updateRsvpStatus(fields.rsvp));
     dispatch(postEmailConfirmationRequest());
 
     let payload = JSON.stringify(
@@ -73,12 +89,6 @@ let postEmailConfirmation = () => {
       throw new SubmissionError({'_error': error});
     })
   }
-};
-
-export {
-  POST_EMAIL_CONFIRMATION,
-  POST_EMAIL_CONFIRMATION_SUCCESS,
-  POST_EMAIL_CONFIRMATION_FAILURE
 };
 
 export {

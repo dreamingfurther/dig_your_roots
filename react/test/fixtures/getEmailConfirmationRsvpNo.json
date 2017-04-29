@@ -2,10 +2,10 @@
   "guest": {
     "first_name": "Priscilla",
     "last_name": "Tengdin",
-    "plus_one_invited": true,
+    "plus_one_invited": false,
     "id": 72,
     "token": "1234",
-    "rsvp": null
+    "rsvp": false
   },
   "event": {
     "name": "Ceremony & Dinner",
@@ -14,7 +14,7 @@
     "city": "Marathon",
     "state": "FL",
     "rsvp_description": "Join our celebration of vows in the scenic Florida Keys!",
-    "food_options": false,
+    "food_options": true,
     "details": {
       "Address": "Sunset Beach Park",
       "Logistics": "Here's some logistical details you should know.",
