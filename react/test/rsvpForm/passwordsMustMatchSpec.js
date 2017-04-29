@@ -18,7 +18,7 @@ describe('user visits Rsvp page for event without food', () => {
 
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
-        expect(pageText).toMatch("What's their name?")
+        expect(pageText).toMatch("What is their name?")
 
         let submitButton = page.findWhere(n => {
           return n.type() === 'button' && n.text() === 'Send RSVP';
@@ -55,7 +55,7 @@ describe('user visits Rsvp page for event without food', () => {
 
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
-        expect(pageText).toMatch("What's their name?")
+        expect(pageText).toMatch("What is their name?")
 
         let submitButton = page.findWhere(n => {
           return n.type() === 'button' && n.text() === 'Send RSVP';

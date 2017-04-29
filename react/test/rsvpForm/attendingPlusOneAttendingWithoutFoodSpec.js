@@ -18,14 +18,14 @@ describe('user visits Rsvp page for event without food', () => {
         expect(pageText).toMatch('Hi Priscilla!')
         expect(pageText).toMatch('Will you join us?')
         expect(pageText).toMatch('plus one')
-        expect(pageText).not.toMatch("What's their name?")
+        expect(pageText).not.toMatch("What is their name?")
         expect(pageText).not.toMatch('Is there anything we should know')
         expect(pageText).not.toMatch('Sorry to miss you!')
 
         page.find('input #rsvp-guest-yes').simulate('change', {target: { value: 'Yes'}});
         pageText = page.text();
 
-        expect(pageText).toMatch("What's their name?")
+        expect(pageText).toMatch("What is their name?")
         expect(pageText).toMatch('Is there anything we should know')
 
         done();
@@ -38,7 +38,7 @@ describe('user visits Rsvp page for event without food', () => {
 
         let pageText = page.text();
         expect(pageText).not.toMatch('Sorry to miss you!')
-        expect(pageText).toMatch("What's their name?")
+        expect(pageText).toMatch("What is their name?")
 
         let submitButton = page.findWhere(n => {
           return n.type() === 'button' && n.text() === 'Send RSVP';

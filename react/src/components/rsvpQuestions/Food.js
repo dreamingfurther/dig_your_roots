@@ -14,7 +14,7 @@ const renderField = ({ input, type, id, label }) => (
 const Food = () => {
   return(
     <div>
-      <h1>What main did would you like?</h1>
+      <h1>What main entre would you like?</h1>
       <Field
         label="Beef Tenderloin."
         name="foodChoice"
