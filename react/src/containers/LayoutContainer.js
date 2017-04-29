@@ -1,7 +1,8 @@
-import Cookies from 'js-cookie';
 import React, { Component }  from 'react';
+import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { push } from 'react-router-redux';
 import { Row, Column } from 'react-foundation';
 import { railsAssetImagePath } from './../constants/railsAssetImagePath';
 import { postAuthorizeRequestSuccess, postAuthorizeRequestFailure } from '../actions/postAuthorize';
@@ -24,25 +25,40 @@ class LayoutContainer extends Component {
     Cookies.remove('userData')
     this.props.clearUserData();
     let storedUserData = Cookies.get('userData');
+    this.props.redirectUserToWelcome()
   }
 
   render() {
-    let eventsLink, photosLink, signOutLink;
+    let eventsLink, signOutLink, titleTextAndImage;
     if(this.props.userLoggedIn) {
       eventsLink = <Link to='/events' >Events </Link>;
-      photosLink = <Link to='/events' > Photos</Link>;
       signOutLink = <Link id="sign-out-link" onClick={ this.signOut }> Sign Out</Link>
+
+      titleTextAndImage =
+      (
+        <h1>
+          Jesse
+          <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          David
+        </h1>
+      )
+    } else {
+      titleTextAndImage =
+      (
+        <div>
+          <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+          <h1> Jesse & David </h1>
+        </div>
+      )
     }
 
     return(
       <div>
         <div className="top-bar small-nav">
           <div className="top-bar-title text-center">
-            <img src={railsAssetImagePath("anchor-white.png")}></img>
-            <h1>Jesse & David</h1>
+            { titleTextAndImage }
             <div>
               { eventsLink }
-              { photosLink }
               { signOutLink }
             </div>
           </div>
@@ -68,7 +84,8 @@ let mapStateToProps = (store) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     loadUserData: (userData) => { dispatch(postAuthorizeRequestSuccess(userData)) },
-    clearUserData: () => { dispatch(postAuthorizeRequestFailure()) }
+    clearUserData: () => { dispatch(postAuthorizeRequestFailure()) },
+    redirectUserToWelcome: () => { dispatch(push('/')) }
   }
 }
 

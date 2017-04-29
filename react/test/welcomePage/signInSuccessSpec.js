@@ -47,7 +47,6 @@ describe('user visits welcome page', () => {
 
       expect(page.text()).not.toMatch('Fill in your information');
       expect(page.text()).toMatch('Events');
-      expect(page.text()).toMatch('Photos');
 
       clickOn('#sign-out-link', page);
       done();

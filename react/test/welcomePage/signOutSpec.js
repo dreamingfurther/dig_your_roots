@@ -3,11 +3,10 @@ describe('user signs in through welcome page', () => {
     stubGlobalFetch({
       '/api/v1/authorize':  { POST: ['postAuthorizeSuccessResponse', 200] }
     });
-
-    page = mountReactAppAt('/')
   });
 
   it('can sign out', done => {
+    page = mountReactAppAt('/')
     clickOn('#toggle-sign-in-form', page);
 
     let signInButton = page.find('#sign-in-button');
@@ -21,8 +20,21 @@ describe('user signs in through welcome page', () => {
 
       expect(page.text()).toMatch('Sign In');
       expect(page.text()).not.toMatch('Events');
-      expect(page.text()).not.toMatch('Photos');
       done();
     }, 0)
   });
+
+  it('redirects to home page', () => {
+    let user = {
+      "first_name": "bob", "last_name": "tester",
+      "email": "bob@tester.com", "phone": "123-123-1234",
+      "admin": false
+    }
+    Cookies.set('userData', user);
+    page = mountReactAppAt('/events');
+    clickOn('#sign-out-link', page)
+
+    expect(page.text()).not.toMatch('Event Index Page');
+    expect(page.text()).toMatch('Sign In');
+  })
 });

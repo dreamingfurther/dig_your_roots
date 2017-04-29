@@ -42,6 +42,7 @@ let postAuthorize = () => {
       } else {
         dispatch(postAuthorizeRequestSuccess(data));
         Cookies.set('userData', data);
+        window.scrollTo(0, 0);
         return data;
       }
     });

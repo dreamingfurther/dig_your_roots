@@ -33,7 +33,8 @@ Object.assign(global, {
   stubGlobalFetch,
   mountReactAppAt,
   store,
-  page
+  page,
+  Cookies
 });
 
 beforeEach(() => {
