@@ -29,10 +29,11 @@ class LayoutContainer extends Component {
   }
 
   render() {
-    let eventsLink, signOutLink, titleTextAndImage;
+    let eventsLink, signOutLink, titleTextAndImage, vipsLink;
     if(this.props.userLoggedIn) {
       eventsLink = <Link to='/events' >Events </Link>;
       signOutLink = <Link id="sign-out-link" onClick={ this.signOut }> Sign Out</Link>
+      vipsLink = <Link to='/vips'> VIPs</Link>
 
       titleTextAndImage =
       (
@@ -64,6 +65,7 @@ class LayoutContainer extends Component {
             <div>
               { eventsLink }
               { signOutLink }
+              { vipsLink }
             </div>
           </div>
         </div>

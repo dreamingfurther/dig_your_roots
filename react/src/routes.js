@@ -7,6 +7,7 @@ import RsvpFormPage from './pages/RsvpFormPage';
 import RsvpThankYouPage from './pages/RsvpThankYouPage';
 import EventsIndexPage from './pages/EventsIndexPage';
 import EventShowPage from './pages/EventShowPage';
+import VipsPage from './pages/VipsPage';
 
 let routes = (
   <Route path="/" component={ LayoutContainer }>
@@ -15,6 +16,7 @@ let routes = (
     <Route path="/thank_you/:token" component={ RsvpThankYouPage } />
     <Route path="/events" component={ EventsIndexPage } />
     <Route path="/events/:id" component={ EventShowPage } />
+    <Route path="/vips" component={ VipsPage } />
   </Route>
 );
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { Link } from 'react-router';
 import { getUserEvents } from '../actions/getUserEvents';
 import EventDetails from '../components/EventDetails';
