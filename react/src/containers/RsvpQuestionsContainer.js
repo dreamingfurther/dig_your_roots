@@ -9,7 +9,9 @@ class RsvpQuestionsContainer extends Component {
   }
 
   componentDidUpdate() {
-    window.scrollTo(0, 100000);
+    if(this.props.attending == 'Yes') {
+      window.scrollTo(0, 100000);
+    }
   }
 
   render() {
@@ -38,7 +40,7 @@ class RsvpQuestionsContainer extends Component {
 }
 
 let mapStateToProps = (store) => {
-  let formValues = { rsvp: false };
+  let formValues = { rsvp: null };
   if(store.form.emailConfirmation.values != undefined){
     formValues.rsvp             = store.form.emailConfirmation.values.rsvp
     formValues.error            = store.form.emailConfirmation.error

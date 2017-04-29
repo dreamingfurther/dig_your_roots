@@ -39,6 +39,7 @@ describe('user visits Rsvp page for event', () => {
 
         setTimeout(() => {
           expect(page.text()).toMatch('Thank you for your RSVP');
+          expect(page.text()).not.toMatch('Events');
           expect(fetch).toHaveBeenCalledWith(
             '/api/v1/email_confirmation/1234',
             {
@@ -48,7 +49,7 @@ describe('user visits Rsvp page for event', () => {
               body: JSON.stringify({
                 id: '1234',
                 answer: {
-                  rsvp: 'No',
+                  rsvp: false,
                   notes: 'notes'
                 }
               })

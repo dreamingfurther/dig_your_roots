@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Column } from 'react-foundation';
 import { reduxForm } from 'redux-form';
 import { push } from 'react-router-redux';
-import { postEmailConfirmation } from '../actions/postEmailConfirmation';
+import { postEmailConfirmationAccept, postEmailConfirmationDecline } from '../actions/postEmailConfirmation';
 import RsvpQuestionsContainer from '../containers/RsvpQuestionsContainer';
 import RsvpWelcomeContainer from '../containers/RsvpWelcomeContainer';
 import RsvpEventDetailsContainer from '../containers/RsvpEventDetailsContainer';
@@ -23,10 +23,17 @@ let validate = (fields) => {
 }
 
 let onSubmit = (fields, dispatch) => {
-  dispatch(postEmailConfirmation())
-  .then((token) => {
-    dispatch(push(`/thank_you/${token}`));
-  });
+  if(fields.rsvp == "No") {
+    dispatch(postEmailConfirmationDecline())
+    .then((token) => {
+      dispatch(push(`/thank_you/${token}`));
+    });
+  } else {
+    dispatch(postEmailConfirmationAccept())
+    .then((token) => {
+      dispatch(push(`/thank_you/${token}`));
+    });
+  }
 }
 
 const RsvpForm = (props) => {

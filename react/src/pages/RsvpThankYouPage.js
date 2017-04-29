@@ -20,6 +20,10 @@ class RsvpThankYouPage extends Component {
     }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     let rsvpNextSteps;
     if(this.props.rsvp == true) {

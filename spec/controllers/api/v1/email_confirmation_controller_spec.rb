@@ -13,7 +13,7 @@ describe Api::V1::EmailConfirmationController do
   describe '#update' do
     let(:event_answer_data) do
       {
-        rsvp: "Yes",
+        rsvp: true,
         plus_one_attending: "Yes",
         plus_one_fullname: 'Bob Jones',
         notes: "I like to sing a lot.",

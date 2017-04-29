@@ -72,7 +72,7 @@ describe('user visits Rsvp page for event without food', () => {
               body: JSON.stringify({
                 id: '1234',
                 answer: {
-                  rsvp: 'Yes',
+                  rsvp: true,
                   plus_one_attending: "Yes",
                   plus_one_fullname: "Josh Something",
                   notes: 'notes',

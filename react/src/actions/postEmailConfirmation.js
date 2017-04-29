@@ -39,18 +39,19 @@ let updateRsvpStatus = (rsvpStatus) => {
   }
 }
 
-let postEmailConfirmation = () => {
+let postEmailConfirmationAccept = () => {
   return (dispatch, getState) => {
     let fields = getState().form.emailConfirmation.values
     let token = getState().emailConfirmation.guest.token
-    dispatch(updateRsvpStatus(fields.rsvp));
+    let rsvpBoolean = fields.rsvp == "Yes" ? true : null
+    dispatch(updateRsvpStatus(rsvpBoolean));
     dispatch(postEmailConfirmationRequest());
 
     let payload = JSON.stringify(
       {
         id: token,
         answer: {
-          rsvp: fields.rsvp,
+          rsvp: rsvpBoolean,
           plus_one_attending: fields.plusOneAttending,
           plus_one_fullname: fields.plusOneName,
           plus_one_food_choice: fields.foodChoicePlusOne,
@@ -75,7 +76,7 @@ let postEmailConfirmation = () => {
       if (ok || status === 401) {
         return response.json();
       } else {
-        return { error: `postAuth: ${status} (${statusText})`};
+        return { error: `postEmailConfirmation: ${status} (${statusText})`};
       }
     })
     .then(data => {
@@ -89,10 +90,51 @@ let postEmailConfirmation = () => {
       throw new SubmissionError({'_error': error});
     })
   }
-};
+}
+
+let postEmailConfirmationDecline = () => {
+  return (dispatch, getState) => {
+    let fields = getState().form.emailConfirmation.values
+    let token = getState().emailConfirmation.guest.token
+    let rsvpBoolean = fields.rsvp == "No" ? false : null
+    dispatch(updateRsvpStatus(rsvpBoolean));
+    let payload = JSON.stringify(
+      {
+        id: token,
+        answer: {
+          rsvp: rsvpBoolean,
+          notes: fields.notes
+        }
+      }
+    )
+    return fetch(`/api/v1/email_confirmation/${token}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload
+    })
+    .then(response => {
+      let { ok, status, statusText } = response;
+      if (ok || status === 401) {
+        return response.json();
+      } else {
+        return { error: `postEmailConfirmation: ${status} (${statusText})`};
+      }
+    })
+    .then(data => {
+      dispatch(postEmailConfirmationRequestSuccess());
+      return token;
+    })
+    .catch(error => {
+      dispatch(postEmailConfirmationRequestFailure())
+      throw new SubmissionError({'_error': error});
+    })
+  }
+}
 
 export {
-  postEmailConfirmation,
+  postEmailConfirmationDecline,
+  postEmailConfirmationAccept,
   postEmailConfirmationRequest,
   postEmailConfirmationRequestSuccess,
   postEmailConfirmationRequestFailure

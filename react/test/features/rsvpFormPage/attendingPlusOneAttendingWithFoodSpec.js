@@ -77,7 +77,7 @@ describe('user visits Rsvp page for event with food', () => {
               body: JSON.stringify({
                 id: '1234',
                 answer: {
-                  rsvp: 'Yes',
+                  rsvp: true,
                   plus_one_attending: "Yes",
                   plus_one_fullname: "Josh Something",
                   plus_one_food_choice: 'chicken',
@@ -94,6 +94,9 @@ describe('user visits Rsvp page for event with food', () => {
 
           expect(page.text()).not.toMatch('Fill in your information');
           expect(page.text()).toMatch('Events');
+          expect(page.text()).toMatch('Home Page');
+          expect(page.text()).toMatch('Ceremony & Dinner Details');
+          expect(page.text()).toMatch('All Your Events');
           done();
         }, 0)
       }, 0)
