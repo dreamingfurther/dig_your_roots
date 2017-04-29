@@ -50,9 +50,11 @@ class Api::V1::EmailConfirmationController < ApplicationController
         last_name: user.last_name,
         plus_one_invited: attendee.plus_one_invited,
         id: user.id,
-        token: params["id"]
+        token: params["id"],
+        rsvp: attendee.rsvp
       },
       event: {
+        id: event.id,
         name: event.name,
         date: event.date_string,
         time: event.time,
