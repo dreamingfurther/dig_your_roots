@@ -63,9 +63,9 @@ class LayoutContainer extends Component {
           <div className="top-bar-title text-center">
             { titleTextAndImage }
             <div>
+              { vipsLink }
               { eventsLink }
               { signOutLink }
-              { vipsLink }
             </div>
           </div>
         </div>
