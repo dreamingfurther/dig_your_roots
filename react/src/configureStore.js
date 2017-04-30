@@ -7,6 +7,7 @@ import { reducer as formReducer } from 'redux-form';
 import emailConfirmation from './reducers/emailConfirmation';
 import selectedVip from './reducers/selectedVip';
 import showDetails from './reducers/showDetails';
+import showForgotPasswordForm from './reducers/showForgotPasswordForm';
 import showSignInForm from './reducers/showSignInForm';
 import user from './reducers/user';
 import userLoggedIn from './reducers/userLoggedIn';
@@ -17,6 +18,7 @@ let configureStore = () => {
       emailConfirmation,
       selectedVip,
       showDetails,
+      showForgotPasswordForm,
       showSignInForm,
       user,
       userLoggedIn,

@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "email" %>
+
+<div id="email-container">
+  <div class="text-center">
+    <p>
+      This is a password reset for: <%= @user.first_name %>
+    </p>
+    <p>
+      Please follow the link below to reset your password.
+    </p>
+    <p>
+      If you did not request this email please ignore and/or report immediately to the site maintainer.
+    </p>
+    <div class="rsvp-section">
+      <a href=<%= password_reset_url(@uuid) %>>
+        Reset Password
+      </a>
+    </div>
+  </div>
+</div>

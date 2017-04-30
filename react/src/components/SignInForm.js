@@ -2,7 +2,7 @@ import React  from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Row, Column } from 'react-foundation';
 import { SubmissionError } from 'redux-form';
-
+import { Link } from 'react-router';
 import { postAuthorize } from '../actions/postAuthorize';
 
 let onSubmit = (fields, dispatch) => {
@@ -42,6 +42,9 @@ const SignInForm = (props) => {
           </button>
           <div>
             { props.error && <span style={{ color: 'red' }}>{ props.error }</span> }
+          </div>
+          <div>
+            <Link to='/forgot_password' id='forgot-password-link'>Forgot Password</Link>
           </div>
         </form>
       </Column>

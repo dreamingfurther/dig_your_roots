@@ -13,6 +13,7 @@ describe('user visits welcome page', () => {
 
     clickOn('#toggle-sign-in-form', page);
     expect(page.text()).toMatch('Fill in your information');
+    expect(page.text()).toMatch('Forgot Password');
 
     clickOn('#toggle-sign-in-form', page);
     expect(page.text()).not.toMatch('Fill in your information');
