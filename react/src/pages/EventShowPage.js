@@ -33,7 +33,7 @@ class EventShowPage extends Component {
     return(
       <div id="event-show-page">
         <h1>
-          <Link to='/events'>You're Events: </Link>
+          <Link to='/events'>Your Events: </Link>
           { eventName }
         </h1>
         { eventDetails }
