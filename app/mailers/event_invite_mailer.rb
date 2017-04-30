@@ -8,7 +8,7 @@ class EventInviteMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Placeholder Subject to invite #{@user.fullname}"
+      subject: "RSVP #{@event.name} Invitation for the marriage of Jesse and David"
     )
   end
 end
