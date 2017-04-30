@@ -3,7 +3,7 @@ describe('user visits the events page', () => {
     page = mountReactAppAt('/vips');
 
     expect(page.text()).toMatch('Sign In');
-    expect(page.text()).not.toMatch("VIPs");
+    expect(page.text()).not.toMatch("Meet the Wedding Party");
   });
 
   it('can view when signed in', done => {
@@ -15,7 +15,7 @@ describe('user visits the events page', () => {
     Cookies.set('userData', user);
     page = mountReactAppAt('/vips');
     setTimeout(() => {
-      expect(page.text()).toMatch("VIPs");
+      expect(page.text()).toMatch("Meet the Wedding Party");
       done();
     }, 0)
   });

@@ -1,0 +1,72 @@
+@import "variables";
+
+#vips-page{
+  img{
+    object-fit: cover;
+  }
+
+  .vip-small-profile.selected{
+    height: 375px;
+    margin-top: 20px;
+  }
+
+  .vip-list-space{
+    margin-bottom: 40px;
+  }
+
+  .vip-name-list{
+    h1{
+      font-size: 25px;
+      margin: 0;
+      padding: 5px 0px;
+    }
+  }
+
+  .vip-name-tile{
+    background-color: $light-grey;
+    margin-bottom: 30px;
+
+    h1{
+      color: $navy;
+    }
+
+    &:hover{
+      background-color: $aqua-blue;
+    }
+  }
+
+  .vip-name-tile.selected{
+    background-color: $aqua-blue;
+
+    h1{
+      color: $lt-off-white;
+    }
+  }
+
+  .vip-image{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 10px;
+  }
+
+  .vip-image-title-section{
+    display: flex;
+  }
+
+  .vip-header-section{
+    padding-top: 45px;
+  }
+
+  .vip-title{
+    font-weight: bold;
+    font-family: "Great Vibes", cursive;
+    font-size: 27px;
+    margin-bottom: 5px;
+  }
+
+  .vip-name{
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
