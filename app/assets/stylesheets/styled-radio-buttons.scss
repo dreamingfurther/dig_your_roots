@@ -1,20 +1,14 @@
 @import "variables";
 
-$light-green: #84ce15;
-$light-grey: #eeeeee;
-$blue: #37becc;
-
 @mixin fancy-checkbox(
-  $checkbox-size: 60px,
-  $check-color: $light-green,
+  $checkbox-size: 80px,
   $box-bg-color: transparent,
   $box-border-color: #ddd,
   $background-color: $light-grey,
-  $hover-check-color: $light-green,
   $checked-box-bg-color: transparent,
   $checked-box-border-color: $box-border-color,
-  $checked-label-color: auto,
-  $checked-background-color: $blue
+  $checked-label-color: $lt-off-white,
+  $checked-background-color: $navy
 ) {
   display: block;
   vertical-align: middle;
@@ -28,7 +22,7 @@ $blue: #37becc;
     left: 0;
     right: 0;
     bottom: -12px;
-    height: calc(#{$checkbox-size} - 10px);
+    height: calc(#{$checkbox-size} - 30px);
     background-color: $background-color;
   }
 
@@ -38,6 +32,7 @@ $blue: #37becc;
     z-index: 1;
     display: inline-block;
     vertical-align: middle;
+    color: $navy;
   }
 
   input[type="checkbox"],
@@ -46,7 +41,7 @@ $blue: #37becc;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    height: 100%;
+    height: 50px;
     position: absolute;
     top: 0;
     left: 0;
@@ -58,7 +53,7 @@ $blue: #37becc;
     }
 
     &:hover + .background {
-      background-color: $blue;
+      background-color: $aqua-blue;
     }
   }
 

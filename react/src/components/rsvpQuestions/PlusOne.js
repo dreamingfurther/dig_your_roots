@@ -6,7 +6,7 @@ const renderField = ({ input, type, id, label }) => (
   <div className="fancy-checkbox">
     <input {...input} type={type} id={id}/>
     <div className="background"></div>
-    <label>{ label }</label>
+    <label className="label-text">{ label }</label>
   </div>
 )
 
