@@ -1,5 +1,8 @@
 <div id="rails-app">
   <div class="row rails-layout">
+    <%= link_to(admin_sign_in_path(1), method: :delete) do %>
+      Sign Out
+    <% end %>
     <div class="columns small-12 medium-10 medium-offset-1 small-opaque">
       <div class="columns small-12 medium-10 medium-offset-1">
         <div class="header-padding"></div>

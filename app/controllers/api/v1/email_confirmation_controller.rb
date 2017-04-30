@@ -43,15 +43,15 @@ class Api::V1::EmailConfirmationController < ApplicationController
       EventQuestionMailer.new_question(
         user: user, event: event,
         notes: params["answer"]["notes"],
-        question: params["answer"]["questions"], 
+        question: params["answer"]["questions"],
         rsvp: true
       ).deliver_now
     else
       EventQuestionMailer.new_question(
         user: user, event: event,
         notes: params["answer"]["notes"],
-        question: params["answer"]["questions"], 
-        rsvp: true
+        question: params["answer"]["questions"],
+        rsvp: false
       ).deliver_now
     end
   end

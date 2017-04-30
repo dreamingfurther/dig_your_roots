@@ -1,0 +1,17 @@
+<%= render '/layouts/rails_layout' do %>
+  <h1>
+    Admin Sign In
+  </h1>
+  <%= form_for(@user_sign_in, as: :post, url: admin_sign_ins_path) do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit 'Sign In' %>
+    <div>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+<% end %>
