@@ -37,10 +37,10 @@ class LayoutContainer extends Component {
 
       titleTextAndImage =
       (
-        <h1>
+        <h1 className="man">
           Jesse
           <Link to="/">
-            <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+            <img className="mhs mbs" src={railsAssetImagePath("anchor-white.png")}></img>
           </Link>
           David
         </h1>
@@ -52,7 +52,7 @@ class LayoutContainer extends Component {
           <Link to="/">
             <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
           </Link>
-          <h1> Jesse & David </h1>
+          <h1 className="man"> Jesse & David </h1>
         </div>
       )
     }
