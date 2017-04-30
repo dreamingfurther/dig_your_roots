@@ -3,6 +3,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
 
   def update
     if attendee.present? && attendee_updated && user_updated
+      send_emails
       render json: user, status: 201
     else
       render json: { error: "No attendee found for that id" }, status: 422
@@ -23,7 +24,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
     notes = attendee.user_notes
 
     attendee.update_attributes(
-      rsvp:                 params["answer"]["rsvp"],
+      rsvp:                 convert_to_boolean(params["answer"]["rsvp"]),
       plus_one_attending:   convert_to_boolean(params["answer"]["plus_one_attending"]),
       plus_one_fullname:    params["answer"]["plus_one_fullname"],
       plus_one_food_choice: params["answer"]["plus_one_food_choice"],
@@ -37,9 +38,27 @@ class Api::V1::EmailConfirmationController < ApplicationController
     user.update_attributes(phone: params["answer"]["phone"]) && user.save
   end
 
+  def send_emails
+    if(convert_to_boolean(params["answer"]["rsvp"]))
+      EventQuestionMailer.new_question(
+        user: user, event: event,
+        notes: params["answer"]["notes"],
+        question: params["answer"]["questions"], 
+        rsvp: true
+      ).deliver_now
+    else
+      EventQuestionMailer.new_question(
+        user: user, event: event,
+        notes: params["answer"]["notes"],
+        question: params["answer"]["questions"], 
+        rsvp: true
+      ).deliver_now
+    end
+  end
+
   def convert_to_boolean(str)
-    return true if str == "Yes"
-    return false if str == "No"
+    return true if (str == "Yes" || str == "true" || str == true)
+    return false if (str == "No" || str == "false" || str == false)
   end
 
   def data

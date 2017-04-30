@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'dtjrnorris@gmail.com'
+  ADMIN_HOME_EMAIL = 'dtjrnorris@gmail.com'
+
+  default from: ADMIN_HOME_EMAIL
   layout 'mailer'
 end

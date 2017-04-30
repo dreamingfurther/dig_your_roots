@@ -11,9 +11,11 @@ describe Api::V1::EmailConfirmationController do
   let!(:attendee) { create(:attendee, event: event, user: user, plus_one_invited: false) }
 
   describe '#update' do
+    let(:rsvp_answer) { true }
+
     let(:event_answer_data) do
       {
-        rsvp: true,
+        rsvp: rsvp_answer,
         plus_one_attending: "Yes",
         plus_one_fullname: 'Bob Jones',
         notes: "I like to sing a lot.",
@@ -27,12 +29,42 @@ describe Api::V1::EmailConfirmationController do
     end
 
     before do
+      event_question_mailer = double
+      allow(EventQuestionMailer).to receive(:new_question).and_return(event_question_mailer)
+      allow(event_question_mailer).to receive(:deliver_now)
+
       post :update, params: { id: attendee_id, answer: event_answer_data }
       attendee.reload
     end
 
     context 'valid attendee ID' do
       let(:attendee_id) { attendee.to_param }
+
+      context 'RSVP answer is yes' do
+        it 'sends an email with the question text' do
+          expect(EventQuestionMailer).to have_received(:new_question).with(
+            user: user,
+            event: event,
+            notes: 'I like to sing a lot.',
+            question: 'What happens with this question?',
+            rsvp: true
+          )
+        end
+      end
+
+      context 'RSVP answer is no' do
+        let(:rsvp_answer) { false }
+
+        it 'sends an email with the question text' do
+          expect(EventQuestionMailer).to have_received(:new_question).with(
+            user: user,
+            event: event,
+            notes: 'I like to sing a lot.',
+            question: 'What happens with this question?',
+            rsvp: false
+          )
+        end
+      end
 
       it 'returns the user data' do
         expect(JSON.parse(response.body)["email"]).to eq(
