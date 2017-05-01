@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { push } from 'react-router-redux';
 
 const POST_AUTHORIZE = "POST_AUTHORIZE"
 const POST_AUTHORIZE_SUCCESS = "POST_AUTHORIZE_SUCCESS"
@@ -42,7 +43,7 @@ let postAuthorize = () => {
       } else {
         dispatch(postAuthorizeRequestSuccess(data));
         Cookies.set('userData', data);
-        window.scrollTo(0, 0);
+        dispatch(push('/'));
         return data;
       }
     });

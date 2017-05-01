@@ -20,3 +20,22 @@
     }
   }
 }
+
+.flash-message-container {
+  background-color: $aqua-blue;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 20px;
+  padding: 15px;
+  z-index: 5;
+
+  .close-flash {
+    float: right;
+
+    &:hover {
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+}

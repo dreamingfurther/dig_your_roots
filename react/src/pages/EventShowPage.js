@@ -56,7 +56,7 @@ let mapStateToProps = (store, ownProps) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    redirectUserToWelcome: () => { dispatch(push('/')) },
+    redirectUserToWelcome: () => { dispatch(push('/?needToSignIn')) },
     getUserEvents: (userId) => { dispatch(getUserEvents(userId)) }
   }
 }

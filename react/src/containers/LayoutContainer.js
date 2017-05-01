@@ -6,6 +6,7 @@ import { push } from 'react-router-redux';
 import { Row, Column } from 'react-foundation';
 import { railsAssetImagePath } from './../constants/railsAssetImagePath';
 import { postAuthorizeRequestSuccess, postAuthorizeRequestFailure } from '../actions/postAuthorize';
+import FlashMessage from '../components/FlashMessage';
 
 class LayoutContainer extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class LayoutContainer extends Component {
 
     return(
       <div>
+        < FlashMessage fromPage={this.props.fromPage} />
         <div className="top-bar small-nav">
           <div className="top-bar-title text-center">
             { titleTextAndImage }
