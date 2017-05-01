@@ -72,7 +72,7 @@ let mapStateToProps = (store) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    redirectUserToWelcome: () => { dispatch(push('/')) },
+    redirectUserToWelcome: () => { dispatch(push('/?needToSignIn')) },
     selectVip: (name) => { dispatch(selectVipProfile(name)) }
   }
 }
