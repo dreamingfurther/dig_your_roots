@@ -1,6 +1,6 @@
 @import "variables";
 
-.small-nav {
+.nav-wrapper {
   background: $navy; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Opera 11.1 to 12.0 */
@@ -9,7 +9,6 @@
 
   height: 100%;
   padding-top: 20px;
-  padding-bottom: 10px;
 
   h1 {
     padding: 15px 0 0 0;
@@ -17,6 +16,6 @@
   }
 
   img {
-    height: 50px;
+    height: 65px;
   }
 }

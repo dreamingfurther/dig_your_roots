@@ -1,4 +1,9 @@
+@import "variables";
+
 .top-bar-title {
+  line-height: normal;
+  letter-spacing: 3px;
+
   a {
     margin-right: 5px;
     margin-left: 5px;

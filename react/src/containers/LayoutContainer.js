@@ -51,15 +51,15 @@ class LayoutContainer extends Component {
         <div>
           <Link to="/">
             <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+            <h1 className="man"> Jesse & David </h1>
           </Link>
-          <h1 className="man"> Jesse & David </h1>
         </div>
       )
     }
 
     return(
       <div>
-        <div className="top-bar small-nav">
+        <div className="top-bar nav-wrapper">
           <div className="top-bar-title text-center">
             { titleTextAndImage }
             <div>

@@ -21,9 +21,9 @@ const SignInForm = (props) => {
               name='email'
               component='input'
               type='text'
-              value='Email'
+              value='email'
               id='sign-in-email'
-              placeholder='Email'
+              placeholder='enter your email'
             />
           <Field
             name='password'
@@ -44,7 +44,7 @@ const SignInForm = (props) => {
             { props.error && <span style={{ color: 'red' }}>{ props.error }</span> }
           </div>
           <div>
-            <Link to='/forgot_password' id='forgot-password-link'>Forgot Password</Link>
+            <Link to='/forgot_password' id='forgot-password-link'>Forget your password?</Link>
           </div>
         </form>
       </Column>
