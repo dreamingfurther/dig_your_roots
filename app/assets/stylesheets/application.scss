@@ -33,6 +33,11 @@ h1 {
   font-size: .8em;
 }
 
+.script-font {
+  font-family: $script-font;
+  letter-spacing: 2px;
+}
+
 .error-text {
   color: red;
 }
