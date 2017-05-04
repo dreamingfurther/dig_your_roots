@@ -14,14 +14,13 @@
   }
 
   ul.menu {
-    margin-bottom: 5px;
-
     li {
       display: -moz-inline-box;
       display: inline-block;
       *display: inline;
       *zoom: 1;
-      margin-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 5px;
       width: 30%;
 
       a {

@@ -48,12 +48,13 @@ class LayoutContainer extends Component {
     } else {
       titleTextAndImage =
       (
-        <div>
+        <h1 className="man mbl pbl">
+          Jesse
           <Link to="/">
-            <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
-            <h1 className="man"> Jesse & David </h1>
+            <img className="mhs mbs" src={railsAssetImagePath("anchor-white.png")}></img>
           </Link>
-        </div>
+          David
+        </h1>
       )
     }
 

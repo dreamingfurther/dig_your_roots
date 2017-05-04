@@ -8,7 +8,7 @@ describe('user visits welcome page', () => {
   });
 
   it('can toggle the sign in form', () => {
-    expect(page.text()).toMatch('Jesse & David');
+    expect(page.text()).toMatch('JesseDavid');
     expect(page.text()).not.toMatch('Fill in your information');
 
     clickOn('#toggle-sign-in-form', page);
