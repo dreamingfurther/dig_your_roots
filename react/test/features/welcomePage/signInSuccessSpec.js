@@ -49,7 +49,8 @@ describe('user visits welcome page', () => {
       expect(page.text()).not.toMatch('Fill in your information');
       expect(page.text()).toMatch('Events');
 
-      clickOn('#sign-out-link', page);
+      let deskTopNav = page.find('.text-nav-links');
+      clickOn('#sign-out-link', deskTopNav)
       done();
     }, 0)
   });
