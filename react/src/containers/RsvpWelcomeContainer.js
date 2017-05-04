@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { getEmailConfirmation } from '../actions/getEmailConfirmation';
 
 class RsvpWelcomeContainer extends Component {
@@ -9,6 +10,12 @@ class RsvpWelcomeContainer extends Component {
 
   componentDidMount() {
     this.props.getEmailConfirmation(this.props.token);
+  }
+
+  componentDidUpdate() {
+    if(this.props.rsvp != null) {
+      this.props.redirectToThankYouPage(this.props.token);
+    }
   }
 
   render() {
@@ -25,13 +32,15 @@ let mapStateToProps = (store, ownProps) => {
   return {
     token: ownProps.token,
     firstName: store.emailConfirmation.guest.firstName,
+    rsvp: store.emailConfirmation.guest.rsvp,
     rsvpDescription: store.emailConfirmation.event.rsvpDescription
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    getEmailConfirmation: (token) => { dispatch(getEmailConfirmation(token)) }
+    getEmailConfirmation: (token) => { dispatch(getEmailConfirmation(token)) },
+    redirectToThankYouPage: (token) => { dispatch(push(`/thank_you/${token}?fromRsvpForm`)) }
   }
 }
 

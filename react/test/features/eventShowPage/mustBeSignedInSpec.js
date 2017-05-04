@@ -21,8 +21,8 @@ describe('user visits an event page', () => {
     Cookies.set('userData', user);
     page = mountReactAppAt('/events/43');
     setTimeout(() => {
-      expect(page.text()).toMatch("Your Events");
       expect(page.text()).toMatch("Ceremony & Dinner");
+      expect(page.text()).toMatch("Marathon, FL");
       done();
     }, 0)
   });

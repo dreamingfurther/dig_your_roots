@@ -1,6 +1,40 @@
+@import "variables";
+
 #event-show-page {
-  p {
-    color: black;
-    margin-bottom: 0;
+  white-space: pre-line;
+
+  .event-image{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 10px;
+  }
+
+  .event-description, .selected-details {
+    text-align: left;
+  }
+
+  .event-description {
+    padding: 10px;
+  }
+
+  .selected-details {
+    padding: 0px 10px 10px 10px;
+  }
+
+  .detail-selector {
+    background-color: $light-grey;
+    margin-bottom: 20px;
+    padding: 15px 0px;
+    color: $navy;
+
+    &:hover{
+      background-color: $aqua-blue;
+    }
+  }
+
+  .detail-selector.selected {
+    background-color: $navy;
+    color: $lt-off-white;
   }
 }

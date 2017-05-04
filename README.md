@@ -10,3 +10,5 @@ $ mailcatcher
 
 Go to http://localhost:1080/
 ```
+
+EventDetail `body` can be styled with markdown: http://commonmark.org/help/

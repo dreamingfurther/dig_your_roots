@@ -15,6 +15,7 @@ class Api::V1::EventsController < ApplicationController
         name: event.name,
         date: event.date_string,
         description: event.description,
+        picture: event.picture,
         time: event.time,
         city: event.city,
         state: event.state,
