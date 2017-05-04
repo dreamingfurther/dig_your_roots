@@ -5,10 +5,17 @@ import SignInToggleButton from '../components/SignInToggleButton';
 import { toggleSignInForm } from '../actions/toggleSignInForm';
 
 const SignInFormContainer = (props) => {
-  let signInToggle, signInForm;
+  let underImageText, signInForm;
 
   if(!props.userLoggedIn) {
-    signInToggle = <SignInToggleButton toggleSignInForm={props.toggleSignInForm} showSignInForm={props.showSignInForm}/>;
+    underImageText = <SignInToggleButton toggleSignInForm={props.toggleSignInForm} showSignInForm={props.showSignInForm}/>;
+  } else {
+    underImageText = (
+      <div>
+        <h4 className="script-font">Welcome to our Wedding Site!</h4>
+        <p>Use the navigation bar above to learn more about upcoming events, VIPS, and more!</p>
+      </div>
+    )
   }
   if(props.showSignInForm && !props.userLoggedIn) {
     signInForm = <SignInForm />;
@@ -16,7 +23,7 @@ const SignInFormContainer = (props) => {
 
   return(
     <div className="sign-in-form-container">
-      { signInToggle }
+      { underImageText }
       { signInForm }
     </div>
   )

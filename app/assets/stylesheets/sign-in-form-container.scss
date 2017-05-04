@@ -9,11 +9,13 @@
   }
 
   #toggle-sign-in-form {
-    padding-bottom: 25px;
+    font-family: $script-font;
+    font-size: 2rem;
+    padding-bottom: 20px;
+    letter-spacing: 2px;
   }
 
   .sign-in-button {
-    background-color: $navy;
     margin-top: 15px;
   }
 }

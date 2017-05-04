@@ -19,6 +19,8 @@
 /* Script - font-family: 'Parisienne', cursive; */
 /* Regular - font-family: 'Raleway', sans-serif; */
 @import "variables";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   font-family: $regular-font;
@@ -31,6 +33,11 @@ h1 {
 .regular-font {
   font-family: $regular-font;
   font-size: .8em;
+}
+
+.script-font {
+  font-family: $script-font;
+  letter-spacing: 2px;
 }
 
 .error-text {
