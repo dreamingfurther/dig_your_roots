@@ -20,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "acts_as_hashids"
 gem 'premailer-rails'
 gem 'nokogiri'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'byebug', platform: :mri

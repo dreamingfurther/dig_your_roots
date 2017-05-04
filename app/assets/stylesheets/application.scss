@@ -19,6 +19,8 @@
 /* Script - font-family: 'Parisienne', cursive; */
 /* Regular - font-family: 'Raleway', sans-serif; */
 @import "variables";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   font-family: $regular-font;
