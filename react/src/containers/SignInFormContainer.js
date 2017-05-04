@@ -12,7 +12,6 @@ const SignInFormContainer = (props) => {
   } else {
     underImageText = (
       <div>
-        <h4 className="script-font">Welcome to our Wedding Site!</h4>
         <p>Use the navigation bar above to learn more about upcoming events, VIPS, and more!</p>
       </div>
     )

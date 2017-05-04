@@ -5,10 +5,7 @@ import { Row, Column, Menu, MenuItem } from 'react-foundation';
 const NavBarLinks = (props) => {
   let eventsFA = (<i className="fa fa-calendar-check-o" aria-hidden="true"></i>)
   let vipFA = (
-    <span className="fa-stack">
-      <i className="fa fa-star fa-stack-2x"></i>
-      <i className="fa fa-user fa-stack-1x fa-inverse"></i>
-    </span>
+    <i className="fa fa-star"></i>
   )
   let signOutFA = (<i className="fa fa-sign-out" aria-hidden="true"></i>)
 
