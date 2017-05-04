@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 import { Row, Column } from 'react-foundation';
 import { railsAssetImagePath } from './../constants/railsAssetImagePath';
+import NavBarLinks from './../components/NavBarLinks';
 import { postAuthorizeRequestSuccess, postAuthorizeRequestFailure } from '../actions/postAuthorize';
 import FlashMessage from '../components/FlashMessage';
 
@@ -30,12 +31,9 @@ class LayoutContainer extends Component {
   }
 
   render() {
-    let eventsLink, signOutLink, titleTextAndImage, vipsLink;
-    if(this.props.userLoggedIn) {
-      eventsLink = <Link to='/events' >Events </Link>;
-      signOutLink = <Link id="sign-out-link" onClick={ this.signOut }> Sign Out</Link>
-      vipsLink = <Link to='/vips'> VIPs</Link>
+    let titleTextAndImage, navBarLinks;
 
+    if(this.props.userLoggedIn) {
       titleTextAndImage =
       (
         <h1 className="man">
@@ -46,14 +44,15 @@ class LayoutContainer extends Component {
           David
         </h1>
       )
+      navBarLinks = <NavBarLinks signOut={this.signOut}/>
     } else {
       titleTextAndImage =
       (
         <div>
           <Link to="/">
             <img className="mhs" src={railsAssetImagePath("anchor-white.png")}></img>
+            <h1 className="man"> Jesse & David </h1>
           </Link>
-          <h1 className="man"> Jesse & David </h1>
         </div>
       )
     }
@@ -61,14 +60,10 @@ class LayoutContainer extends Component {
     return(
       <div>
         < FlashMessage fromPage={this.props.fromPage} />
-        <div className="top-bar small-nav">
+        <div className="top-bar small-nav nav-wrapper">
           <div className="top-bar-title text-center">
             { titleTextAndImage }
-            <div>
-              { vipsLink }
-              { eventsLink }
-              { signOutLink }
-            </div>
+            { navBarLinks }
           </div>
         </div>
         <div id="body-container">
