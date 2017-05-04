@@ -6,6 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import emailConfirmation from './reducers/emailConfirmation';
 import selectedVip from './reducers/selectedVip';
+import selectedDetail from './reducers/selectedDetail';
 import showDetails from './reducers/showDetails';
 import showFlash from './reducers/showFlash';
 import showForgotPasswordForm from './reducers/showForgotPasswordForm';
@@ -18,6 +19,7 @@ let configureStore = () => {
     combineReducers({
       emailConfirmation,
       selectedVip,
+      selectedDetail,
       showDetails,
       showFlash,
       showForgotPasswordForm,

@@ -7,6 +7,9 @@ import { postAuthorize } from '../actions/postAuthorize';
 
 let onSubmit = (fields, dispatch) => {
   return dispatch(postAuthorize())
+    .then(data => {
+      window.scrollTo(0, 0);
+    })
     .catch(error => {
       throw new SubmissionError({'_error': error});
     });

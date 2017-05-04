@@ -3,8 +3,11 @@ import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router';
+import Linkify from 'react-linkify';
 import { getUserEvents } from '../actions/getUserEvents';
-import EventDetails from '../components/EventDetails';
+import { selectDetail } from '../actions/selectDetail';
+import EventBasicInfo from '../components/EventBasicInfo';
+import EventDetailSelector from '../components/EventDetailSelector';
 
 class EventShowPage extends Component {
   constructor(props) {
@@ -24,19 +27,14 @@ class EventShowPage extends Component {
   }
 
   render() {
-    let eventName, eventDetails;
-    if(this.props.event != undefined) {
-      eventName = this.props.event.name
-      eventDetails = <EventDetails event={this.props.event} />
-    }
-
     return(
       <div id="event-show-page">
-        <h1>
-          <Link to='/events'>Your Events: </Link>
-          { eventName }
-        </h1>
-        { eventDetails }
+        <EventBasicInfo event={this.props.event} />
+        <EventDetailSelector
+          event         ={ this.props.event }
+          selectedDetail={ this.props.selectedDetail }
+          selectDetail  ={ this.props.selectDetail }
+        />
       </div>
     )
   }
@@ -50,14 +48,16 @@ let mapStateToProps = (store, ownProps) => {
     eventId: parseInt(ownProps.params.id),
     event: event,
     userId: store.user.id,
-    storedUserData: Cookies.get('userData')
+    storedUserData: Cookies.get('userData'),
+    selectedDetail: store.selectedDetail
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
     redirectUserToWelcome: () => { dispatch(push('/?needToSignIn')) },
-    getUserEvents: (userId) => { dispatch(getUserEvents(userId)) }
+    getUserEvents: (userId) => { dispatch(getUserEvents(userId)) },
+    selectDetail: (detail) => { dispatch(selectDetail(detail)) }
   }
 }
 
