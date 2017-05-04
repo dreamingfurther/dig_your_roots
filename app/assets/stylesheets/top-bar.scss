@@ -13,17 +13,32 @@
     font-size: 2.75rem;
   }
 
-  ul.menu li {
-    display: -moz-inline-box;
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    margin-top: 25px;
-    width: 30%;
-    
-    a {
-      color: $medium-grey;
-      font-style: italic;
+  ul.menu {
+    margin-bottom: 5px;
+
+    li {
+      display: -moz-inline-box;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      margin-top: 20px;
+      width: 30%;
+
+      a {
+        color: $medium-grey;
+        font-style: italic;
+      }
+    }
+
+    &.mobile-nav-icons {
+      font-size: 1.6rem;
+
+      .fa-stack-2x {
+        font-size: 1.9rem;
+      }
+      .fa-inverse {
+        color: $navy;
+      }
     }
   }
 }
