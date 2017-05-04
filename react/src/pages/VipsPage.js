@@ -42,7 +42,7 @@ class VipsPage extends Component {
 
     return(
       <div id="vips-page">
-        <h1>Meet the Wedding Party</h1>
+        <h2 className="top-header">Meet the Wedding Party</h2>
         <Column small={12} large={6} className="vip-name-list">
           <Block showOnlyFor={Breakpoints.LARGE} className="vip-list-space">
           </Block>

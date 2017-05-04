@@ -34,7 +34,7 @@ class EventsIndexPage extends Component {
 
     return(
       <div>
-        <h1>Your Events!</h1>
+        <h2 className="top-header">Your Events</h2>
         { eventList }
       </div>
     )
