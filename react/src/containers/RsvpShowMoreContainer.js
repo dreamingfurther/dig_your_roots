@@ -1,23 +1,16 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { connect } from 'react-redux';
 import { Row, Column } from 'react-foundation';
 import { toggleShowHideDetails } from '../actions/showHideEventDetails';
 
 const RsvpShowMoreContainer = (props) => {
   let eventDetails, showMore, showText;
+  let source = '';
 
   if((props.details != undefined) && props.showDetails) {
-    eventDetails = Object.keys(props.details).map((key) => {
-      let formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
-      return(
-        <div key={ key } className="mbm">
-          <p className="mbn">
-            { formattedKey }:
-          </p>
-          { props.details[key] }
-        </div>
-      )
-    })
+    let source = props.details['itinerary']
+    eventDetails = <ReactMarkdown source={source} />
   }
 
   if((props.details != undefined) && (Object.keys(props.details).length > 0) && props.showDetails) {

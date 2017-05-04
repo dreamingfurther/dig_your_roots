@@ -18,6 +18,7 @@
     "details": {
       "Address": "Sunset Beach Park",
       "Logistics": "Here's some logistical details you should know.",
+      "Itinerary": "Some itinerary details",
       "DressCode": "Here's the dress code."
     }
   }

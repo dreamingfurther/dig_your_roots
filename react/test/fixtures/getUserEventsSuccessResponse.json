@@ -24,6 +24,7 @@
     "rsvp_description": "Join David's batchlor crew for board games at a cabin.",
     "food_options": false,
     "details": {
+      "Itinerary": "Some itinerary details",
       "Logistics": "Here's some logistical details you should know."
     }
   }

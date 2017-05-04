@@ -5,11 +5,14 @@ describe('user visits the events page', () => {
     });
   });
 
-  it('must be signed in to view', () => {
+  it('must be signed in to view', done => {
     page = mountReactAppAt('/events');
 
-    expect(page.text()).toMatch('Sign In');
-    expect(page.text()).not.toMatch('Events');
+    setTimeout(() => {
+      expect(page.text()).toMatch('Sign In');
+      expect(page.text()).not.toMatch('Events');
+      done();
+    }, 0)
   });
 
   it('can view when signed in', done => {

@@ -33,7 +33,9 @@ class RsvpEventDetailsContainer extends Component {
 }
 
 let mapStateToProps = (store, ownProps) => {
-  return { event: store.emailConfirmation.event }
+  return {
+    event: (store.emailConfirmation.event || {})
+  }
 }
 
 let mapDispatchToProps = (dispatch) => { return {} }

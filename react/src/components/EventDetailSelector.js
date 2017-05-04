@@ -1,6 +1,6 @@
 import React from 'react';
-import { Row, Column, Block, Breakpoints } from 'react-foundation';
 import ReactMarkdown from 'react-markdown';
+import { Row, Column, Block, Breakpoints } from 'react-foundation';
 
 const EventDetailSelector = (props) => {
   let { details } = props.event || {};
