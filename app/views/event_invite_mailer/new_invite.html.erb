@@ -1,17 +1,20 @@
+<%= stylesheet_link_tag "foundation_and_overrides" %>
 <%= stylesheet_link_tag "email" %>
 
 <div id="email-container">
-  <div class="text-center">
-    <p>
-      Dear <%= @user.first_name %>,
-    </p>
-    <p>
-      We are excited to extend you an invitation to attend the <%= @event.name %> for the marriage of Jesse and David!
-    </p>
-    <div class="rsvp-section">
-      <a href=<%= email_confirmation_url(@attendee.to_param) %>>
-        RSVP
-      </a>
+  <div class="row">
+    <div class="large-6 columns text-panel">
+      <p>
+        Dear <%= @user.first_name %>,
+      </p>
+      <p class="invite-message">
+        We are excited to extend you an invitation to attend the <%= @event.name %> for the marriage of Jesse and David!
+      </p>
+      <div class="rsvp-section text-center">
+        <a href=<%= email_confirmation_url(@attendee.to_param) %>>
+          RSVP
+        </a>
+      </div>
     </div>
   </div>
 </div>

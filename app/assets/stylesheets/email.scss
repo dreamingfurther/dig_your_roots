@@ -2,13 +2,28 @@
 
 #email-container {
   padding: 20px;
-  height: 250px;
-  background-color: $aqua-blue;
+  height: 1000px;
   color: $navy;
+  background-image: url('http://dig-your-roots-staging.herokuapp.com/locket-email.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: cursive;
 
-  .text-center {
-    text-align: center;
+  .text-panel {
+    padding: 50px;
+    margin: 30px;
+    background: $lt-off-white !important;
+    opacity: 0.8;
+
+    .rsvp-section {
+      opacity: initial;
+    }
   }
+
+  .invite-message {
+    margin-bottom: 50px;
+  }
+
 
   p {
     margin: 15px;
@@ -17,8 +32,8 @@
   a {
     padding: 20px 60px;
     line-height: 58px;
-    background-color: $navy;
+    background-color: $navy !important;
     border-style: none;
-    color: $lt-off-white;
+    color: $lt-off-white !important;
   }
 }
