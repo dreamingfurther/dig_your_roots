@@ -6,7 +6,7 @@
   color: #352824 !important;
   background-image: url('http://dig-your-roots-staging.herokuapp.com/locket-email.jpeg');
   background-size: cover;
-  background-position: center -300px;
+  background-position: center -150px;
   font-family: cursive;
   text-align: center;
 
@@ -32,6 +32,7 @@
 
   .text-panel {
     padding: 50px;
+    margin-left: 50px;
     background: $lt-off-white !important;
     opacity: 0.8;
     font-size: 20px;
