@@ -1,20 +1,44 @@
 @import "variables";
 
 #email-container {
-  max-height: 750px;
-  min-height: 750px;
+  min-height: 900px;
+  max-height: 900px;
   color: #352824 !important;
   background-image: url('http://dig-your-roots-staging.herokuapp.com/locket-email.jpeg');
   background-size: cover;
-  background-position: center -150px;
+  background-color: #352824;
   font-family: cursive;
   text-align: center;
 
+  .text-panel {
+    margin-top: 25px;
+    min-width: 400px;
+    background: $lt-off-white !important;
+    opacity: 0.8;
+
+    @media only screen and (min-width: 250px) {
+      margin-left: 50px;
+    }
+    @media only screen and (min-width: 250px) {
+      padding: 50px;
+    }
+
+    .rsvp-section {
+      opacity: initial;
+      margin-bottom: 50px;
+    }
+  }
+
+  .invite-message {
+    margin-bottom: 50px;
+    font-size: 20px;
+  }
+
   h1 {
+    margin: 25px 0 15px;
     color: #352824 !important;
     font-family: cursive;
     font-size: 100px;
-    margin-bottom: 30px;
   }
 
   h2 {
@@ -24,28 +48,11 @@
   }
 
   h3 {
+    margin-bottom: 25px;
     color: #352824 !important;
     font-family: cursive;
     font-size: 35px;
-    margin-bottom: 25px;
   }
-
-  .text-panel {
-    padding: 50px;
-    margin-left: 50px;
-    background: $lt-off-white !important;
-    opacity: 0.8;
-    font-size: 20px;
-
-    .rsvp-section {
-      opacity: initial;
-    }
-  }
-
-  .invite-message {
-    margin-bottom: 50px;
-  }
-
 
   p {
     margin: 15px;
