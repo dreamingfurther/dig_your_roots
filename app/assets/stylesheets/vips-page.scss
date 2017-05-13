@@ -22,28 +22,6 @@
     }
   }
 
-  .vip-name-tile{
-    background-color: $light-grey;
-    margin-bottom: 20px;
-    padding: 10px 0px;
-
-    h1{
-      color: $navy;
-    }
-
-    &:hover{
-      background-color: $aqua-blue;
-    }
-  }
-
-  .vip-name-tile.selected{
-    background-color: $navy;
-
-    h1{
-      color: $lt-off-white;
-    }
-  }
-
   .vip-image{
     height: 150px;
     width: 150px;

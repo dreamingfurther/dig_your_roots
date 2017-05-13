@@ -21,20 +21,4 @@
   .selected-details {
     padding: 0px 10px 10px 10px;
   }
-
-  .detail-selector {
-    background-color: $light-grey;
-    margin-bottom: 20px;
-    padding: 15px 0px;
-    color: $navy;
-
-    &:hover{
-      background-color: $aqua-blue;
-    }
-  }
-
-  .detail-selector.selected {
-    background-color: $navy;
-    color: $lt-off-white;
-  }
 }

@@ -1,0 +1,25 @@
+@import "variables";
+
+.selector-tile {
+  background-color: $light-grey;
+  margin-bottom: 20px;
+  padding: 10px 0px;
+
+  h1{
+    font-size: 25px !important;
+    color: $navy;
+    margin-bottom: 0;
+  }
+
+  &:hover{
+    background-color: $aqua-blue;
+  }
+}
+
+.selector-tile.selected {
+  background-color: $navy;
+
+  h1{
+    color: $lt-off-white;
+  }
+}

@@ -31,8 +31,10 @@ const EventDetailSelector = (props) => {
         <div key={ key }>
           <Column small={12} medium={6} className="">
             <a>
-              <div onClick={ viewDetail } className={`detail-selector ${selectedStyle}`}>
-                { formattedKey }
+              <div onClick={ viewDetail } className={`detail-selector ${selectedStyle} selector-tile`}>
+                <h1>
+                  { formattedKey }
+                </h1>
               </div>
             </a>
           </Column>

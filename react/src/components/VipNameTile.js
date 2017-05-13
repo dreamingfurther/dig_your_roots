@@ -14,7 +14,7 @@ const VipNameTile = ({ name, selectVip, selectedVip }) => {
 
   return(
     <div>
-      <div className={`vip-name-tile ${selectedStyle} phn`} onClick={ selectVipWithName }>
+      <div className={`selector-tile ${selectedStyle} phn`} onClick={ selectVipWithName }>
         <a>
           <h1>{ name }</h1>
         </a>
