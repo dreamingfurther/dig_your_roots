@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :attendees
   has_many :events, through: :attendees
+  validates :email, presence: true, uniqueness: true
 
   def fullname
     "#{first_name} #{last_name}"
