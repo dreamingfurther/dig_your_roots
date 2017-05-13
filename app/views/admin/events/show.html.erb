@@ -53,10 +53,10 @@
         <%= attendee.plus_one_invited %>
       </div>
       <div class="column small-2 medium-1">
-        <%= attendee.rsvp %>
+        <%= (attendee.rsvp || 'N/A') %>
       </div>
       <div class="column small-4 medium-2 end">
-        <%= attendee.plus_one_attending %>
+        <%= (attendee.plus_one_attending || 'N/A') %>
       </div>
       <div class="column medium-3 hide-for-small end">
         <%= attendee.plus_one_fullname %>
