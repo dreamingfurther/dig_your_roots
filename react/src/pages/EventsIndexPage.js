@@ -3,6 +3,8 @@ import Cookies from 'js-cookie';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { Row, Column } from 'react-foundation';
+
 import { getUserEvents } from '../actions/getUserEvents';
 
 class EventsIndexPage extends Component {
@@ -26,15 +28,17 @@ class EventsIndexPage extends Component {
     let eventList;
     eventList = this.props.events.map((event) => {
       return(
-        <p key={event.id}>
-          <Link to={`/events/${event.id}`}>{ event.name }</Link>
-        </p>
+        <Column small={12} medium={4} offsetOnMedium={4} className="selector-tile phn">
+          <h1 key={event.id}>
+            <Link to={`/events/${event.id}`}>{ event.name }</Link>
+          </h1>
+        </Column>
       )
     });
 
     return(
-      <div>
-        <h2 className="top-header">Your Events</h2>
+      <div id="events-index-page">
+        <h2 className="top-header mbl">Your Events</h2>
         { eventList }
       </div>
     )
