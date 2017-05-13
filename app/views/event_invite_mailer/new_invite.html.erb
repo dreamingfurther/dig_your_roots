@@ -4,27 +4,32 @@
 <div id="email-container">
   <div class="row">
     <div class="small-8 columns text-panel">
-      <h1>
-        RSVP
+      <h1 class="regular-italic-font">
+        You are Invited!
       </h1>
-      <h3>
-        For the <%= @event.name %> of
+
+      <br>
+      <h3 class="regular-italic-font">
+        to the <%= @event.name %> of
+        <div class="name-text">
+          Jesse Norris &
+          <br>
+          David Tengdin
+        </div>
       </h3>
-      <h2>
-        Jesse Norris
-        <br>
-        &
-        <br>
-        David Tengdin
-      </h2>
+
       <p class="invite-message">
-        <%= @event.date %>
+        <%= @event.date.strftime("%m.%d.%Y") %>
         <br>
-        <%= "#{@event.city} #{@event.state}" %>
+        <% if @event.time %>
+          <%= @event.time %>
+          <br>
+        <% end %>
+        <%= "#{@event.city}, #{@event.state}" %>
       </p>
       <div class="rsvp-section text-center">
         <a href=<%= email_confirmation_url(@attendee.to_param) %>>
-          RSVP
+          RSVP by clicking here!
         </a>
       </div>
     </div>
