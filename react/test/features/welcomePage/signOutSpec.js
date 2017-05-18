@@ -16,7 +16,7 @@ describe('user signs in through welcome page', () => {
 
     setTimeout(() => {
       expect(page.text()).not.toMatch('Sign In');
-      let deskTopNav = page.find('.text-nav-links');
+      let deskTopNav = page.find('.desktop-top-bar');
       clickOn('#sign-out-link', deskTopNav)
 
       expect(page.text()).toMatch('Sign In');
@@ -33,7 +33,7 @@ describe('user signs in through welcome page', () => {
     }
     Cookies.set('userData', user);
     page = mountReactAppAt('/events');
-    let deskTopNav = page.find('.text-nav-links');
+    let deskTopNav = page.find('.desktop-top-bar');
     clickOn('#sign-out-link', deskTopNav)
 
     expect(page.text()).not.toMatch('Event Index Page');

@@ -1,33 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Row, Column, Menu, MenuItem } from 'react-foundation';
+import { Row, Column } from 'react-foundation';
 
 const NavBarLinks = (props) => {
-  let eventsFA = (<i className="fa fa-calendar-check-o" aria-hidden="true"></i>)
-  let vipFA = (
-    <i className="fa fa-star"></i>
-  )
-  let signOutFA = (<i className="fa fa-sign-out" aria-hidden="true"></i>)
-
-  let fancyNavLink = (path, text) => {
-    let linkHelper;
-    return linkHelper = (text == 'Sign out' || text == signOutFA) ?
-      <Link id="sign-out-link" onClick={ props.signOut }>{ text }</Link> :
-      <Link to={ path } >{ text }</Link>
-  }
-
   return (
     <div>
-      <Menu className="columns medium-10 medium-offset-1 hide-for-small-only text-nav-links">
-        <MenuItem>{ fancyNavLink('/events', 'Your Events') }</MenuItem>
-        <MenuItem>{ fancyNavLink('/vips', 'V.I.P.s') }</MenuItem>
-        <MenuItem>{ fancyNavLink(null, 'Sign out') }</MenuItem>
-      </Menu>
-      <Menu className="columns show-for-small-only small-12 mobile-nav-icons">
-        <MenuItem>{ fancyNavLink('/events', eventsFA) }</MenuItem>
-        <MenuItem>{ fancyNavLink('/vips', vipFA) }</MenuItem>
-        <MenuItem>{ fancyNavLink(null, signOutFA) }</MenuItem>
-      </Menu>
+      <div className="show-for-small-only">
+        <nav className="top-bar header-background-style" data-topbar role="navigation">
+          <ul className="title-area">
+            <li className="name">
+            </li>
+            <li className="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+          </ul>
+
+          <section className="top-bar-section">
+            <ul>
+              <li>
+                <Link to="/events"> Your Events </Link>
+              </li>
+              <li>
+                <Link to="/vips"> V.I.P.s </Link>
+              </li>
+              <li>
+                <Link id="sign-out-link" onClick={ props.signOut }> Sign Out </Link>
+              </li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+      <div className="hide-for-small-only desktop-top-bar text-center">
+        <Column medium={10} offsetOnMedium={1} large={8} offsetOnLarge={2}>
+          <Column small={4}>
+            <Link className="phl" to="/events"> Your Events </Link>
+          </Column>
+          <Column small={4}>
+            <Link className="phl" to="/vips"> V.I.P.s </Link>
+          </Column>
+          <Column small={4}>
+            <Link className="phl" id="sign-out-link" onClick={ props.signOut }> Sign Out </Link>
+          </Column>
+        </Column>
+      </div>
     </div>
   )
 }

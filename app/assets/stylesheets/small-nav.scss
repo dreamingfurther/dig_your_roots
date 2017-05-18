@@ -6,6 +6,10 @@
   background: -o-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, $lt-navy , $navy, $navy, $navy, $lt-navy); /* Standard syntax */
+
+  h1 {
+    font-size: 40px;
+  }
 }
 
 .desktop-top-bar {
@@ -14,7 +18,7 @@
   background: -o-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, $lt-navy, $navy, $navy, $navy, $lt-navy); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, $lt-navy , $navy, $navy, $navy, $lt-navy); /* Standard syntax */
-  height: 45px;
+  height: 40px;
 
   a {
     color: $lt-off-white;
