@@ -17,7 +17,7 @@ const NavBarLinks = (props) => {
   }
 
   return (
-    <div className="nav-bar-links">
+    <div>
       <Menu className="columns medium-10 medium-offset-1 hide-for-small-only text-nav-links">
         <MenuItem>{ fancyNavLink('/events', 'Your Events') }</MenuItem>
         <MenuItem>{ fancyNavLink('/vips', 'V.I.P.s') }</MenuItem>
