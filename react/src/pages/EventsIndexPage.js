@@ -28,10 +28,12 @@ class EventsIndexPage extends Component {
     let eventList;
     eventList = this.props.events.map((event) => {
       return(
-        <Column small={12} medium={4} offsetOnMedium={4} className="selector-tile phn">
-          <h1 key={event.id}>
-            <Link to={`/events/${event.id}`}>{ event.name }</Link>
-          </h1>
+        <Column small={12} medium={6} className="phn">
+          <div className="selector-tile mhm">
+            <h1 key={event.id}>
+              <Link to={`/events/${event.id}`}>{ event.name }</Link>
+            </h1>
+          </div>
         </Column>
       )
     });
@@ -39,7 +41,9 @@ class EventsIndexPage extends Component {
     return(
       <div id="events-index-page">
         <h2 className="top-header mbl">Your Events</h2>
-        { eventList }
+        <Column small={12} medium={10} offsetOnMedium={1}>
+          { eventList }
+        </Column>
       </div>
     )
   }
