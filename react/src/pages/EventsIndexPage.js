@@ -29,11 +29,13 @@ class EventsIndexPage extends Component {
     eventList = this.props.events.map((event) => {
       return(
         <Column small={12} medium={6} className="phn">
-          <div className="selector-tile mhm">
-            <h1 key={event.id}>
-              <Link to={`/events/${event.id}`}>{ event.name }</Link>
-            </h1>
-          </div>
+          <Link to={`/events/${event.id}`}>
+            <div className="selector-tile mhm">
+              <h1 key={event.id}>
+                { event.name }
+              </h1>
+            </div>
+          </Link>
         </Column>
       )
     });
