@@ -9,6 +9,7 @@ describe Api::V1::EmailConfirmationController do
   end
   let(:user) { create(:user, email: 'dreamingfurther@gmail.com', first_name: "David", last_name: "Tengdin") }
   let!(:attendee) { create(:attendee, event: event, user: user, plus_one_invited: false) }
+  let(:attendee_id) { attendee.to_param }
 
   describe '#update' do
     let(:rsvp_answer) { true }
@@ -38,8 +39,6 @@ describe Api::V1::EmailConfirmationController do
     end
 
     context 'valid attendee ID' do
-      let(:attendee_id) { attendee.to_param }
-
       context 'RSVP answer is yes' do
         it 'sends an email with the question text' do
           expect(EventQuestionMailer).to have_received(:new_question).with(
@@ -112,62 +111,83 @@ describe Api::V1::EmailConfirmationController do
   end
 
   describe '#show' do
-    before do
-      create(:event_detail, event: event, name: 'DressCode', body: "Here is a dress code for this event.")
-      get :show, params: { id: attendee_id }
+    context 'user has password already' do
+      before do
+        user.password = "password"
+        user.save
+
+        create(:event_detail, event: event, name: 'DressCode', body: "Here is a dress code for this event.")
+        get :show, params: { id: attendee_id }
+      end
+
+      it 'returns password=true data' do
+        expect(JSON.parse(response.body)["guest"]["password_set"]).to eq true
+      end
     end
 
-    context 'valid ID' do
-      let(:attendee_id) { attendee.to_param }
-      let(:user_id) { Attendee.find(attendee_id).user.id }
-      let(:formatted_data) {
-        {
-          "guest" => {
-            "email"=>"dreamingfurther@gmail.com",
-            "first_name"=>"David",
-            "last_name"=>"Tengdin",
-            "plus_one_invited"=>false,
-            "id"=> user_id,
-            "token"=> attendee_id,
-            "rsvp"=>nil
-          },
-          "event" => {
-            "id"=>event.id,
-            "name"=>"Special Event",
-            "date"=>"01.27.2018",
-            "time"=>"4:35pm",
-            "description"=>event.description,
-            "city"=>"Hanover",
-            "state"=>"NH",
-            "rsvp_description"=>"Here is the RSVP description",
-            "food_options"=>true,
-            "details" => {
-              "DressCode"=>"Here is a dress code for this event."
+    context 'user does not have password already' do
+      before do
+        create(:event_detail, event: event, name: 'DressCode', body: "Here is a dress code for this event.")
+        get :show, params: { id: attendee_id }
+      end
+
+      it 'returns password=false data' do
+        expect(JSON.parse(response.body)["guest"]["password_set"]).to eq false
+      end
+
+      context 'valid ID' do
+        let(:attendee_id) { attendee.to_param }
+        let(:user_id) { Attendee.find(attendee_id).user.id }
+        let(:formatted_data) {
+          {
+            "guest" => {
+              "email"=>"dreamingfurther@gmail.com",
+              "first_name"=>"David",
+              "last_name"=>"Tengdin",
+              "plus_one_invited"=>false,
+              "id"=> user_id,
+              "token"=> attendee_id,
+              "rsvp"=>nil,
+              "password_set"=>false
+            },
+            "event" => {
+              "id"=>event.id,
+              "name"=>"Special Event",
+              "date"=>"01.27.2018",
+              "time"=>"4:35pm",
+              "description"=>event.description,
+              "city"=>"Hanover",
+              "state"=>"NH",
+              "rsvp_description"=>"Here is the RSVP description",
+              "food_options"=>true,
+              "details" => {
+                "DressCode"=>"Here is a dress code for this event."
+              }
             }
           }
         }
-      }
 
-      it 'returns a 200 status code' do
-        expect(response.status).to eq 200
+        it 'returns a 200 status code' do
+          expect(response.status).to eq 200
+        end
+
+        it 'returns properly formatted data' do
+          expect(JSON.parse(response.body)).to eq formatted_data
+        end
       end
 
-      it 'returns properly formatted data' do
-        expect(JSON.parse(response.body)).to eq formatted_data
-      end
-    end
+      context 'invalid ID' do
+        let(:attendee_id) { 'foo-bar' }
 
-    context 'invalid ID' do
-      let(:attendee_id) { 'foo-bar' }
+        it 'returns a 422 status code' do
+          expect(response.status).to eq 422
+        end
 
-      it 'returns a 422 status code' do
-        expect(response.status).to eq 422
-      end
-
-      it 'returns a nicely formatted error message' do
-        expect(JSON.parse(response.body)["error"]).to eq(
-          "No attendee found for that id"
-        )
+        it 'returns a nicely formatted error message' do
+          expect(JSON.parse(response.body)["error"]).to eq(
+            "No attendee found for that id"
+          )
+        end
       end
     end
   end

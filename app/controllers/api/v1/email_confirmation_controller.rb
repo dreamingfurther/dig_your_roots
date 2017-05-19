@@ -70,7 +70,8 @@ class Api::V1::EmailConfirmationController < ApplicationController
         plus_one_invited: attendee.plus_one_invited,
         id: user.id,
         token: params["id"],
-        rsvp: attendee.rsvp
+        rsvp: attendee.rsvp,
+        password_set: user_password
       },
       event: {
         id: event.id,
@@ -93,6 +94,10 @@ class Api::V1::EmailConfirmationController < ApplicationController
     rescue
       @attendee = nil
     end
+  end
+
+  def user_password
+    user.password_hash.present?
   end
 
   def user
