@@ -38,74 +38,96 @@ describe Api::V1::EmailConfirmationController do
       attendee.reload
     end
 
-    context 'valid attendee ID' do
-      context 'RSVP answer is yes' do
-        it 'sends an email with the question text' do
-          expect(EventQuestionMailer).to have_received(:new_question).with(
-            user: user,
-            event: event,
-            notes: 'I like to sing a lot.',
-            question: 'What happens with this question?',
-            rsvp: true
-          )
-        end
+    context 'password is not present' do
+      let(:user) { create(:user, password_hash: "hash") }
+      let(:event_answer_data) do
+        {
+          rsvp: rsvp_answer,
+          plus_one_attending: "Yes",
+          plus_one_fullname: 'Bob Jones',
+          notes: "I like to sing a lot.",
+          questions: "What happens with this question?",
+          phone: "1231231234",
+          food_choice: "beef",
+          plus_one_food_choice: "chicken"
+        }
       end
 
-      context 'RSVP answer is no' do
-        let(:rsvp_answer) { false }
-
-        it 'sends an email with the question text' do
-          expect(EventQuestionMailer).to have_received(:new_question).with(
-            user: user,
-            event: event,
-            notes: 'I like to sing a lot.',
-            question: 'What happens with this question?',
-            rsvp: false
-          )
-        end
-      end
-
-      it 'returns the user data' do
-        expect(JSON.parse(response.body)["email"]).to eq(
-          "dreamingfurther@gmail.com"
-        )
-      end
-
-      it 'returns a 201 status code' do
-        expect(response.status).to eq 201
-      end
-
-      it 'updates the rsvp status' do
-        expect(attendee.rsvp).to eq true
-      end
-
-      it 'updates the other optional fields' do
-        expect(attendee.plus_one_attending).to eq true
-        expect(attendee.plus_one_fullname).to eq 'Bob Jones'
-      end
-
-      it 'saves the user phone, email, and password' do
-        expect(attendee.user.phone).to eq "1231231234"
-        expect(attendee.user.password_hash).to_not be_nil
-      end
-
-      it 'saves food choice data' do
-        expect(attendee.food_choice).to eq 'beef'
-        expect(attendee.plus_one_food_choice).to eq 'chicken'
+      it 'does not update the user' do
+        expect(user.reload.password_hash).to eq "hash"
       end
     end
 
-    context 'invalid attendee ID' do
-      let(:attendee_id) { 'foo-bar' }
+    context 'password is present' do
+      context 'valid attendee ID' do
+        context 'RSVP answer is yes' do
+          it 'sends an email with the question text' do
+            expect(EventQuestionMailer).to have_received(:new_question).with(
+              user: user,
+              event: event,
+              notes: 'I like to sing a lot.',
+              question: 'What happens with this question?',
+              rsvp: true
+            )
+          end
+        end
 
-      it 'returns a 422 status code' do
-        expect(response.status).to eq 422
+        context 'RSVP answer is no' do
+          let(:rsvp_answer) { false }
+
+          it 'sends an email with the question text' do
+            expect(EventQuestionMailer).to have_received(:new_question).with(
+              user: user,
+              event: event,
+              notes: 'I like to sing a lot.',
+              question: 'What happens with this question?',
+              rsvp: false
+            )
+          end
+        end
+
+        it 'returns the user data' do
+          expect(JSON.parse(response.body)["email"]).to eq(
+            "dreamingfurther@gmail.com"
+          )
+        end
+
+        it 'returns a 201 status code' do
+          expect(response.status).to eq 201
+        end
+
+        it 'updates the rsvp status' do
+          expect(attendee.rsvp).to eq true
+        end
+
+        it 'updates the other optional fields' do
+          expect(attendee.plus_one_attending).to eq true
+          expect(attendee.plus_one_fullname).to eq 'Bob Jones'
+        end
+
+        it 'saves the user phone, email, and password' do
+          expect(attendee.user.phone).to eq "1231231234"
+          expect(attendee.user.password_hash).to_not be_nil
+        end
+
+        it 'saves food choice data' do
+          expect(attendee.food_choice).to eq 'beef'
+          expect(attendee.plus_one_food_choice).to eq 'chicken'
+        end
       end
 
-      it 'returns a nicely formatted error message' do
-        expect(JSON.parse(response.body)["error"]).to eq(
-          "No attendee found for that id"
-        )
+      context 'invalid attendee ID' do
+        let(:attendee_id) { 'foo-bar' }
+
+        it 'returns a 422 status code' do
+          expect(response.status).to eq 422
+        end
+
+        it 'returns a nicely formatted error message' do
+          expect(JSON.parse(response.body)["error"]).to eq(
+            "No attendee found for that id"
+          )
+        end
       end
     end
   end

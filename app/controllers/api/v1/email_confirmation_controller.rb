@@ -34,6 +34,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
   end
 
   def user_updated
+    return true unless params["answer"]["password"].present?
     user.password = params["answer"]["password"]
     user.update_attributes(phone: params["answer"]["phone"]) && user.save
   end
