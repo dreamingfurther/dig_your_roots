@@ -47,7 +47,6 @@ describe('user visits the RSVP thank you page', () => {
 
       setTimeout(() => {
         expect(page.text()).toMatch('Thank you for your RSVP');
-        expect(page.text()).toMatch('Home Page');
         expect(page.text()).toMatch('Ceremony & Dinner Details');
         expect(page.text()).toMatch('All Your Events');
         expect(page.text()).not.toMatch('Will you join us?')

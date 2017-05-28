@@ -95,7 +95,6 @@ describe('user visits Rsvp page for event with food', () => {
 
           expect(page.text()).not.toMatch('Fill in your information');
           expect(page.text()).toMatch('Events');
-          expect(page.text()).toMatch('Home Page');
           expect(page.text()).toMatch('Ceremony & Dinner Details');
           expect(page.text()).toMatch('All Your Events');
           done();
