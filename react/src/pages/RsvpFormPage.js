@@ -1,8 +1,10 @@
 import React from 'react';
 import { Row, Column, Block, Breakpoints } from 'react-foundation';
-import { reduxForm } from 'redux-form';
+import { reduxForm, SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 import { postEmailConfirmationAccept, postEmailConfirmationDecline } from '../actions/postEmailConfirmation';
+import { postAuthorizeReturningUser } from '../actions/postAuthorizeReturningUser';
+import { postEmailConfirmationReturningAccept } from '../actions/postEmailConfirmationReturningAccept';
 import RsvpQuestionsContainer from '../containers/RsvpQuestionsContainer';
 import RsvpWelcomeContainer from '../containers/RsvpWelcomeContainer';
 import RsvpEventDetailsContainer from '../containers/RsvpEventDetailsContainer';
@@ -29,10 +31,23 @@ let onSubmit = (fields, dispatch) => {
       dispatch(push(`/thank_you/${token}`));
     });
   } else {
-    dispatch(postEmailConfirmationAccept())
-    .then((token) => {
-      dispatch(push(`/thank_you/${token}`));
-    });
+    if(fields.passwordConfirmation === undefined) {
+      return dispatch(postAuthorizeReturningUser())
+      .then(() => {
+        dispatch(postEmailConfirmationReturningAccept())
+        .then((token) => {
+          dispatch(push(`/thank_you/${token}`));
+        });
+      })
+      .catch((error) => {
+        throw new SubmissionError({'_error': error});
+      });
+    } else {
+      dispatch(postEmailConfirmationAccept())
+      .then((token) => {
+        dispatch(push(`/thank_you/${token}`));
+      });
+    }
   }
 }
 

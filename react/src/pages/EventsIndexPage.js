@@ -28,10 +28,10 @@ class EventsIndexPage extends Component {
     let eventList;
     eventList = this.props.events.map((event) => {
       return(
-        <Column small={12} medium={6} className="phn">
+        <Column small={12} medium={6} className="phn" key={event.id}>
           <Link to={`/events/${event.id}`}>
             <div className="selector-tile mhm">
-              <h1 key={event.id}>
+              <h1>
                 { event.name }
               </h1>
             </div>

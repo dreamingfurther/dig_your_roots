@@ -137,5 +137,6 @@ export {
   postEmailConfirmationAccept,
   postEmailConfirmationRequest,
   postEmailConfirmationRequestSuccess,
-  postEmailConfirmationRequestFailure
+  postEmailConfirmationRequestFailure,
+  updateRsvpStatus
 };

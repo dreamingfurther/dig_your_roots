@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { Row, Column } from 'react-foundation';
+import { Link } from 'react-router';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
@@ -12,7 +13,39 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const RsvpPhonePasswordQuestions = () => {
+const RsvpPhonePasswordQuestions = ({ hasPassword }) => {
+  let confirmationOrForgotLink;
+
+  if(hasPassword) {
+    confirmationOrForgotLink = (
+      <Row>
+        <Column small={12} medium={3}>
+        </Column>
+        <Column small={12} medium={9}>
+          <Link to='/forgot_password' id='forgot-password-link'>Forget your password?</Link>
+        </Column>
+      </Row>
+    )
+  } else {
+    confirmationOrForgotLink = (
+      <Row>
+        <Column small={12} medium={3}>
+          Password Confirmation
+        </Column>
+        <Column small={12} medium={9}>
+          <Field
+            name="passwordConfirmation"
+            component={renderField}
+            type='password'
+            value='passwordConfirmation'
+            id="rsvp-rsvp-password-confirmation"
+            placeholder='password confirmation'
+          />
+        </Column>
+      </Row>
+    )
+  }
+
   return(
     <div>
       <h1>
@@ -41,21 +74,7 @@ const RsvpPhonePasswordQuestions = () => {
           />
         </Column>
       </Row>
-      <Row>
-        <Column small={12} medium={3}>
-          Password Confirmation
-        </Column>
-        <Column small={12} medium={9}>
-          <Field
-            name="passwordConfirmation"
-            component={renderField}
-            type='password'
-            value='passwordConfirmation'
-            id="rsvp-rsvp-password-confirmation"
-            placeholder='password confirmation'
-          />
-        </Column>
-      </Row>
+      { confirmationOrForgotLink }
     </div>
   )
 }

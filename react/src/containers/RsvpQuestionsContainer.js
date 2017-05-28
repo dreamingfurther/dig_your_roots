@@ -25,6 +25,7 @@ class RsvpQuestionsContainer extends Component {
           eventHasFood     ={ props.eventHasFood }
           foodChoice       ={ props.foodChoice }
           plusOneAttending ={ props.plusOneAttending }
+          hasPassword      ={ props.hasPassword }
         />
       )
     } else if( props.attending === "No" ){
@@ -54,6 +55,7 @@ let mapStateToProps = (store) => {
     plusOneAttending: formValues.plusOneAttending,
     foodChoice:       formValues.foodChoice,
     plusOne:          store.emailConfirmation.guest.plusOneInvited,
+    hasPassword:      store.emailConfirmation.guest.passwordSet,
     eventHasFood:     store.emailConfirmation.event.foodOptions,
   }
 }
