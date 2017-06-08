@@ -27,7 +27,7 @@ class EventsIndexPage extends Component {
   render() {
     let eventList = this.props.events.map((event) => {
       if(event.rsvp != false) {
-        return <EventTile event={event} />
+        return <EventTile event={event} key={event.id} />
       }
     });
 

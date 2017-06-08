@@ -4,12 +4,13 @@ describe Api::V1::EmailConfirmationController do
   let(:event) do
     create(:event, name: 'Special Event', city: "Hanover", state: "NH",
       date: Date.parse("2018/01/27"), time: "4:35pm", rsvp_description: "Here is the RSVP description",
-      food_options: true
+      food_options: true, dance_question: dance_question
     )
   end
   let(:user) { create(:user, email: 'dreamingfurther@gmail.com', first_name: "David", last_name: "Tengdin") }
   let!(:attendee) { create(:attendee, event: event, user: user, plus_one_invited: false) }
   let(:attendee_id) { attendee.to_param }
+  let(:dance_question) { nil }
 
   describe '#update' do
     let(:rsvp_answer) { true }
@@ -25,6 +26,7 @@ describe Api::V1::EmailConfirmationController do
         password: "foobar",
         password_confirmation: "foobar",
         food_choice: "beef",
+        dance_question: "lalala",
         plus_one_food_choice: "chicken"
       }
     end
@@ -67,6 +69,7 @@ describe Api::V1::EmailConfirmationController do
               event: event,
               notes: 'I like to sing a lot.',
               question: 'What happens with this question?',
+              dance_question: "lalala",
               rsvp: true
             )
           end
@@ -81,6 +84,7 @@ describe Api::V1::EmailConfirmationController do
               event: event,
               notes: 'I like to sing a lot.',
               question: 'What happens with this question?',
+              dance_question: "lalala",
               rsvp: false
             )
           end
@@ -98,6 +102,10 @@ describe Api::V1::EmailConfirmationController do
 
         it 'updates the rsvp status' do
           expect(attendee.rsvp).to eq true
+        end
+
+        it 'saves the dance question answer' do
+          expect(attendee.dance_question).to eq 'lalala'
         end
 
         it 'updates the other optional fields' do
@@ -158,8 +166,6 @@ describe Api::V1::EmailConfirmationController do
       end
 
       context 'valid ID' do
-        let(:attendee_id) { attendee.to_param }
-        let(:user_id) { Attendee.find(attendee_id).user.id }
         let(:formatted_data) {
           {
             "guest" => {
@@ -182,6 +188,7 @@ describe Api::V1::EmailConfirmationController do
               "state"=>"NH",
               "rsvp_description"=>"Here is the RSVP description",
               "food_options"=>true,
+              "dance_question"=>dance_question,
               "details" => {
                 "DressCode"=>"Here is a dress code for this event."
               }
@@ -189,12 +196,32 @@ describe Api::V1::EmailConfirmationController do
           }
         }
 
-        it 'returns a 200 status code' do
-          expect(response.status).to eq 200
+        context 'dance question' do
+          let(:attendee_id) { attendee.to_param }
+          let(:user_id) { Attendee.find(attendee_id).user.id }
+          let(:dance_question) { true }
+
+          it 'returns a 200 status code' do
+            expect(response.status).to eq 200
+          end
+
+          it 'returns properly formatted data' do
+            expect(JSON.parse(response.body)).to eq formatted_data
+          end
         end
 
-        it 'returns properly formatted data' do
-          expect(JSON.parse(response.body)).to eq formatted_data
+        context 'no dance question' do
+          let(:attendee_id) { attendee.to_param }
+          let(:user_id) { Attendee.find(attendee_id).user.id }
+          let(:dance_question) { false }
+
+          it 'returns a 200 status code' do
+            expect(response.status).to eq 200
+          end
+
+          it 'returns properly formatted data' do
+            expect(JSON.parse(response.body)).to eq formatted_data
+          end
         end
       end
 

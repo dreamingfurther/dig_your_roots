@@ -1,10 +1,18 @@
 import React from 'react';
 import ExtraDetails from './ExtraDetails';
 import ExtraQuestionForUs from './ExtraQuestionForUs';
+import ExtraDanceQuestion from './ExtraDanceQuestion';
 
-const Textarea = () => {
+const Textarea = ({ eventHasDance }) => {
+
+  let danceQuestion;
+  if (eventHasDance) {
+    danceQuestion = <ExtraDanceQuestion />
+  }
+
   return(
     <div>
+      { danceQuestion }
       <ExtraDetails />
       <ExtraQuestionForUs />
     </div>

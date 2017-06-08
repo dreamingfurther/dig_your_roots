@@ -58,6 +58,7 @@ let postEmailConfirmationAccept = () => {
           notes: fields.notes,
           questions: fields.questions,
           food_choice: fields.foodChoice,
+          dance_question: fields.danceQuestion,
           phone: fields.phone,
           password: fields.password,
           password_confirmation: fields.passwordConfirmation,

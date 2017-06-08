@@ -23,6 +23,7 @@ class RsvpQuestionsContainer extends Component {
           formError        ={ props.formError }
           plusOne          ={ props.plusOne }
           eventHasFood     ={ props.eventHasFood }
+          eventHasDance    ={ props.eventHasDance }
           foodChoice       ={ props.foodChoice }
           plusOneAttending ={ props.plusOneAttending }
           hasPassword      ={ props.hasPassword }
@@ -57,6 +58,7 @@ let mapStateToProps = (store) => {
     plusOne:          store.emailConfirmation.guest.plusOneInvited,
     hasPassword:      store.emailConfirmation.guest.passwordSet,
     eventHasFood:     store.emailConfirmation.event.foodOptions,
+    eventHasDance:    store.emailConfirmation.event.danceQuestion
   }
 }
 

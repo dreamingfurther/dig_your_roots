@@ -23,6 +23,7 @@ let postEmailConfirmationReturningAccept = (token) => {
           notes: fields.notes,
           questions: fields.questions,
           food_choice: fields.foodChoice,
+          dance_question: fields.danceQuestion,
           phone: fields.phone
         }
       }

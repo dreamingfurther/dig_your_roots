@@ -29,7 +29,8 @@ class Api::V1::EmailConfirmationController < ApplicationController
       plus_one_fullname:    params["answer"]["plus_one_fullname"],
       plus_one_food_choice: params["answer"]["plus_one_food_choice"],
       user_notes: "#{notes} \n--------\n #{params["answer"]['notes']}",
-      food_choice: params["answer"]["food_choice"]
+      food_choice: params["answer"]["food_choice"],
+      dance_question: params["answer"]["dance_question"]
     )
   end
 
@@ -45,6 +46,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         user: user, event: event,
         notes: params["answer"]["notes"],
         question: params["answer"]["questions"],
+        dance_question: params["answer"]["dance_question"],
         rsvp: true
       ).deliver_now
     else
@@ -52,6 +54,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         user: user, event: event,
         notes: params["answer"]["notes"],
         question: params["answer"]["questions"],
+        dance_question: params["answer"]["dance_question"],
         rsvp: false
       ).deliver_now
     end
@@ -84,6 +87,7 @@ class Api::V1::EmailConfirmationController < ApplicationController
         state: event.state,
         rsvp_description: event.rsvp_description,
         food_options: event.food_options,
+        dance_question: event.dance_question,
         details: event.details_data
       }
     }
