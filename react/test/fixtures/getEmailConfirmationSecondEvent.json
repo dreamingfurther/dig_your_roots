@@ -1,0 +1,27 @@
+{
+  "guest": {
+    "email": "dtjrnorris+jesse@gmail.com",
+    "first_name": "Jesse",
+    "last_name": "Norris",
+    "plus_one_invited": false,
+    "id": 377,
+    "token": "1234",
+    "rsvp": null,
+    "password_set": true
+  },
+  "event": {
+    "name": "Ceremony & Dinner",
+    "date": "01.27.2018",
+    "time": null,
+    "city": "Marathon",
+    "state": "FL",
+    "rsvp_description": "Join our celebration of vows in the scenic Florida Keys!",
+    "food_options": false,
+    "details": {
+      "Address": "Sunset Beach Park",
+      "Logistics": "Here's some logistical details you should know.",
+      "Itinerary": "Some itinerary details",
+      "DressCode": "Here's the dress code."
+    }
+  }
+}
