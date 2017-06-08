@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Row, Column } from 'react-foundation';
+import { Column } from 'react-foundation';
 
 import { getUserEvents } from '../actions/getUserEvents';
+import EventTile from '../components/EventTile';
 
 class EventsIndexPage extends Component {
   constructor(props) {
@@ -25,19 +25,10 @@ class EventsIndexPage extends Component {
   }
 
   render() {
-    let eventList;
-    eventList = this.props.events.map((event) => {
-      return(
-        <Column small={12} medium={6} className="phn" key={event.id}>
-          <Link to={`/events/${event.id}`}>
-            <div className="selector-tile mhm">
-              <h1>
-                { event.name }
-              </h1>
-            </div>
-          </Link>
-        </Column>
-      )
+    let eventList = this.props.events.map((event) => {
+      if(event.rsvp != false) {
+        return <EventTile event={event} />
+      }
     });
 
     return(

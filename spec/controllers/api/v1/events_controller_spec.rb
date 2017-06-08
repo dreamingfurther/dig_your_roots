@@ -8,15 +8,18 @@ describe Api::V1::EventsController do
       event2 = create(:event, name: 'Stag party')
       create(:event_detail, event: event1, name: 'Address')
       create(:event_detail, event: event1, name: 'Logistics')
-      create(:attendee, user: user, event: event1)
-      create(:attendee, user: user, event: event2)
+      attendee1 = create(:attendee, user: user, event: event1, rsvp: false)
+      create(:attendee, user: user, event: event2, rsvp: true)
 
       get :index, params: { user_id: user.id }
       json = JSON.parse(response.body)
       expect(json[1]["name"]).to eq("Stag party")
+      expect(json[1]["rsvp"]).to eq(true)
       expect(json[0]["name"]).to eq("Ceremony & Dinner")
       expect(json[0]["description"]).to eq(event1.description)
       expect(json[0]["picture"]).to eq('picture.png')
+      expect(json[0]["rsvp"]).to eq(false)
+      expect(json[0]["rsvp_code"]).to eq(attendee1.to_param)
       expect(json[0]["details"]).to eq(
         {
           "Address"=>"Detail Body text 1",

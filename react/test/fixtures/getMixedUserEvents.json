@@ -1,12 +1,13 @@
 [
   {
-    "id": 43,
+    "id": 45,
     "name": "Ceremony & Dinner",
     "date": "01.27.2018",
     "time": null,
     "city": "Marathon",
     "state": "FL",
-    "rsvp": true,
+    "rsvp": null,
+    "rsvp_code": "y5GZaeGU",
     "rsvp_description": "Join our celebration of vows in the scenic Florida Keys!",
     "food_options": true,
     "details": {
@@ -17,17 +18,36 @@
   },
   {
     "id": 44,
+    "name": "Boston Party",
+    "date": "11.27.2017",
+    "time": null,
+    "city": "Hanover",
+    "state": "NH",
+    "rsvp": false,
+    "rsvp_code": "28GZaeLX",
+    "rsvp_description": "Join David's batchlor crew for board games at a cabin.",
+    "food_options": false,
+    "details": {
+      "Itinerary": "Some itinerary details",
+      "Logistics": "Here's some logistical details you should know."
+    }
+  },
+  {
+    "id": 43,
     "name": "Stag Party",
     "date": "11.27.2017",
     "time": null,
     "city": "Hanover",
     "state": "NH",
     "rsvp": true,
+    "rsvp_code": "EVm14vr9",
     "rsvp_description": "Join David's batchlor crew for board games at a cabin.",
     "food_options": false,
     "details": {
+      "Address": "Sunset Beach Park",
+      "Logistics": "Here's some logistical details you should know.",
       "Itinerary": "Some itinerary details",
-      "Logistics": "Here's some logistical details you should know."
+      "DressCode": "Here's the dress code."
     }
   }
 ]

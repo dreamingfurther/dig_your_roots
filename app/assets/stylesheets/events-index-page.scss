@@ -1,7 +1,16 @@
 @import "variables";
 
 #events-index-page {
-    h1 a{
-      color: $navy;
+  .rsvp-required {
+    color: $navy;
+    background-color: $lt-blue;
+
+    &:hover {
+      background-color: $aqua-blue;
     }
+  }
+
+  h1 a{
+    color: $navy;
+  }
 }

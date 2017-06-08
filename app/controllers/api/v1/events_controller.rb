@@ -19,10 +19,16 @@ class Api::V1::EventsController < ApplicationController
         time: event.time,
         city: event.city,
         state: event.state,
+        rsvp: attendee_for(event).rsvp,
+        rsvp_code: attendee_for(event).to_param,
         rsvp_description: event.rsvp_description,
         food_options: event.food_options,
         details: event.details_data
       }
     end
+  end
+
+  def attendee_for(event)
+    Attendee.find_by(user: @user, event: event)
   end
 end
