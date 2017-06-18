@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Column } from 'react-foundation';
 import { railsAssetImagePath } from '../constants/railsAssetImagePath';
 
@@ -33,7 +34,7 @@ const EventBasicInfo = (props) => {
       </Column>
       <Column small={12} medium={6} className="mbl phl">
         <div className='event-description'>
-          { description }
+          <ReactMarkdown source={description} />
         </div>
       </Column>
     </Column>
