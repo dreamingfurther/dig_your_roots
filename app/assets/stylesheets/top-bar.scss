@@ -1,5 +1,11 @@
 @import "variables";
 
+.top-bar {
+  .toggle-topbar.menu-icon {
+    z-index: 9999;
+  }
+}
+
 .top-bar-title {
   line-height: normal;
   letter-spacing: 3px;
