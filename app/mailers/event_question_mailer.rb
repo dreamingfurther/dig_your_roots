@@ -11,8 +11,8 @@ class EventQuestionMailer < ApplicationMailer
 
     mail(
       to: ADMIN_HOME_EMAIL,
-      from: @user.email,
-      subject: "RSVP #{event.name}: #{@rsvp} - from #{@user.first_name}"
+      from: ADMIN_HOME_EMAIL_FROM,
+      subject: "RSVP #{event.name}: #{@rsvp} - from #{@user.first_name}: #{@user.email}"
     )
   end
 end
