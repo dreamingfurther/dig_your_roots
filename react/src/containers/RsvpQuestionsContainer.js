@@ -8,12 +8,6 @@ class RsvpQuestionsContainer extends Component {
     super(props);
   }
 
-  componentDidUpdate() {
-    if(this.props.attending == 'Yes') {
-      window.scrollTo(0, 100000);
-    }
-  }
-
   render() {
     let props = this.props;
     let additionalQuestions;
