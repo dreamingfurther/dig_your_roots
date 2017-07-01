@@ -16,11 +16,14 @@ class Event < ApplicationRecord
   end
 
   def confirmed_count
-    attendees.where(rsvp: true).count + attendees.where(plus_one_attending: true).count
+    attendees.where(rsvp: true).count +
+      attendees.where(rsvp: true, plus_one_attending: true).count
   end
 
   def declined_count
-    attendees.where(rsvp: false).count
+    attendees.where(rsvp: false).count +
+      attendees.where(plus_one_attending: false).count +
+      attendees.where(rsvp: false).where(plus_one_invited: true, plus_one_attending: nil).count
   end
 
   def declined_plus_one_count
@@ -28,6 +31,7 @@ class Event < ApplicationRecord
   end
 
   def unconfirmed_count
-    attendees.where(rsvp: nil).count + attendees.where(plus_one_invited: true, plus_one_attending: nil).count
+    attendees.where(rsvp: nil, plus_one_invited: false).count +
+      attendees.where(rsvp: nil, plus_one_invited: true, plus_one_attending: nil).count
   end
 end

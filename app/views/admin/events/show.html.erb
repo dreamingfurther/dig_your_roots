@@ -11,55 +11,55 @@
       Yes: <%= @event.confirmed_count %>
     </p>
     <p>
-      No: <%= @event.declined_count %>
+      Maybe: <%= @event.unconfirmed_count %>
     </p>
     <p>
-      Maybe: <%= @event.unconfirmed_count %>
+      No: <%= @event.declined_count %>
     </p>
   </div>
 
   <div class="row">
-    <div class="column medium-2 hide-for-small">
+    <div class="column medium-3 large-2 hide-for-small">
       Email
     </div>
-    <div class="column small-4 medium-3">
+    <div class="column small-6 medium-4 large-3">
       Guest Name
     </div>
-    <div class="column small-2 medium-1">
+    <div class="column small-1 hide-for-medium-down">
       +1
     </div>
-    <div class="column small-2 medium-1">
+    <div class="column small-2 medium-2 large-1">
       RSVP
     </div>
-    <div class="column small-4 medium-2">
-      +1 RSVP
+    <div class="column small-4 medium-3 large-2">
+      +1-Rsvp
     </div>
-    <div class="column medium-3 hide-for-small end">
-      +1 Name
+    <div class="column medium-3 hide-for-medium-down end">
+      +1-Name
     </div>
   </div>
-  <% @event.attendees.sort_by { |a| [(a.rsvp ? 1 : 0), a.user.first_name] }.each do |attendee| %>
+  <% @event.attendees.sort_by { |a| [a.decorated_rsvp_sort, a.user.first_name] }.each do |attendee| %>
     <div class="row">
-      <div class="column medium-2 hide-for-small">
+      <div class="column medium-3 large-2 hide-for-small">
         <span>
           <%= "#{attendee.email_count} - " %>
           <%= link_to 'send', admin_send_invite_email_path(attendee.id), method: :patch %>
         </span>
       </div>
-      <div class="column small-4 medium-3">
-        <%= attendee.user.fullname %>
+      <div class="column small-6 medium-5 large-3">
+        <%= truncate(attendee.user.fullname, length: 16) %>
       </div>
-      <div class="column small-2 medium-1">
-        <%= attendee.plus_one_invited %>
+      <div class="column small-1 hide-for-medium-down">
+        <%= attendee.decorated_plus_one_invited %>
       </div>
-      <div class="column small-2 medium-1">
-        <%= (attendee.rsvp || 'N/A') %>
+      <div class="column small-2 medium-1 large-1">
+        <%= attendee.decorated_rsvp %>
       </div>
-      <div class="column small-4 medium-2 end">
-        <%= (attendee.plus_one_attending || 'N/A') %>
+      <div class="column small-4 medium-3 large-2 end">
+        <%= attendee.decorated_plus_one_attending %>
       </div>
-      <div class="column medium-3 hide-for-small end">
-        <%= attendee.plus_one_fullname %>
+      <div class="column large-3 hide-for-medium-down end">
+        <%= truncate(attendee.plus_one_fullname, length: 16) %>
       </div>
     </div>
   <% end %>

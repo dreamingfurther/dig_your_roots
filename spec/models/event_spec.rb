@@ -33,7 +33,7 @@ describe Event do
 
   describe '#invited_count' do
     it 'returns the count of all invited attendees' do
-      expect(event.invited_count).to eq 7
+      expect(event.invited_count).to eq 6
     end
   end
 
@@ -45,7 +45,7 @@ describe Event do
 
   describe '#declined_count' do
     it 'returns the count of all declined attendees' do
-      expect(event.declined_count).to eq 1
+      expect(event.declined_count).to eq 2
     end
   end
 
@@ -57,7 +57,7 @@ describe Event do
 
   describe '#unconfirmed_count' do
     it 'returns the count of all unconfirmed attendees' do
-      expect(event.unconfirmed_count).to eq 3
+      expect(event.unconfirmed_count).to eq 2
     end
   end
 end
