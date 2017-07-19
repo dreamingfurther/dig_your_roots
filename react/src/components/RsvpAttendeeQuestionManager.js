@@ -1,13 +1,13 @@
 import React from 'react';
 import { Row, Column } from 'react-foundation';
-import ExtraDetails       from './rsvpQuestions/ExtraDetails';
-import ExtraQuestionForUs from './rsvpQuestions/ExtraQuestionForUs';
-import Food               from './rsvpQuestions/Food';
-import FoodPlusOne        from './rsvpQuestions/FoodPlusOne';
-import PhonePassword      from './rsvpQuestions/PhonePassword';
 import PlusOne            from './rsvpQuestions/PlusOne';
 import PlusOneName        from './rsvpQuestions/PlusOneName';
+import Food               from './rsvpQuestions/Food';
+import FoodPlusOne        from './rsvpQuestions/FoodPlusOne';
+import ExtraDetails       from './rsvpQuestions/ExtraDetails';
+import ExtraQuestionForUs from './rsvpQuestions/ExtraQuestionForUs';
 import Textarea           from './rsvpQuestions/Textarea';
+import PhonePassword      from './rsvpQuestions/PhonePassword';
 import Submit             from './rsvpQuestions/Submit';
 
 const RsvpAttendeeQuestionManager = ({ plusOne, eventHasFood, eventHasDance, foodChoice, formError, plusOneAttending, hasPassword }) => {
@@ -19,7 +19,6 @@ const RsvpAttendeeQuestionManager = ({ plusOne, eventHasFood, eventHasDance, foo
   if(plusOne && plusOneAttending == "Yes"){
     plusOneName = <PlusOneName />
   }
-
 
   if(eventHasFood && plusOne && plusOneAttending != undefined){
     cell1 = <Food />
