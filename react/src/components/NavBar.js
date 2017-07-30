@@ -15,11 +15,7 @@ const NavBar = (props) => {
     <div className="header-background-style">
       <div className="text-center header-anchor-style">
         <h1 className="man pam">
-          Jesse
-          <Link to="/">
-            <img className="mhs mbs" src={railsAssetImagePath("anchor-white.png")}></img>
-          </Link>
-          David
+          Tahara
         </h1>
       </div>
       { navBarLinks }
